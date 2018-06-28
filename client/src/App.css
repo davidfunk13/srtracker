@@ -1,0 +1,35 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+h1 {
+  font-size: 2.8em; }
+
+h2 {
+  font-size: 2.4rem; }
+
+p {
+  text-indent: 1rem;
+  font-size: 1.8rem; }
+
+ol, li, ul {
+  text-indent: 5rem;
+  font-size: 1.8rem; }
+
+a {
+  font-size: 1.8rem; }
+
+.u-margin-bottom-small {
+  margin-bottom: 2rem; }
+
+.u-margin-top-small {
+  margin-top: 2rem; }

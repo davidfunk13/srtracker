@@ -1,0 +1,32 @@
+{
+  "name": "srtracker",
+  "version": "1.0.0",
+  "description": "An improved SR Tracker Service for Overwatch",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.7"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.5"
+  },
+  "scripts": {
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidfunk13/srtracker.git"
+  },
+  "author": "Dave Funk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidfunk13/srtracker/issues"
+  },
+  "homepage": "https://github.com/davidfunk13/srtracker#readme"
+}
