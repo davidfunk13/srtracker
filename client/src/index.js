@@ -5,13 +5,14 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import { makeMainRoutes } from './router';
+import App from './App';
 
 import "./App.css";
 const store = configureStore();
 const router = makeMainRoutes();
 ReactDOM.render(
     <Provider store={store}>
-        {router}
+        <App />
     </Provider>,
     document.getElementById('root'));
 
