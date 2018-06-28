@@ -15,11 +15,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header auth={auth} />
         <div className='content'>
           {router}
-        </div>
       </div>
     );
   }

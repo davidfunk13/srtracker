@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux";
 import * as modalActionCreators from "../../actions/modalActions";
+import { withRouter } from 'react-router-dom';
 
 class Header extends Component {
   componentDidMount() {
-
+    console.log(this.props)
+    console.log(this.props.auth.isAuthenticated())
   }
   
   render() {
     return (
-      <div className="App">
         <header className="header">
           <h1>SR TRACKER</h1>
+          {this.props.auth.isAuthenticated() ? <button onClick={() => this.props.auth.logout()}>Logout</button> : <button onClick={() => this.props.auth.login()}>Login</button> }
         </header>
-      </div>
     );
   }
 }
@@ -31,7 +32,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
