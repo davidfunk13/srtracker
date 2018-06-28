@@ -33,3 +33,9 @@ a {
 
 .u-margin-top-small {
   margin-top: 2rem; }
+
+.content {
+  border: 1px solid black; }
+
+.header {
+  text-align: center; }

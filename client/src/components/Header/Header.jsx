@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
-import { makeMainRoutes } from './router';
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux";
-import * as modalActionCreators from "./actions/modalActions";
-import Header from './components/Header/Header';
+import * as modalActionCreators from "../../actions/modalActions";
 
-const router = makeMainRoutes();
-
-class App extends Component {
+class Header extends Component {
   componentDidMount() {
-    this.props.auth.isAuthenticated()
-  }
 
+  }
+  
   render() {
     return (
       <div className="App">
-        <Header auth={auth} />
-        <div className='content'>
-          {router}
-        </div>
+        <header className="header">
+          <h1>SR TRACKER</h1>
+        </header>
       </div>
     );
   }
@@ -40,4 +34,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Header);
