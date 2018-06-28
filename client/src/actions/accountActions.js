@@ -32,7 +32,6 @@ export const getAccounts = uid => {
       axios
         .get(`/api/getaccounts/`+ uid)
         .then(data => {
-            console.log(data)
             dispatch(getAccountsSuccess(data.data));
         })
         .catch(error => {
@@ -42,6 +41,7 @@ export const getAccounts = uid => {
     }
   };
   export const getAccountsSuccess = data => {
+    //   console.log(data)
     return {
         type: actionTypes.GET_ACCOUNTS_SUCCESS,
         data: data,

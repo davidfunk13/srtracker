@@ -21,6 +21,10 @@ const customStyles = {
 };
 
 class Main extends Component {
+  componentDidMount(){
+    this.props.accountActions.getAccounts(this.props.profile.sub);
+    console.log(this.props)
+  }
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
@@ -38,6 +42,34 @@ class Main extends Component {
         </ReactModal>
         <h1 className="heading u-margin-bottom-small">Thank you for logging in! {this.props.profile.name}</h1>
         <button onClick={() => {this.props.modalActions.openModal()}}>Track Account</button>
+        {!Array.isArray(this.props.accounts) ||
+              !this.props.accounts.length ? (
+                <div className="seasons__no">
+                {console.log(this.props)}
+                  <p>We have no accounts saved for you.</p>
+                  <p>Please see above to start tracking a new one!</p>
+                </div>
+              ) : (
+                <div className="seasons__yes">
+                  <h2>You have a season saved with us! Your seasons:</h2>
+                  {console.log()}
+                  {this.props.accounts.map(accounts => {
+                    return (
+                      <div
+                        className="season__yes--saved-account u-margin-top-small"
+                        key={accounts._id}
+                      >
+                        <div>Your uid: {accounts.uid}</div>
+                        <div>
+                          <h2>BattleTag:</h2>
+                          <p>{accounts.BattleTag}</p>
+                          <p>make this a seprate component for new modal</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
       </div>
     );
   }

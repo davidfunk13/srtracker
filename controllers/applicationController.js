@@ -14,6 +14,7 @@ module.exports = {
 		console.log(uid)
 		db.User.find({'uid': uid}).then(data => {
 			console.log('hello')
+			console.log(data)
 			res.json(data)
 		}).catch(err =>{
 			console.log(err)

@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import showModal from './modalReducer';
-import accountsReducer from './accountsReducer';
-
+import accounts from './accountsReducer';
+import initialState from './initialState'
 const rootReducer = combineReducers({
+  initialState,
   showModal,
-  accountsReducer
+  accounts
 });
 
 export default rootReducer;

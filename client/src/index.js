@@ -5,7 +5,6 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import "./App.css";
-import Auth from './components/Auth/Auth';
 import { makeMainRoutes } from './router';
 
 const router = makeMainRoutes();
