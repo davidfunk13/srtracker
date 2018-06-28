@@ -1,5 +1,7 @@
 const actions = {
     OPEN_MODAL: 'OPEN_MODAL',
     CLOSE_MODAL: 'CLOSE_MODAL',
+    GET_ACCOUNTS: 'GET_ACCOUNTS',
+    GET_ACCOUNTS_SUCCESS: 'GET_ACCOUNTS_SUCCESS',
 }
 export default actions;

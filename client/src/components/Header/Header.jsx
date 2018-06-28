@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux";
 import * as modalActionCreators from "../../actions/modalActions";
+import * as accountActionCreators from '../../actions/accountActions';
 import { withRouter } from 'react-router-dom';
 
 class Header extends Component {
   componentDidMount() {
     console.log(this.props)
-    console.log(this.props.auth.isAuthenticated())
+    this.props.auth.isAuthenticated()
+    this.props.auth.getProfile()
+  }
+  componentWillReceiveProps(){
+    console.log(this.props)
+    this.props.auth.isAuthenticated()
   }
   
   render() {
@@ -23,13 +29,18 @@ class Header extends Component {
 function mapStateToProps(state) {
   return {
     showModal: state.showModal,
+    accounts: state.accounts
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
+    accountActions: bindActionCreators(accountActionCreators, dispatch),
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header));

@@ -2,4 +2,5 @@
 // const auth = new Auth();
 export default {
   showModal: false,
+  accounts: [],
 };

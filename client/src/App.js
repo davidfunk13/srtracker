@@ -25,12 +25,14 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     showModal: state.showModal,
+    accounts: state.accounts
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
+    accountActions: bindActionCreators(accountActionCreators, dispatch),
   };
 }
 
