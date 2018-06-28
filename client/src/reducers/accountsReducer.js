@@ -7,7 +7,11 @@ export default function accountReducer(state = initialState.accounts, action) {
       return {
         ...state,
         accounts: state.account.concat(action.data),
-      }  
+      }
+    case actionTypes.CREATE_USER_SUCCESS:
+      return {
+        ...state,
+      }
     default:
       {
         return state;
