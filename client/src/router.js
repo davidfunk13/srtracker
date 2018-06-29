@@ -7,6 +7,7 @@ import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
 import Test from "./pages/Test/Test";
 import NotFound from "./pages/NotFound/NotFound";
+import Account from './pages/Account/Account';
 
 const auth = new Auth();
 
@@ -36,10 +37,10 @@ export const makeMainRoutes = () => {
             }}
           />
           <Route
-            path="/test"
+            path="/account"
             render={props =>
               auth.isAuthenticated() ? (
-                <Test auth={auth} profile={auth.getProfile()} {...props} />
+                <Account auth={auth} profile={auth.getProfile()} {...props} />
               ) : (
                 <NotFound />
               )

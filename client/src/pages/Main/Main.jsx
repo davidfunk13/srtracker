@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from '../../actions/accountActions'
+import * as activeAccountActionCreators from '../../actions/activeAccountActions'
+import {Link} from 'react-router-dom'
 
 const customStyles = {
   content: {
@@ -67,7 +69,7 @@ class Main extends Component {
                         <div>
                           <h2>BattleTag:</h2>
                           <p>{accounts.BattleTag}</p>
-                            <button onClick={() => this.props.accountActions.selectAccount(accounts)}>Open Account</button>
+                           <Link to='/account'><button onClick={() => this.props.accountActions.selectAccount(accounts)}>Open Account</button></Link>
                         </div>
                       </div>
                     );
@@ -82,7 +84,8 @@ class Main extends Component {
 function mapStateToProps(state) {
   return {
     showModal: state.showModal,
-    accounts: state.accounts
+    accounts: state.accounts,
+    activeAccount: state.activeAccount,
   };
 }
 
@@ -90,6 +93,7 @@ function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
     accountActions: bindActionCreators(accountActionCreators, dispatch),
+    activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch)
   };
 }
 

@@ -4,7 +4,7 @@ import accounts from './accountsReducer';
 import activeAccount from './activeAccountReducer';
 import initialState from './initialState'
 const rootReducer = combineReducers({
-  initialState,
+  // initialState,
   showModal,
   accounts,
   activeAccount
