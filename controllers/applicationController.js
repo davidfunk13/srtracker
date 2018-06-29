@@ -29,4 +29,13 @@ module.exports = {
 			console.log(err)
 		})
 	},
+	findOne: (req, res) => {
+		console.log(`herro  ${req.params.id}`)
+		db.User.findById(req.params.id).then(data => {
+			console.log(data)
+			res.json(data)
+		}).catch(err => {
+			console.log(err)
+		})
+	}
 }

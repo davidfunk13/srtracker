@@ -3,4 +3,5 @@
 export default {
   showModal: false,
   accounts: [],
+  activeAccount: [],
 };

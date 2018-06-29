@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactModal from "react-modal";
 import BattleTag from "../../components/AddAccountForm/BattleTag/BattleTag";
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from '../../actions/accountActions'
@@ -27,6 +28,9 @@ class Main extends Component {
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
+  }
+  componentWillReceiveProps(){
+    // this.props.accountActions.getAccounts(this.props.profile.sub)
   }
   render() {
     return (
@@ -63,7 +67,7 @@ class Main extends Component {
                         <div>
                           <h2>BattleTag:</h2>
                           <p>{accounts.BattleTag}</p>
-                          <p>make this a seprate component for new modal</p>
+                            <button onClick={() => this.props.accountActions.selectAccount(accounts)}>Open Account</button>
                         </div>
                       </div>
                     );
@@ -89,7 +93,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(Main));
