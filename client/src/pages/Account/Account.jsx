@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from '../../actions/accountActions'
 import * as activeAccountActionCreators from '../../actions/activeAccountActions'
+import {Link} from 'react-router-dom'
 class Account extends Component {
     componentDidMount(){
         console.log(this.props)
@@ -16,6 +17,8 @@ class Account extends Component {
         <p>{this.props.activeAccount.BattleTag}</p>
         <p>Seasons Tracked for this acct:</p>
         <p>{this.props.activeAccount.Seasons}</p>
+
+        <Link to='/'>Go Back</Link>
       </div>
     );
   }

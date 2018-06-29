@@ -25,7 +25,9 @@ const customStyles = {
 
 class Main extends Component {
   componentDidMount(){
-    this.props.accountActions.getAccounts(this.props.profile.sub);
+    if (this.props.accounts.length === 0) {
+      this.props.accountActions.getAccounts(this.props.profile.sub);
+    }
     console.log(this.props)
   }
   componentWillMount() {
