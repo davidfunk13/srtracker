@@ -5,7 +5,7 @@ module.exports = {
 		console.log(req.body)
 		db.Season.create(req.body)
 		.then(data => {
-			return db.User.findOneAndUpdate({}, {$push: {Seasons: data._id}})
+			return db.User.findOneAndUpdate({BattleTag: data.BattleTagOwnership}, {$push: {Seasons: data._id}})
 		})
 		.then(returnUser => {
 			res.json(returnUser);
