@@ -7,12 +7,12 @@ import { withRouter } from 'react-router-dom';
 
 class Header extends Component {
   componentDidMount() {
-    console.log(this.props)
+    // console.log(this.props)
     this.props.auth.isAuthenticated()
     this.props.auth.getProfile()
   }
   componentWillReceiveProps(){
-    console.log(this.props)
+    // console.log(this.props)
     this.props.auth.isAuthenticated()
   }
   

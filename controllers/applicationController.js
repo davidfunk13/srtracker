@@ -2,12 +2,14 @@ const db = require('../models/index');
 
 module.exports = {
 	saveSeason: (req, res) => {
-		db.User.create(req.body)
-		.then(data => {
-			res.json(data)
-		}).catch(err => {
-			console.log(err)
-		})},
+		console.log(req.body)
+	},
+		// db.Season.create(req.body)
+		// .then(data => {
+		// 	res.json(data)
+		// }).catch(err => {
+		// 	console.log(err)
+		// })},
 	getAccounts: (req, res) => {
 		let uid = req.params.uid;
 

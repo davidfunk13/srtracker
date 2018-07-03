@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 import BattleTag from "../../components/AddAccountForm/BattleTag/BattleTag";
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import * as modalActionCreators from "../../actions/modalActions";
-import * as accountActionCreators from '../../actions/accountActions'
-import * as activeAccountActionCreators from '../../actions/activeAccountActions'
-import {Link} from 'react-router-dom'
+import * as accountActionCreators from '../../actions/accountActions';
+import * as activeAccountActionCreators from '../../actions/activeAccountActions';
+import * as seasonActionCreators from '../../actions/seasonActions';
+import {Link} from 'react-router-dom';
 
 const customStyles = {
   content: {
@@ -71,7 +72,7 @@ class Main extends Component {
                         <div>
                           <h2>BattleTag:</h2>
                           <p>{accounts.BattleTag}</p>
-                           <Link to='/account'><button onClick={() => this.props.accountActions.selectAccount(accounts)}>Open Account</button></Link>
+                           <Link to='/account'><button onClick={() => this.props.accountActions.selectAccount(accounts._id)}>Open Account</button></Link>
                         </div>
                       </div>
                     );
@@ -88,6 +89,7 @@ function mapStateToProps(state) {
     showModal: state.showModal,
     accounts: state.accounts,
     activeAccount: state.activeAccount,
+    addSeasonForm: state.addSeasonForm
   };
 }
 
@@ -95,7 +97,8 @@ function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
     accountActions: bindActionCreators(accountActionCreators, dispatch),
-    activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch)
+    activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
+    seasonActions: bindActionCreators(seasonActionCreators, dispatch)
   };
 }
 
