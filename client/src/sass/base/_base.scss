@@ -7,9 +7,12 @@
 
 }
 html{
+    height: 100%;
     font-size: 62.5%;
 }
 
 body {
+    height: 100%;
     box-sizing: border-box;
+    background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba)
 }

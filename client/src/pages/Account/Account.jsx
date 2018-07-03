@@ -57,7 +57,7 @@ class Account extends Component {
         break;
     }
     return (
-      <div className="account">
+      <div className="container">
         <ReactModal isOpen={this.props.showModal} style={customStyles}>
           {formStep}
           <button

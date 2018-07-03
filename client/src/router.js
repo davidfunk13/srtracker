@@ -12,7 +12,7 @@ const auth = new Auth();
 
 export const makeMainRoutes = () => {
   return (
-    <div>
+    <div className='app-wrapper'>
       <Router history={history}>
         <div>
           <Header profile={auth.getProfile()} auth={auth} />
@@ -23,8 +23,8 @@ export const makeMainRoutes = () => {
               auth.isAuthenticated() ? (
                 <Main profile={auth.getProfile()} auth={auth} {...props} />
               ) : (
-                <NotFound />
-              )
+                  <NotFound />
+                )
             }
           />
           <Route
@@ -41,8 +41,8 @@ export const makeMainRoutes = () => {
               auth.isAuthenticated() ? (
                 <Account auth={auth} profile={auth.getProfile()} {...props} />
               ) : (
-                <NotFound />
-              )
+                  <NotFound />
+                )
             }
           />
         </div>
