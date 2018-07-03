@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from "react-router-dom";
 import * as modalActionCreators from '../../../actions/modalActions';
 import * as accountActionCreators from '../../../actions/accountActions';
 import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
@@ -23,6 +22,7 @@ class HerosFocused extends Component {
 
       handleHerosFocused = event => {
           event.preventDefault();
+          this.props.seasonActions.setHerosFocused(this.state.HerosFocused)
           this.props.seasonActions.nextStepForm();
 
       }

@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import actionTypes from './actionTypes';
 
 // export const saveSeason = data => {
@@ -20,6 +20,12 @@ export const setStartingSR = (data) => {
     return {
         type: actionTypes.SET_STARTING_SR,
         data: data
+    }
+}
+export const setHerosFocused = (data) => {
+    return {
+        type: actionTypes.SET_HEROS_FOCUSED,
+        data: data,
     }
 }
 export const nextStepForm = () => {

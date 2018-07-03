@@ -5,7 +5,6 @@ import Auth from "./components/Auth/Auth";
 import history from "./components/Auth/history";
 import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
-import Test from "./pages/Test/Test";
 import NotFound from "./pages/NotFound/NotFound";
 import Account from './pages/Account/Account';
 

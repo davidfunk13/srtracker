@@ -15,6 +15,11 @@ export default function seasonReducer(state = initialState.addSeasonForm, action
         ...state,
         step: state.step + 1,
       }
+      case actionTypes.SET_HEROS_FOCUSED:
+      return {
+        ...state,
+        HerosFocused: state.HerosFocused.concat(action.data)
+      }
     default:
       {
         return state;

@@ -5,16 +5,22 @@ import * as modalActionCreators from '../../../actions/modalActions';
 import * as accountActionCreators from '../../../actions/accountActions';
 import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
 import * as seasonActionCreators from '../../../actions/seasonActions';
+import HerosFocused from '../HerosFocused/HerosFocused';
 class Confirm extends Component {
 
     render() {
+        let SeasonData = {
+            BattleTag: this.props.activeAccount.BattleTag,
+            StartingSR: this.props.addSeasonForm.StartingSR,
+            HerosFocused: this.props.addSeasonForm.HerosFocused.toString(),
+        }
         return (
             <div className='account-form'>
                 <h1 className='u-margin-bottom-small'>{this.props.profile.nickname}, is this information correct?</h1>
                 <div className='account-info'>
-                    <h2>Battletag: </h2>
-                    <h2>Starting SR: </h2>
-                    <h2>Heros Focused this Season: </h2>
+                    <h2>Battletag: {SeasonData.BattleTag}</h2>
+                    <h2>Starting SR: {SeasonData.StartingSR} </h2>
+                    <h2>Heros Focused this Season: {SeasonData.HerosFocused} </h2>
                     <button className='btn btn--save-info' >Save Info</button>
                 </div>
             </div>
