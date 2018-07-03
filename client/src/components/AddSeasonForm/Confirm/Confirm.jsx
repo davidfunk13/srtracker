@@ -10,18 +10,20 @@ class Confirm extends Component {
 
     render() {
         let SeasonData = {
-            BattleTag: this.props.activeAccount.BattleTag,
+            accountOwnership: this.props.activeAccount._id,
+            BattleTagOwnership: this.props.activeAccount.BattleTag,
             StartingSR: this.props.addSeasonForm.StartingSR,
-            HerosFocused: this.props.addSeasonForm.HerosFocused.toString(),
+            HerosFocused: this.props.addSeasonForm.HerosFocused,
         }
+        console.log(SeasonData)
         return (
             <div className='account-form'>
                 <h1 className='u-margin-bottom-small'>{this.props.profile.nickname}, is this information correct?</h1>
                 <div className='account-info'>
                     <h2>Battletag: {SeasonData.BattleTag}</h2>
                     <h2>Starting SR: {SeasonData.StartingSR} </h2>
-                    <h2>Heros Focused this Season: {SeasonData.HerosFocused} </h2>
-                    <button className='btn btn--save-info' >Save Info</button>
+                    <h2>Heros Focused this Season: {SeasonData.HerosFocused.toString()} </h2>
+                    <button className='btn btn--save-info' onClick={() => this.props.seasonActions.saveSeason(SeasonData)} >Save Info</button>
                 </div>
             </div>
         )
@@ -33,7 +35,6 @@ function mapStateToProps(state) {
         accounts: state.accounts,
         activeAccount: state.activeAccount,
         addSeasonForm: state.addSeasonForm
-
     };
 }
 
@@ -41,10 +42,7 @@ function mapDispatchToProps(dispatch) {
     return {
         modalActions: bindActionCreators(modalActionCreators, dispatch),
         accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(
-            activeAccountActionCreators,
-            dispatch
-        ),
+        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
         seasonActions: bindActionCreators(seasonActionCreators, dispatch),
     }
 }

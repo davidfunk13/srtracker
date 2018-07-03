@@ -1,18 +1,24 @@
 const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var SeasonSchema = new Schema({
+const SeasonSchema = new Schema({
+    accountOwnership:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    BattleTagOwnership: {
+        type: String,
+        required: true,
+    },
     StartingSR:{
         type: Number,
         required: true,
     },
-    MainHeros: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "MainHeros",
-        }
-    ]
+    HerosFocused: {
+        type: Array,
+        required: true
+    }
 }, {timestamps: Date});
 
 const Season = mongoose.model('Season', SeasonSchema);

@@ -14,7 +14,7 @@ var UserSchema = new Schema({
     Seasons: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Season",
+            ref: 'Season',
         }
     ]
 }, {timestamps: Date});

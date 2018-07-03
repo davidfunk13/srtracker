@@ -1,5 +1,5 @@
 module.exports= {
     User: require('./user'),
-    // Season: require('./season'),
+    Season: require('./season'),
     // Game: require('./game'),
 }

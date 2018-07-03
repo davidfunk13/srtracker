@@ -1,21 +1,22 @@
-// import axios from 'axios';
+import axios from 'axios';
 import actionTypes from './actionTypes';
 
-// export const saveSeason = data => {
-//     return function (dispatch) {
-//         axios.post('/api/saveseaon/' + data).then(data => {
-//             dispatch(saveSeasonSuccess(data.data))
-//         }).catch(error => {
-//             console.log(error);
-//         })
-//     }
-// }
-// export const saveSeasonSuccess = data => {
-//     return {
-//         type: actionTypes.SAVE_SEASON_SUCCESS,
-//         data: data
-//     }
-// }
+export const saveSeason = data => {
+    console.log(data)
+    return function (dispatch) {
+        axios.post(`/api/saveseason/`, data).then(data => {
+            dispatch(saveSeasonSuccess(data.data))
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+}
+export const saveSeasonSuccess = data => {
+    return {
+        type: actionTypes.SAVE_SEASON_SUCCESS,
+        data: data
+    }
+}
 export const setStartingSR = (data) => {
     return {
         type: actionTypes.SET_STARTING_SR,
