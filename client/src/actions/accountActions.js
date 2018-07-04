@@ -2,6 +2,17 @@ import axios from 'axios';
 import actionTypes from './actionTypes';
 
 //storing your battletag, auth0 uid.
+export const createUserNode = (uidOBJ) => {
+    return function (dispatch) {
+        axios.post('/api/createuser/', uidOBJ)
+        .then(data => {
+            dispatch(createUserSuccess(data.data));
+        })
+        .catch(error => {
+            dispatch(createUserFailure(error))
+        });
+    };
+};
 export const createUserSuccess = (data) => {
     return {
         type: actionTypes.CREATE_USER_SUCCESS,
@@ -9,37 +20,24 @@ export const createUserSuccess = (data) => {
     }
 }
 export const createUserFailure = (error) => {
-    return{
+    return {
         type: actionTypes.CREATE_USER_FAILURE,
         error: error,
     }
 }
-export const createUserNode = (uidOBJ) => {
-    return function(dispatch) {
-        axios.post('/api/createuser/', uidOBJ)
+//fetches all accounts matching your uid 
+export const getAccounts = uid => {
+    return function (dispatch) {
+        axios.get(`/api/getaccounts/` + uid)
             .then(data => {
-                dispatch(createUserSuccess(data.data));
+                dispatch(getAccountsSuccess(data.data));
             })
             .catch(error => {
-                dispatch(createUserFailure(error))
+                console.log(error);
             });
-    };
-};
- //fetches all accounts matching your uid 
-export const getAccounts = uid => {
-    return function(dispatch) {
-        // console.log(uid)
-      axios
-        .get(`/api/getaccounts/`+ uid)
-        .then(data => {
-            dispatch(getAccountsSuccess(data.data));
-        })
-        .catch(error => {
-          console.log(error);
-        });
     }
-  };
-  export const getAccountsSuccess = data => {
+};
+export const getAccountsSuccess = data => {
     return {
         type: actionTypes.GET_ACCOUNTS_SUCCESS,
         data: data,

@@ -4,3 +4,11 @@
     margin: 2rem;
     padding: 1rem;
 }
+.seasons {
+    &__yes {
+        &--saved-account {
+            border: 1px solid black;
+        }
+        
+    }
+}

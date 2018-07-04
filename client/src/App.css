@@ -44,11 +44,17 @@ a {
   height: auto;
   min-height: 100%; }
 
+.season {
+  border: 1px solid black; }
+
 .container {
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid black;
   margin: 2rem;
   padding: 1rem; }
+
+.seasons__yes--saved-account {
+  border: 1px solid black; }
 
 .header {
   text-align: center;

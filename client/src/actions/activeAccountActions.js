@@ -1,38 +1,8 @@
-import axios from 'axios';
-import actionTypes from './actionTypes';
 
-//storing your battletag, auth0 uid.
+import actionTypes from './actionTypes';
 export const selectAccount = data => {
-    let id = data
-    return function(dispatch) {
-      axios
-        .get(`/api/selectaccount/`+ id)
-        .then(data => {
-            dispatch(selectAccountSuccess(data.data));
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  };
-export const selectAccountSuccess = data => {
     return {
-        type: actionTypes.SELECT_ACCOUNT_SUCCESS,
-        data: data,
+        type: actionTypes.SELECT_ACCOUNT,
+        data: data
     }
-}
-// export const saveSeason = data => {
-//     return function (dispatch) {
-//         axios.post('/api/saveseaon/' + data).then(data => {
-//             dispatch(saveSeasonSuccess(data.data))
-//         }).catch(error => {
-//             console.log(error);
-//         })
-//     }
-// }
-// export const saveSeasonSuccess = data => {
-//     return {
-//         type: actionTypes.SAVE_SEASON_SUCCESS,
-//         data: data
-//     }
-// }
+};

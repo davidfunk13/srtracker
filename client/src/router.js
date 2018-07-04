@@ -12,7 +12,7 @@ const auth = new Auth();
 
 export const makeMainRoutes = () => {
   return (
-    <div className='app-wrapper'>
+
       <Router history={history}>
         <div>
           <Header profile={auth.getProfile()} auth={auth} />
@@ -47,6 +47,6 @@ export const makeMainRoutes = () => {
           />
         </div>
       </Router>
-    </div>
+
   );
 };

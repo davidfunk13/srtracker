@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as modalActionCreators from '../../../actions/modalActions';
-import * as accountsSavedFormActionCreators from '../../../actions/accountActions';
+import * as accountActionCreators from '../../../actions/accountActions';
 // import Menu from '../../../Pages/Menu/Menu';
 class BattleTag extends Component {
     state = {
@@ -31,7 +31,7 @@ class BattleTag extends Component {
         if (BattleTag !== "") {
             this.setState({Errors: []})
             console.log(uidOBJ)
-            this.props.accountsSavedFormActions.createUserNode(uidOBJ)            
+            this.props.accountActions.createUserNode(uidOBJ)            
         }
     }
 
@@ -62,14 +62,14 @@ class BattleTag extends Component {
 function mapStateToProps(state) {
     return {
         showModal: state.showModal,
-        accountsSavedForm: state.accountsSavedForm,
+        accounts: state.accounts,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         modalActions: bindActionCreators(modalActionCreators, dispatch),
-        accountsSavedFormActions: bindActionCreators(accountsSavedFormActionCreators, dispatch),
+        accountActions: bindActionCreators(accountActionCreators, dispatch),
     }
 }
 

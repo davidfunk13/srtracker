@@ -34,9 +34,7 @@ class Main extends Component {
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
-  componentWillReceiveProps(){
-    // this.props.accountActions.getAccounts(this.props.profile.sub)
-  }
+
   render() {
     return (
       <div className="container">
@@ -64,14 +62,14 @@ class Main extends Component {
                   {this.props.accounts.map(accounts => {
                     return (
                       <div
-                        className="season__yes--saved-account u-margin-top-small"
+                        className="seasons__yes--saved-account u-margin-top-small"
                         key={accounts._id}
                       >
                         <div>Your uid: {accounts.uid}</div>
                         <div>
                           <h2>BattleTag:</h2>
                           <p>{accounts.BattleTag}</p>
-                           <Link to='/account'><button onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
+                           <Link to='/account'><button onClick={() => this.props.activeAccountActions.selectAccount(accounts)}>Open Account</button></Link>
                         </div>
                       </div>
                     );

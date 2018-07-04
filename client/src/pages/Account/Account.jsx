@@ -8,8 +8,6 @@ import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from "../../actions/accountActions";
 import * as activeAccountActionCreators from "../../actions/activeAccountActions";
 import * as seasonActionCreators from '../../actions/seasonActions';
-import * as activeSeasonActionCreators from '../../actions/activeSeasonActions';
-
 import { Link } from "react-router-dom";
 import HerosFocused from "../../components/AddSeasonForm/HerosFocused/HerosFocused";
 import Confirm from '../../components/AddSeasonForm/Confirm/Confirm';
@@ -29,31 +27,12 @@ const customStyles = {
 };
 
 class Account extends Component {
-  // showSeasons = () => {
-    
-  //      this.props.activeSeasonActions.getSeasons(this.props.activeAccount._id)
-  // }
-  componentDidUpdate() {
-    console.log('hit')
-
-     }
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props.activeAccount)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
-shouldComponentUpdate(){
-  if (this.props.activeAccount.length === 0  ) {
-    console.log(this.props.activeAccount)
-    return true;
-  }
-  if(this.props.activeAccount.length === 1) {
-    console.log(this.props.activeAccount)
-    return false
-  }
-  // this.showSeasons()
-}
 
   render() {
 
@@ -85,13 +64,25 @@ shouldComponentUpdate(){
         <p className='u-margin-bottom-small'>BattleTag:</p>
         <p>{this.props.activeAccount.BattleTag}</p>
         <p className='u-margin-bottom-small'>Seasons Tracked for this acct:</p>
-        <button onClick={() => this.props.modalActions.openModal()} >Add Season</button>
-        {this.props.activeAccount.Seasons ? this.props.activeAccount.Seasons.map(season => {
-          <div>
+        <div>
+          {this.props.activeAccount.Seasons ?
+            this.props.activeAccount.Seasons.map(season => {
+              return ( 
+              <div className='season'>
+              <h2>Starting SR:</h2>
+              <p>{season.StartingSR}</p>
+              <h2>Heros of Focus:</h2>
+              <p>{season.HerosFocused}</p>
 
-            <p>{season}</p>
-          </div>
-        }) : <p>We dont have any active seasons being tracked for you. Please click Add Season to start tracking!</p>}
+              </div>
+               )
+            })
+            :
+            <p>tes</p>
+          }
+        </div>
+
+        <button onClick={() => this.props.modalActions.openModal()} >Add Season</button>
         <Link to="/">Go Back</Link>
       </div>
     );
@@ -103,7 +94,6 @@ function mapStateToProps(state) {
     accounts: state.accounts,
     activeAccount: state.activeAccount,
     addSeasonForm: state.addSeasonForm,
-    activeSeason: state.activeSeason,
   };
 }
 
@@ -113,7 +103,6 @@ function mapDispatchToProps(dispatch) {
     accountActions: bindActionCreators(accountActionCreators, dispatch),
     activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
     seasonActions: bindActionCreators(seasonActionCreators, dispatch),
-    activeSeasonActions: bindActionCreators(activeSeasonActionCreators, dispatch),
   };
 }
 
