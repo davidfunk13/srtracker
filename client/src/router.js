@@ -13,40 +13,40 @@ const auth = new Auth();
 export const makeMainRoutes = () => {
   return (
 
-      <Router history={history}>
-        <div>
-          <Header profile={auth.getProfile()} auth={auth} />
-          <Route
-            exact
-            path="/"
-            render={props =>
-              auth.isAuthenticated() ? (
-                <Main profile={auth.getProfile()} auth={auth} {...props} />
-              ) : (
-                  <NotFound />
-                )
-            }
-          />
-          <Route
-            path="/callback"
-            render={props => {
-              return (
-                <Callback profile={auth.getProfile()} auth={auth} {...props} />
-              );
-            }}
-          />
-          <Route
-            path="/account"
-            render={props =>
-              auth.isAuthenticated() ? (
-                <Account auth={auth} profile={auth.getProfile()} {...props} />
-              ) : (
-                  <NotFound />
-                )
-            }
-          />
-        </div>
-      </Router>
+    <Router history={history}>
+      <div>
+        <Header profile={auth.getProfile()} auth={auth} />
+        <Route
+          exact
+          path="/"
+          render={props =>
+            auth.isAuthenticated() ? (
+              <Main profile={auth.getProfile()} auth={auth} {...props} />
+            ) : (
+                <NotFound />
+              )
+          }
+        />
+        <Route
+          path="/callback"
+          render={props => {
+            return (
+              <Callback profile={auth.getProfile()} auth={auth} {...props} />
+            );
+          }}
+        />
+        <Route
+          path="/account"
+          render={props =>
+            auth.isAuthenticated() ? (
+              <Account auth={auth} profile={auth.getProfile()} {...props} />
+            ) : (
+                <NotFound />
+              )
+          }
+        />
+      </div>
+    </Router>
 
   );
 };

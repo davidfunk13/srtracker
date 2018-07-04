@@ -34,23 +34,4 @@ module.exports = {
 			console.log(err)
 		})
 	},
-	// findOne: (req, res) => {
-	// 	console.log(`herro  ${req.params.id}`)
-	// 	db.User.findById(req.params.id).populate('Seasons').then(data => {
-	// 		console.log('yu[')
-	// 		console.log(data)
-	// 		res.json(data)
-	// 	}).catch(err => {
-	// 		console.log(err)
-	// 	})
-	// },
-	getSeasons:(req, res) => {
-		console.log(req.params.id)
-		db.Season.findById(req.params.id).then(data => {
-			console.log(data)
-			res.json(data)
-		}).catch(err=> {
-			console.log(err);
-		})
-	}
 }
