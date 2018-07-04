@@ -8,5 +8,6 @@ export default {
     step: 1,
     StartingSR: "",
     HerosFocused: [],
-  }
+  },
+  activeSeason: [],
 };

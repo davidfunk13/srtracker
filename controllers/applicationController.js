@@ -42,5 +42,14 @@ module.exports = {
 		}).catch(err => {
 			console.log(err)
 		})
+	},
+	getSeasons:(req, res) => {
+		console.log(req.params.id)
+		db.Season.findById(req.params.id).then(data => {
+			console.log(data)
+			res.json(data)
+		}).catch(err=> {
+			console.log(err);
+		})
 	}
 }

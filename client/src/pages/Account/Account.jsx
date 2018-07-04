@@ -8,6 +8,7 @@ import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from "../../actions/accountActions";
 import * as activeAccountActionCreators from "../../actions/activeAccountActions";
 import * as seasonActionCreators from '../../actions/seasonActions';
+import * as activeSeasonActionCreators from '../../actions/activeSeasonActions';
 
 import { Link } from "react-router-dom";
 import HerosFocused from "../../components/AddSeasonForm/HerosFocused/HerosFocused";
@@ -28,17 +29,31 @@ const customStyles = {
 };
 
 class Account extends Component {
+  // showSeasons = () => {
+    
+  //      this.props.activeSeasonActions.getSeasons(this.props.activeAccount._id)
+  // }
+  componentDidUpdate() {
+    console.log('hit')
+
+     }
   componentDidMount() {
-    console.log(this.props.activeAccount);
+    console.log(this.props)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
-  componentDidUpdate() {
+shouldComponentUpdate(){
+  if (this.props.activeAccount.length === 0  ) {
     console.log(this.props.activeAccount)
-
-    // renderContent = (this.props.ac)
+    return true;
   }
+  if(this.props.activeAccount.length === 1) {
+    console.log(this.props.activeAccount)
+    return false
+  }
+  // this.showSeasons()
+}
 
   render() {
 
@@ -71,8 +86,12 @@ class Account extends Component {
         <p>{this.props.activeAccount.BattleTag}</p>
         <p className='u-margin-bottom-small'>Seasons Tracked for this acct:</p>
         <button onClick={() => this.props.modalActions.openModal()} >Add Season</button>
-        <p>We dont have any Seasons Tracked for this account. Please Click the Track Season button to begin tracking stats!</p> : <p>{this.props.activeAccount.Seasons}</p> }
+        {this.props.activeAccount.Seasons ? this.props.activeAccount.Seasons.map(season => {
+          <div>
 
+            <p>{season}</p>
+          </div>
+        }) : <p>We dont have any active seasons being tracked for you. Please click Add Season to start tracking!</p>}
         <Link to="/">Go Back</Link>
       </div>
     );
@@ -83,7 +102,8 @@ function mapStateToProps(state) {
     showModal: state.showModal,
     accounts: state.accounts,
     activeAccount: state.activeAccount,
-    addSeasonForm: state.addSeasonForm
+    addSeasonForm: state.addSeasonForm,
+    activeSeason: state.activeSeason,
   };
 }
 
@@ -91,17 +111,10 @@ function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
     accountActions: bindActionCreators(accountActionCreators, dispatch),
-    activeAccountActions: bindActionCreators(
-      activeAccountActionCreators,
-      dispatch
-    ),
+    activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
     seasonActions: bindActionCreators(seasonActionCreators, dispatch),
+    activeSeasonActions: bindActionCreators(activeSeasonActionCreators, dispatch),
   };
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Account)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Account));

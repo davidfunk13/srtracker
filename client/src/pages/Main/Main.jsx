@@ -61,7 +61,6 @@ class Main extends Component {
               ) : (
                 <div className="seasons__yes">
                   <h2>You have a season saved with us! Your seasons:</h2>
-                  {console.log()}
                   {this.props.accounts.map(accounts => {
                     return (
                       <div
@@ -72,7 +71,7 @@ class Main extends Component {
                         <div>
                           <h2>BattleTag:</h2>
                           <p>{accounts.BattleTag}</p>
-                           <Link to='/account'><button onClick={() => this.props.accountActions.selectAccount(accounts._id)}>Open Account</button></Link>
+                           <Link to='/account'><button onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
                         </div>
                       </div>
                     );

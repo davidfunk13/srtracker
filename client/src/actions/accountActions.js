@@ -45,22 +45,3 @@ export const getAccounts = uid => {
         data: data,
     }
 }
-export const selectAccount = data => {
-    let id = data
-    return function(dispatch) {
-      axios
-        .get(`/api/selectaccount/`+ id)
-        .then(data => {
-            dispatch(selectAccountSuccess(data.data));
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  };
-  export const selectAccountSuccess = data => {
-    return {
-        type: actionTypes.SELECT_ACCOUNT_SUCCESS,
-        data: data,
-    }
-}

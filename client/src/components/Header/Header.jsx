@@ -18,7 +18,10 @@ class Header extends Component {
     return (
         <header className="header">
           <h1>SR TRACKER</h1>
-          {this.props.auth.isAuthenticated() ? <button onClick={() => this.props.auth.logout()}>Logout</button> : <button onClick={() => this.props.auth.login()}>Login</button> }
+          {this.props.auth.isAuthenticated() ? 
+          <button onClick={() => this.props.auth.logout()}>Logout</button>
+           : 
+          <button onClick={() => this.props.auth.login()}>Login</button> }
         </header>
     );
   }
