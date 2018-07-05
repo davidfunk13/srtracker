@@ -7,7 +7,11 @@ import * as activeAccountActionCreators from '../../../actions/activeAccountActi
 import * as seasonActionCreators from '../../../actions/seasonActions';
 import HerosFocused from '../HerosFocused/HerosFocused';
 class Confirm extends Component {
+    handleSubmit = (SeasonData) => {
 
+        this.props.seasonActions.saveSeason(SeasonData)
+        this.props.activeAccountActions.concatNewSeason(SeasonData)
+    }
     render() {
         let SeasonData = {
             accountOwnership: this.props.activeAccount._id,
@@ -23,7 +27,7 @@ class Confirm extends Component {
                     <h2>Battletag: {SeasonData.BattleTag}</h2>
                     <h2>Starting SR: {SeasonData.StartingSR} </h2>
                     <h2>Heros Focused this Season: {SeasonData.HerosFocused.toString()} </h2>
-                    <button className='btn btn--save-info' onClick={() => this.props.seasonActions.saveSeason(SeasonData)} >Save Info</button>
+                    <button className='btn btn--save-info' onClick={() => this.handleSubmit(SeasonData)} >Save Info</button>
                 </div>
             </div>
         )

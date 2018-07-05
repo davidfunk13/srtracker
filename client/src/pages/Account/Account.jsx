@@ -28,7 +28,8 @@ const customStyles = {
 
 class Account extends Component {
   componentDidMount() {
-    console.log(this.props.activeAccount)
+    console.log(this.props)
+    this.props.activeAccountActions.getActiveAccount(this.props.activeAccount)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
@@ -78,7 +79,7 @@ class Account extends Component {
                )
             })
             :
-            <p>tes</p>
+              <p>tes</p>
           }
         </div>
 

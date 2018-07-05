@@ -3,11 +3,6 @@ import initialState from './initialState';
 
 export default function seasonReducer(state = initialState.addSeasonForm, action) {
   switch (action.type) {
-    case actionTypes.SAVE_SEASON_SUCCESS:
-      return {
-        ...state,
-        recentlySavedSeason: action.data
-      }
     case actionTypes.SET_STARTING_SR:
       return {
         ...state,
@@ -22,6 +17,10 @@ export default function seasonReducer(state = initialState.addSeasonForm, action
       return {
         ...state,
         HerosFocused: state.HerosFocused.concat(action.data)
+      }
+      case actionTypes.SAVE_SEASON_SUCCESS:
+      return{
+        ...state
       }
     default:
       {

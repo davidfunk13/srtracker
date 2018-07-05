@@ -26,9 +26,9 @@ const customStyles = {
 
 class Main extends Component {
   componentDidMount(){
-    if (this.props.accounts.length === 0) {
+    // if (this.props.accounts.length === 0) {
       this.props.accountActions.getAccounts(this.props.profile.sub);
-    }
+    // }
     console.log(this.props)
   }
   componentWillMount() {
@@ -69,7 +69,7 @@ class Main extends Component {
                         <div>
                           <h2>BattleTag:</h2>
                           <p>{accounts.BattleTag}</p>
-                           <Link to='/account'><button onClick={() => this.props.activeAccountActions.selectAccount(accounts)}>Open Account</button></Link>
+                           <Link to='/account'><button onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
                         </div>
                       </div>
                     );

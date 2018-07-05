@@ -12,7 +12,7 @@ const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        {router}
+            {router}
     </Provider>,
     document.getElementById('root'));
 
