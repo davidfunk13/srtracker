@@ -1,12 +1,15 @@
 import actionTypes from '../actions/actionTypes';
-import initialState from './initialState';
+
+const initialState = {
+  showModal: false,
+}
 
 export default function modalReducer(state = initialState.showModal, action) {
   switch (action.type) {
     case actionTypes.OPEN_MODAL:
-    return true
+      return true
     case actionTypes.CLOSE_MODAL:
-    return  false
+      return false
     default:
       {
         return state;

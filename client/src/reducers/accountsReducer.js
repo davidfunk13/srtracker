@@ -1,12 +1,16 @@
 import actionTypes from '../actions/actionTypes';
-import initialState from './initialState';
+// import initialState from './initialState';
+
+const initialState = {
+  accounts: [],
+}
 
 export default function accountReducer(state = initialState.accounts, action) {
   switch (action.type) {
     case actionTypes.GET_ACCOUNTS_SUCCESS:
       return action.data
     case actionTypes.CREATE_USER_SUCCESS:
-      return state.concat(action.data)
+      return [...state, action.data]
   
     default:
       {

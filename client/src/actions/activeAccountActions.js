@@ -1,32 +1,56 @@
 import axios from 'axios';
 import actionTypes from './actionTypes';
-export const selectAccount = data => {
+
+//storing your battletag, auth0 uid.
+
+export const selectAccount = uid => {
     return {
         type: actionTypes.SELECT_ACCOUNT,
-        data: data
-    }
-};
-export const getActiveAccount = uid => {
-    return function (dispatch) {
-        axios.get(`/api/refreshactiveaccount/` + uid)
-            .then(data => {
-                console.log('hay' +data)
-                dispatch(getActiveAccountSuccess(data.data));
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
-};
-export const concatNewSeason = SeasonData => {
-    return {
-        type: actionTypes.CONCAT_NEW_SEASON,
-        data: SeasonData
+        data: uid,
     }
 }
-export const getActiveAccountSuccess = data => {
+
+export const getActiveAccount = activeAccountId => {
+    return function (dispatch){
+        console.log(activeAccountId)
+        axios.get('/api/activeaccount/' + activeAccountId).then(data => {
+            dispatch(getActiveAccountSuccess(data.data))
+        }).catch(err => {
+            dispatch(getActiveAccountFailure(err));
+        })
+    }
+}
+export const getActiveAccountSuccess = getActiveAccountSuccessData => {
     return {
         type: actionTypes.GET_ACTIVE_ACCOUNT_SUCCESS,
-        data: data
+        data: getActiveAccountSuccessData,
+    }
+}
+export const getActiveAccountFailure = getActiveAccountError => {
+    return{
+        type: actionTypes.GET_ACTIVE_ACCOUNT_FAILURE,
+        error: getActiveAccountError,
+    }
+}
+export const saveSeason = seasonData => {
+    console.log(seasonData)
+return function (dispatch) {
+    axios.post('/api/saveseason/', seasonData).then(data => {
+        dispatch(saveSeasonSuccess(data.data))
+    }).catch(err => {
+        dispatch(saveSeasonFailure(err.data));
+    })
+}
+}
+export const saveSeasonSuccess = seasonSuccesData => {
+    return {
+        type: actionTypes.SAVE_SEASON_SUCCESS,
+        data: seasonSuccesData,
+    }
+}
+export const saveSeasonFailure = seasonFailureData => {
+    return {
+        type: actionTypes.SAVE_SEASON_FAILURE,
+        data: seasonFailureData,
     }
 }

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as modalActionCreators from '../../../actions/modalActions';
 import * as accountActionCreators from '../../../actions/accountActions';
 import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-import * as seasonActionCreators from '../../../actions/seasonActions';
+import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
 
 class HerosFocused extends Component {
     state = {
@@ -22,16 +22,10 @@ class HerosFocused extends Component {
 
       handleHerosFocused = event => {
           event.preventDefault();
-          this.props.seasonActions.setHerosFocused(this.state.HerosFocused)
-          this.props.seasonActions.nextStepForm();
+          console.log(this.props.addSeasonFormActions)
+          this.props.addSeasonFormActions.setHerosFocused(this.state.HerosFocused)
+          this.props.addSeasonFormActions.nextStepForm();
 
-      }
-
-      handleFormSubmit = event => {
-          event.preventDefault();
-          let HerosFocused = this.state.HerosFocused;
-
-          console.log(HerosFocused)
       }
 
 
@@ -55,13 +49,13 @@ class HerosFocused extends Component {
         )
     }
 }
+
 function mapStateToProps(state) {
     return {
         showModal: state.showModal,
         accounts: state.accounts,
         activeAccount: state.activeAccount,
         addSeasonForm: state.addSeasonForm
-
     };
 }
 
@@ -69,11 +63,8 @@ function mapDispatchToProps(dispatch) {
     return {
         modalActions: bindActionCreators(modalActionCreators, dispatch),
         accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(
-            activeAccountActionCreators,
-            dispatch
-        ),
-        seasonActions: bindActionCreators(seasonActionCreators, dispatch),
+        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
+        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
     }
 }
 

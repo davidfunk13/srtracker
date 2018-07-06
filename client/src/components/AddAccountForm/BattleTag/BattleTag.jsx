@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as modalActionCreators from '../../../actions/modalActions';
 import * as accountActionCreators from '../../../actions/accountActions';
-// import Menu from '../../../Pages/Menu/Menu';
 class BattleTag extends Component {
     state = {
         BattleTag: "",
@@ -16,7 +15,6 @@ class BattleTag extends Component {
         this.setState({
             [name]: value
         });
-        console.log(`BattleTag input: ${this.state.BattleTag}`)
     };
 
     handleFormSubmit = event => {
@@ -30,14 +28,12 @@ class BattleTag extends Component {
         }
         if (BattleTag !== "") {
             this.setState({Errors: []})
-            console.log(uidOBJ)
             this.props.accountActions.createUserNode(uidOBJ)            
         }
     }
 
 
     render() {
-
         return (
             <div className='account-form'>
                 <h1 className='u-margin-bottom-small'>please tell us your battletag.</h1>

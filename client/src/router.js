@@ -6,7 +6,7 @@ import history from "./components/Auth/history";
 import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
 import NotFound from "./pages/NotFound/NotFound";
-import Account from './pages/Account/Account';
+import Account from "./pages/Account/Account";
 
 const auth = new Auth();
 
@@ -36,10 +36,11 @@ export const makeMainRoutes = () => {
           }}
         />
         <Route
+          exact
           path="/account"
           render={props =>
             auth.isAuthenticated() ? (
-              <Account auth={auth} profile={auth.getProfile()} {...props} />
+              <Account profile={auth.getProfile()} auth={auth} {...props} />
             ) : (
                 <NotFound />
               )

@@ -25,6 +25,7 @@ export const createUserFailure = (error) => {
         error: error,
     }
 }
+
 //fetches all accounts matching your uid 
 export const getAccounts = uid => {
     return function (dispatch) {

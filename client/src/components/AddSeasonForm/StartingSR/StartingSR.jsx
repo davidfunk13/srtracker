@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import * as modalActionCreators from '../../../actions/modalActions';
 import * as accountActionCreators from '../../../actions/accountActions';
 import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-import * as seasonActionCreators from '../../../actions/seasonActions';
+import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
+
 class StartingSR extends Component {
     state = {
         StartingSR: "",
@@ -21,17 +22,9 @@ class StartingSR extends Component {
 
       handleStartingSR = event => {
           event.preventDefault();
-          this.props.seasonActions.setStartingSR(this.state.StartingSR);
-          this.props.seasonActions.nextStepForm();
+          this.props.addSeasonFormActions.setStartingSR(this.state.StartingSR);
+          this.props.addSeasonFormActions.nextStepForm();
       }
-
-      handleFormSubmit = event => {
-          event.preventDefault();
-          let StartingSR = this.state.StartingSR;
-          console.log(StartingSR)
-          
-      }
-
 
     render() {
         return (
@@ -66,11 +59,8 @@ function mapDispatchToProps(dispatch) {
     return {
         modalActions: bindActionCreators(modalActionCreators, dispatch),
         accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(
-            activeAccountActionCreators,
-            dispatch
-        ),
-        seasonActions: bindActionCreators(seasonActionCreators, dispatch)
+        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
+        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
     }
 }
 
