@@ -5,11 +5,14 @@ import activeAccount from './activeAccountReducer';
 import addSeasonForm from './addSeasonFormReducer';
 
 
-const rootReducer = combineReducers({
+const rootReducer = 
+// combineReducers(
+  {
   showModal,
   accounts,
   activeAccount,
   addSeasonForm,
-});
+}
+// );
 
 export default rootReducer;
