@@ -20,7 +20,7 @@ class ConfirmGame extends Component {
         // }
         return (
             <div className='account-form'>
-                {/* <h1 className='u-margin-bottom-small'> is this information correct?</h1> */}
+                <h1 className='u-margin-bottom-small'> is this information correct?</h1>
                 <div className='game-info'>
                     {/* <h2>Battletag: {SeasonData.BattleTag}</h2>
                     <h2>Starting SR: {SeasonData.StartingSR} </h2>

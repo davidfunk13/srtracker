@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as modalActionCreators from '../../../actions/modalActions';
-import * as accountActionCreators from '../../../actions/accountActions';
-import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
+
 
 class HeroSelected extends Component {
     state = {
         heroSelected: "",
         Errors: "",
       };
+
       handleInputChange = event => {
           let value = event.target.value;
           let name = event.target.name;
@@ -22,7 +18,7 @@ class HeroSelected extends Component {
 
       handleHeroSelected = event => {
           event.preventDefault();
-          this.props.addGameFormActions.setHeroSelected(this.state.HeroSelected)
+        //   this.props.addGameFormActions.setHeroSelected(this.state.heroSelected)
           this.props.addGameFormActions.nextStepGameForm();
       }
 
@@ -34,11 +30,11 @@ class HeroSelected extends Component {
                 {this.state.Errors ? <div><p>{this.state.Errors}</p></div> : <div><p>no errors to show</p></div> } 
                     <input
                         className='account-form__form--starting-sr'
-                        value={this.state.HeroSelected}
-                        name="HerosFocused"
+                        value={this.state.heroSelected}
+                        name="heroSelected"
                         onChange={this.handleInputChange}
                         type="text"
-                        placeholder="HerosFocused"
+                        placeholder="heroSelected"
                     />
                     <button className='btn btn--submit-form' onClick={this.handleHeroSelected}>Submit</button>
                 </form>
@@ -47,22 +43,4 @@ class HeroSelected extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        showModal: state.showModal,
-        accounts: state.accounts,
-        activeAccount: state.activeAccount,
-        addSeasonForm: state.addSeasonForm
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        modalActions: bindActionCreators(modalActionCreators, dispatch),
-        accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeroSelected)
+export default HeroSelected

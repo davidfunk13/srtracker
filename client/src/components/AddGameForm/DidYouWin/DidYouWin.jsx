@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as modalActionCreators from '../../../actions/modalActions';
-import * as accountActionCreators from '../../../actions/accountActions';
-import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
+
 
 class DidYouWin extends Component {
     state = {
@@ -22,8 +17,8 @@ class DidYouWin extends Component {
 
       handleDidYouWin = event => {
           event.preventDefault();
-          this.props.addGameFormActions.setDidYouWin(this.state.didYouWin)
-          this.props.addGameFormActions.nextStepForm();
+        //   this.props.addGameFormActions.setDidYouWin(this.state.didYouWin)
+          this.props.addGameFormActions.nextStepGameForm();
 
       }
 
@@ -31,7 +26,6 @@ class DidYouWin extends Component {
     render() {
         return (
             <div className='account-form'>
-                {/* <h1 className='u-margin-bottom-small'>Hello {this.props.profile.nickname}</h1> */}
                 <form className="account-form__form">
                 {this.state.Errors ? <div><p>{this.state.Errors}</p></div> : <div><p>no errors to show</p></div> } 
                     <input
@@ -49,22 +43,5 @@ class DidYouWin extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        showModal: state.showModal,
-        accounts: state.accounts,
-        activeAccount: state.activeAccount,
-        addSeasonForm: state.addSeasonForm
-    };
-}
 
-function mapDispatchToProps(dispatch) {
-    return {
-        modalActions: bindActionCreators(modalActionCreators, dispatch),
-        accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DidYouWin)
+export default DidYouWin

@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as modalActionCreators from '../../../actions/modalActions';
-import * as accountActionCreators from '../../../actions/accountActions';
-import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
+
 
 class PostMatchSR extends Component {
     state = {
@@ -22,12 +17,14 @@ class PostMatchSR extends Component {
 
       handlePostMatchSR = event => {
           event.preventDefault();
-          console.log(this.props.addSeasonFormActions)
-          this.props.addSeasonFormActions.setPostMatchSR(this.state.postMatchSR)
-          this.props.addSeasonFormActions.nextStepForm();
+        //   console.log(this.props.addSeasonFormActions)
+        //   this.props.addSeasonFormActions.setPostMatchSR(this.state.postMatchSR)
+          this.props.addGameFormActions.nextStepGameForm();
 
       }
-
+componentDidMount(){
+    console.log(this.props)
+}
 
     render() {
         return (
@@ -38,10 +35,10 @@ class PostMatchSR extends Component {
                     <input
                         className='account-form__form--starting-sr'
                         value={this.state.postMatchSR}
-                        name="HerosFocused"
+                        name="postMatchSR"
                         onChange={this.handleInputChange}
                         type="text"
-                        placeholder="HerosFocused"
+                        placeholder="Post Match SR"
                     />
                     <button className='btn btn--submit-form' onClick={this.handlePostMatchSR}>Submit</button>
                 </form>
@@ -49,23 +46,4 @@ class PostMatchSR extends Component {
         )
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        showModal: state.showModal,
-        accounts: state.accounts,
-        activeAccount: state.activeAccount,
-        addSeasonForm: state.addSeasonForm
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        modalActions: bindActionCreators(modalActionCreators, dispatch),
-        accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostMatchSR)
+export default PostMatchSR

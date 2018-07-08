@@ -22,8 +22,10 @@ class AddGameForm extends Component {
                 break;
             case 3:
                 step = <DidYouWin {...this.props} />
+                break;
             case 4:
                 step = <PostMatchSR {...this.props} />
+                break;
             case 5:
                 step = <ConfirmGame {...this.props} />
                 break;
