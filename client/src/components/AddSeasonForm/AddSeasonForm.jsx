@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import StartingSR from './StartingSR/StartingSR';
 import HerosFocused from './HerosFocused/HerosFocused';
-import Confirm from './Confirm/Confirm';
+import ConfirmSeason from './ConfirmSeason/ConfirmSeason';
 
 class AddSeasonForm extends Component {
     
     componentDidMount(){
-        console.log(this.props.addSeasonForm.step)
+        console.log(this.props.addSeasonForm.seasonFormStep)
     }
 
     render() {
-        let step = this.props.addSeasonForm.step
+        let step = this.props.addSeasonForm.seasonFormStep
         switch (step) {
             case 1:
                 step = <StartingSR {...this.props} />
@@ -19,7 +19,7 @@ class AddSeasonForm extends Component {
                 step = <HerosFocused {...this.props}/>
                 break;
             case 3:
-                step = <Confirm {...this.props} />
+                step = <ConfirmSeason {...this.props} />
                 break;
             default:
                 break;

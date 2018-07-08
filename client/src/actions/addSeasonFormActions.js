@@ -13,8 +13,8 @@ export const setHerosFocused = HerosFocused => {
         data: HerosFocused,
     }
 }
-export const nextStepForm = () => {
+export const nextStepSeasonForm = () => {
     return {
-        type: actionTypes.NEXT_STEP_FORM,
+        type: actionTypes.NEXT_STEP_SEASON_FORM,
     }
 }

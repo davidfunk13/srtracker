@@ -22,9 +22,8 @@ class DidYouWin extends Component {
 
       handleDidYouWin = event => {
           event.preventDefault();
-          console.log(this.props.addSeasonFormActions)
-          this.props.addSeasonFormActions.setHeroSelected(this.state.HeroSelected)
-          this.props.addSeasonFormActions.nextStepForm();
+          this.props.addGameFormActions.setDidYouWin(this.state.didYouWin)
+          this.props.addGameFormActions.nextStepForm();
 
       }
 

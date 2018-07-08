@@ -2,7 +2,7 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
     addSeasonForm: {
-        step: 1,
+        seasonFormStep: 1,
         StartingSR: "",
         HerosFocused: []
     }
@@ -20,10 +20,15 @@ export default function addSeasonFormReducer(state = initialState.addSeasonForm,
             ...state,
             HerosFocused: action.data,
         }
-        case actionTypes.NEXT_STEP_FORM:
+        case actionTypes.NEXT_STEP_SEASON_FORM:
         return {
             ...state,
-            step: state.step + 1,
+            seasonFormStep: state.seasonFormStep + 1,
+        }
+        case actionTypes.CLOSE_MODAL:
+        return {
+            ...state,
+            seasonFormStep: 1,
         }
         default:
             {

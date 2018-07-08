@@ -2,7 +2,7 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
     addGameForm: {
-        step: 1,
+        gameFormStep: 1,
         matchMap: '',
         heroSelected: [],
         didYouWin: '',
@@ -32,10 +32,15 @@ export default function addGameFormReducer(state = initialState.addGameForm, act
             ...state,
             postMatchSR: action.data,
         }
-        case actionTypes.NEXT_STEP_FORM:
+        case actionTypes.NEXT_STEP_GAME_FORM:
         return {
             ...state,
-            step: state.step + 1,
+            gameFormStep: state.gameFormStep + 1,
+        }
+        case actionTypes.CLOSE_MODAL:
+        return {
+            ...state,
+            gameFormStep: 1,
         }
         default:
             {

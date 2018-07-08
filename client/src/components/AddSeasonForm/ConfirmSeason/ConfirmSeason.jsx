@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-class Confirm extends Component {
+class ConfirmSeason extends Component {
     componentDidMount() {
         console.log(this.props)
     }
     handleSubmit = (SeasonData) => {
         console.log(SeasonData)
         this.props.activeAccountActions.saveSeason(SeasonData)
+        this.props.modalActions.closeModal()
     }
     render() {
         let SeasonData = {
@@ -29,4 +30,4 @@ class Confirm extends Component {
     }
 }
 
-export default Confirm
+export default ConfirmSeason

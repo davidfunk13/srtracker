@@ -24,7 +24,7 @@ class HerosFocused extends Component {
           event.preventDefault();
           console.log(this.props.addSeasonFormActions)
           this.props.addSeasonFormActions.setHerosFocused(this.state.HerosFocused)
-          this.props.addSeasonFormActions.nextStepForm();
+          this.props.addSeasonFormActions.nextStepSeasonForm();
 
       }
 

@@ -8,7 +8,7 @@ import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActi
 
 class MatchMap extends Component {
     state = {
-        Map: "",
+        matchMap: "",
         Errors: "",
       };
       handleInputChange = event => {
@@ -22,8 +22,8 @@ class MatchMap extends Component {
 
       handleMatchMap = event => {
           event.preventDefault();
-          this.props.addSeasonFormActions.setMatchMap(this.state.matchMap);
-          this.props.addSeasonFormActions.nextStepForm();
+          this.props.addGameFormActions.setMatchMap(this.state.matchMap);
+          this.props.addGameFormActions.nextStepGameForm();
       }
 
     render() {

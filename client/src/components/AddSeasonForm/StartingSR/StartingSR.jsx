@@ -23,7 +23,7 @@ class StartingSR extends Component {
       handleStartingSR = event => {
           event.preventDefault();
           this.props.addSeasonFormActions.setStartingSR(this.state.StartingSR);
-          this.props.addSeasonFormActions.nextStepForm();
+          this.props.addSeasonFormActions.nextStepSeasonForm();
       }
 
     render() {

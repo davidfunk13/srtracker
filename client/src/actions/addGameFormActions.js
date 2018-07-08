@@ -27,8 +27,8 @@ export const setPostMatchSR = postMatchSR => {
     }
 }
 
-export const nextStepForm = () => {
+export const nextStepGameForm = () => {
     return {
-        type: actionTypes.NEXT_STEP_FORM,
+        type: actionTypes.NEXT_STEP_GAME_FORM,
     }
 }

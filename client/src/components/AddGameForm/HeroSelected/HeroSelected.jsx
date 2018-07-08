@@ -8,7 +8,7 @@ import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActi
 
 class HeroSelected extends Component {
     state = {
-        HeroSelected: "",
+        heroSelected: "",
         Errors: "",
       };
       handleInputChange = event => {
@@ -17,22 +17,19 @@ class HeroSelected extends Component {
           this.setState({
               [name]: value
           });
-          console.log(`BattleTag input: ${this.state.HerosFocused}`)
+          console.log(`BattleTag input: ${this.state.heroSelected}`)
       };
 
       handleHeroSelected = event => {
           event.preventDefault();
-          console.log(this.props.addSeasonFormActions)
-          this.props.addSeasonFormActions.setHeroSelected(this.state.HeroSelected)
-          this.props.addSeasonFormActions.nextStepForm();
-
+          this.props.addGameFormActions.setHeroSelected(this.state.HeroSelected)
+          this.props.addGameFormActions.nextStepGameForm();
       }
 
 
     render() {
         return (
             <div className='account-form'>
-                {/* <h1 className='u-margin-bottom-small'>Hello {this.props.profile.nickname}</h1> */}
                 <form className="account-form__form">
                 {this.state.Errors ? <div><p>{this.state.Errors}</p></div> : <div><p>no errors to show</p></div> } 
                     <input
