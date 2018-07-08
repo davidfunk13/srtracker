@@ -9,7 +9,23 @@ export const selectAccount = uid => {
         data: uid,
     }
 }
+export const selectSeason = seasonId => {
+    return {
+        type: actionTypes.SELECT_SEASON,
+        data: seasonId,
+    }
+}
 
+export const getActiveSeason = activeSeasonId => {
+    return function (dispatch){
+        console.log(activeSeasonId)
+        axios.get('/api/activeseason/' + activeSeasonId).then(data => {
+            dispatch(getActiveSeasonSuccess(data.data))
+        }).catch(err => {
+            dispatch(getActiveSeasonFailure(err));
+        })
+    }
+}
 export const getActiveAccount = activeAccountId => {
     return function (dispatch){
         console.log(activeAccountId)
@@ -30,6 +46,18 @@ export const getActiveAccountFailure = getActiveAccountError => {
     return{
         type: actionTypes.GET_ACTIVE_ACCOUNT_FAILURE,
         error: getActiveAccountError,
+    }
+}
+export const getActiveSeasonSuccess = getActiveSeasonSuccessData => {
+    return {
+        type: actionTypes.GET_ACTIVE_SEASON_SUCCESS,
+        data: getActiveSeasonSuccessData,
+    }
+}
+export const getActiveSeasonFailure = getActiveSeasonError => {
+    return{
+        type: actionTypes.GET_ACTIVE_SEASON_FAILURE,
+        error: getActiveSeasonError,
     }
 }
 export const saveSeason = seasonData => {

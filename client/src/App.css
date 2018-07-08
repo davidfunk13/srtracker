@@ -61,3 +61,8 @@ a {
   background-color: #218ffe;
   border-bottom: 1px solid black;
   height: 15rem; }
+
+.game-table {
+  margin: 2rem;
+  padding: 2rem;
+  border: 2px dotted black; }

@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as modalActionCreators from '../../../actions/modalActions';
-// import * as accountActionCreators from '../../../actions/accountActions';
-// import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-// import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
 
 class Confirm extends Component {
     componentDidMount() {
@@ -13,7 +7,6 @@ class Confirm extends Component {
     handleSubmit = (SeasonData) => {
         console.log(SeasonData)
         this.props.activeAccountActions.saveSeason(SeasonData)
-        // this.props.activeAccountActions.concatNewSeason(SeasonData)
     }
     render() {
         let SeasonData = {
@@ -36,21 +29,4 @@ class Confirm extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//       showModal: state.showModal,
-//       accounts: state.accounts,
-//       activeAccount: state.activeAccount,
-//       addSeasonForm: state.addSeasonForm
-//     };
-//   }
-  
-//   function mapDispatchToProps(dispatch) {
-//     return {
-//       modalActions: bindActionCreators(modalActionCreators, dispatch),
-//       accountActions: bindActionCreators(accountActionCreators, dispatch),
-//       activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-//       addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
-//     }
-//   }
 export default Confirm

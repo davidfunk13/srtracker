@@ -3,6 +3,8 @@ import actionTypes from '../actions/actionTypes';
 const initialState = {
     accountData: [],
     idForLookup: [],
+    seasonData: [],
+    seasonIdForLookup: [],
     Err: [],
 }
 
@@ -13,12 +15,27 @@ export default function activeAccountReducer(state = initialState, action) {
                 ...state,
                 idForLookup: action.data
             }
+        case actionTypes.SELECT_SEASON:
+            return {
+                ...state,
+                seasonIdForLookup: action.data
+            }
         case actionTypes.GET_ACTIVE_ACCOUNT_SUCCESS:
             return {
                 ...state,
                 accountData: action.data
             }
         case actionTypes.GET_ACTIVE_ACCOUNT_FAILURE:
+            return {
+                ...state,
+                Err: action.data
+            }
+        case actionTypes.GET_ACTIVE_SEASON_SUCCESS:
+            return {
+                ...state,
+                seasonData: action.data
+            }
+        case actionTypes.GET_ACTIVE_SEASON_FAILURE:
             return {
                 ...state,
                 Err: action.data

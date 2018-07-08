@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import AddGameForm from '../../components/AddGameForm/AddGameForm';
 import { bindActionCreators } from "redux";
 import * as activeAccountActionCreators from '../../actions/activeAccountActions';
 import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from '../../actions/accountActions';
 import * as addSeasonFormActionCreators from '../../actions/addSeasonFormActions';
+import * as addGameFormActionCreators from '../../actions/addGameFormActions';
 import { Link } from 'react-router-dom'
-import AddSeasonForm from "../../components/AddSeasonForm/AddSeasonForm";
 
 const modalStyles = {
   content: {
@@ -24,9 +24,10 @@ const modalStyles = {
   }
 };
 
-class Account extends Component {
+class Season extends Component {
   componentDidMount() {
-    this.props.activeAccountActions.getActiveAccount(this.props.activeAccount.idForLookup);
+    console.log(this.props)
+    this.props.activeAccountActions.getActiveSeason(this.props.activeAccount.seasonIdForLookup)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
@@ -35,7 +36,7 @@ class Account extends Component {
     return (
       <div className="container">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
-          <AddSeasonForm {...this.props} />
+        <AddGameForm {...this.props} />
           <button
             className="btn btn--close-modal"
             onClick={() => this.props.modalActions.closeModal()}
@@ -43,32 +44,17 @@ class Account extends Component {
             close modal
           </button>
         </ReactModal>
-        <h1 className="heading u-margin-bottom-small">Thank you for logging in! {this.props.profile.name}</h1>
-        <button onClick={() => { this.props.modalActions.openModal() }}>Add a new Season!</button>
-        {this.props.activeAccount.accountData._id ?
-          <div className='active-account--yes'>
-            <p>Account Selected:</p>
-            <p>{this.props.activeAccount.accountData.BattleTag}</p>
-            <p>Seasons tracked for this account:</p>
-            {this.props.activeAccount.accountData.Seasons.length ?
-              this.props.activeAccount.accountData.Seasons.map(seasons => {
-                return (
-                  <div key={seasons._id} className='season'>
-                    <h2>Season:</h2>
-                    <p>Starting SR: {seasons.StartingSR}</p>
-                    <p>Heros Focused: {seasons.HerosFocused.toString()}</p>
-                    <Link to= '/season'><button onClick={()=> this.props.activeAccountActions.selectSeason(seasons._id)}>Open season</button></Link>
-                  </div>
-                )
-              })
-              :
-              <div>NO :(</div>
-            }
+        <h1 className="heading u-margin-bottom-small">Season Page! {this.props.profile.name}</h1>
+        <button onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</button>
+        <div className='season'>
+          <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
+          <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
+          <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
+          <div className='game-table'>
+            <p>Games will map here</p>
           </div>
-          :
-          <div className='active-account--no'>NO :(</div>
-        }
-        <Link to='/'>GO BACK</Link>
+        </div>
+        <Link to='/account'>GO BACK TO SAVED SEASONS</Link>
       </div>
     );
   }
@@ -79,7 +65,8 @@ function mapStateToProps(state) {
     showModal: state.showModal,
     accounts: state.accounts,
     activeAccount: state.activeAccount,
-    addSeasonForm: state.addSeasonForm
+    addSeasonForm: state.addSeasonForm,
+    addGameForm: state.addGameForm
   };
 }
 
@@ -89,9 +76,10 @@ function mapDispatchToProps(dispatch) {
     accountActions: bindActionCreators(accountActionCreators, dispatch),
     activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
     addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch),
+    addGameFormActions: bindActionCreators(addGameFormActionCreators, dispatch),
   }
 }
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Account));
+export default
+  connect(mapStateToProps, mapDispatchToProps)(
+    Season
+  );
