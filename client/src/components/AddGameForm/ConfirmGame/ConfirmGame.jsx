@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 
 class ConfirmGame extends Component {
+    
     componentDidMount() {
         console.log(this.props)
     }
     handleSubmit = (GameData) => {
+        
         console.log(GameData)
-        // this.props.activeAccountActions.saveGame(GameData)
-        this.props.modalActions.closeModal()
+        this.props.activeAccountActions.saveGame(GameData)
+        // this.props.modalActions.closeModal()
     }
     render() {
         let GameData = {
-            seasonOwnership: this.props.activeAccount.seasonData._id,
+            seasonOwnership: this.props.activeAccount.seasonIdForLookup,
+            BattleTag: this.props.activeAccount.accountData.BattleTag,
             matchMap: this.props.addGameForm.matchMap,
             heroSelected: this.props.addGameForm.heroSelected,
             didYouWin: this.props.addGameForm.didYouWin,
@@ -25,9 +28,7 @@ class ConfirmGame extends Component {
                     <p>Hero: {GameData.heroSelected}</p>
                     <p>Victory: {GameData.didYouWin}</p>
                     <p>SR After Match: {GameData.postMatchSR}</p>
-                    <button className='btn btn--save-info' onClick={() => this.handleSubmit(
-                        // SeasonData
-                        )} >Save Info</button>
+                    <button className='btn btn--save-info' onClick={() => this.handleSubmit(GameData)} >Save Game</button>
                 </div>
             </div>
         )

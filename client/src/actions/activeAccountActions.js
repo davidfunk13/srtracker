@@ -82,3 +82,25 @@ export const saveSeasonFailure = seasonFailureData => {
         data: seasonFailureData,
     }
 }
+export const saveGame = gameData => {
+    console.log(gameData)
+return function (dispatch) {
+    axios.post('/api/savegame/', gameData).then(data => {
+        dispatch(saveGameSuccess(data.data))
+    }).catch(err => {
+        dispatch(saveGameFailure(err.data));
+    })
+}
+}
+export const saveGameSuccess = gameSuccessData => {
+    return {
+        type: actionTypes.SAVE_GAME_SUCCESS,
+        data: gameSuccessData,
+    }
+}
+export const saveGameFailure = gameFailureData => {
+    return {
+        type: actionTypes.SAVE_GAME_FAILURE,
+        data: gameFailureData,
+    }
+}

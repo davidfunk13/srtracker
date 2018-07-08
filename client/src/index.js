@@ -12,16 +12,10 @@ const { persistor, store } = createAppStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate
-            persistor={persistor}
-            loading='herro'
-        >
+        <PersistGate persistor={persistor} loading='herro'>
             <App />
         </PersistGate>
     </Provider>,
     document.getElementById('root'));
-
 /* eslint no-restricted-globals: 0*/
-
-
 registerServiceWorker();

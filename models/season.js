@@ -19,10 +19,10 @@ const SeasonSchema = new Schema({
         type: Array,
         required: true
     },
-    Games: {
+    Games: [{
         type: Schema.Types.ObjectId,
         ref: 'Game'
-    }
+    }]
 }, {timestamps: Date});
 
 const Season = mongoose.model('Season', SeasonSchema);

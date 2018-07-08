@@ -53,6 +53,20 @@ export default function activeAccountReducer(state = initialState, action) {
                 ...state,
                 Err: action.data,
             }
+            case actionTypes.SAVE_GAME_SUCCESS: 
+            console.log(action.data)
+            return {
+                ...state,
+                seasonData : {
+                    ...state.seasonData,
+                    Games: [...action.data.Games]
+                }
+            }
+            case actionTypes.SAVE_GAME_FAILURE: 
+            return {
+                ...state,
+                Err: action.data,
+            }
         default:
             {
                 return state;

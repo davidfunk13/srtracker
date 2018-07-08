@@ -7,7 +7,7 @@ const GameSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    BattleTagOwnership: {
+    BattleTag: {
         type: String,
         required: true,
     },
@@ -19,7 +19,7 @@ const GameSchema = new Schema({
         type: String,
         required: true,
     },
-    HeroSelected: {
+    heroSelected: {
         type: String,
         required: true,
     },

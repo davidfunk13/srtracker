@@ -36,7 +36,7 @@ class Season extends Component {
     return (
       <div className="container">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
-        <AddGameForm {...this.props} />
+          <AddGameForm {...this.props} />
           <button
             className="btn btn--close-modal"
             onClick={() => this.props.modalActions.closeModal()}
@@ -51,7 +51,18 @@ class Season extends Component {
           <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
           <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
           <div className='game-table'>
-            <p>Games will map here</p>
+            <p>Make this a neat table and not a stupid looking box div map</p>
+            {this.props.activeAccount.seasonData.Games ?
+              this.props.activeAccount.seasonData.Games.map(game => {
+                return (
+                  <div key={game._id}>
+                    <p>Map: {game.matchMap}</p>
+                    <p>Hero: {game.heroSelected}</p>
+                    <p>Victory: {game.didYouWin}</p>
+                    <p>Post Match SR: {game.postMatchSR}</p>
+                  </div>
+                )
+              }) : <div>no</div>}
           </div>
         </div>
         <Link to='/account'>GO BACK TO SAVED SEASONS</Link>

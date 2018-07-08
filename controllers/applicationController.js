@@ -36,6 +36,7 @@ module.exports = {
 	getActiveSeason: (req, res) => {
 		console.log(req.params)
 		db.Season.findById(req.params.uid)
+		.populate('Games')
 			.then(data => {
 				console.log(`ACTIVE SEASON DATA ${data}`)
 				res.json(data)
@@ -43,6 +44,16 @@ module.exports = {
 				throw err;
 			})
 	},
+	// getGames: (req, res) => {
+	// 	console.log(req.params)
+	// 	db.Season.findById(req.params.uid)
+	// 		.then(data => {
+	// 			console.log(`ALL GAMES BELONGING TO SEASON ID ${data}`)
+	// 			res.json(data)
+	// 		}).catch(err => {
+	// 			throw err;
+	// 		})
+	// },
 	saveSeason: (req, res) => {
 		console.log(req.body);
 		db.Season.create(req.body)
@@ -52,6 +63,21 @@ module.exports = {
 			})
 			.then(data => {
 				console.log(`SEASON SAVED :${data}`)
+				res.json(data)
+			}).catch(err => {
+				throw err;
+			})
+	},
+	saveGame: (req, res) => {
+		console.log(req.body);
+		db.Game.create(req.body)
+			.then(data => {console.log('data going in')
+			console.log(data)
+				return db.Season.findByIdAndUpdate(data.seasonOwnership, { $push: { Games: data } }, { new: true })
+					.populate('Games')
+			})
+			.then(data => {
+				console.log(`GAME SAVED :${data}`)
 				res.json(data)
 			}).catch(err => {
 				throw err;
