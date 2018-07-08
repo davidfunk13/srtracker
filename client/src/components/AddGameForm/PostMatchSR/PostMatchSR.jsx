@@ -18,7 +18,7 @@ class PostMatchSR extends Component {
       handlePostMatchSR = event => {
           event.preventDefault();
         //   console.log(this.props.addSeasonFormActions)
-        //   this.props.addSeasonFormActions.setPostMatchSR(this.state.postMatchSR)
+          this.props.addGameFormActions.setPostMatchSR(this.state.postMatchSR)
           this.props.addGameFormActions.nextStepGameForm();
 
       }

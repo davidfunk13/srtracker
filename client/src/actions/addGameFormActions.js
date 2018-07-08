@@ -22,7 +22,7 @@ export const setDidYouWin = didYouWin => {
 }
 export const setPostMatchSR = postMatchSR => {
     return {
-        type: actionTypes.SET_DID_YOU_WIN,
+        type: actionTypes.SET_POST_MATCH_SR,
         data: postMatchSR,
     }
 }

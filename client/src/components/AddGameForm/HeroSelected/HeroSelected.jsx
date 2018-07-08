@@ -18,7 +18,7 @@ class HeroSelected extends Component {
 
       handleHeroSelected = event => {
           event.preventDefault();
-        //   this.props.addGameFormActions.setHeroSelected(this.state.heroSelected)
+          this.props.addGameFormActions.setHeroSelected(this.state.heroSelected)
           this.props.addGameFormActions.nextStepGameForm();
       }
 
@@ -34,7 +34,7 @@ class HeroSelected extends Component {
                         name="heroSelected"
                         onChange={this.handleInputChange}
                         type="text"
-                        placeholder="heroSelected"
+                        placeholder="Hero Selected"
                     />
                     <button className='btn btn--submit-form' onClick={this.handleHeroSelected}>Submit</button>
                 </form>

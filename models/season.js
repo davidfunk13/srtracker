@@ -18,6 +18,10 @@ const SeasonSchema = new Schema({
     HerosFocused: {
         type: Array,
         required: true
+    },
+    Games: {
+        type: Schema.Types.ObjectId,
+        ref: 'Game'
     }
 }, {timestamps: Date});
 

@@ -4,27 +4,27 @@ class ConfirmGame extends Component {
     componentDidMount() {
         console.log(this.props)
     }
-    handleSubmit = (
-        // GameData
-    ) => {
-        // console.log(GameData)
+    handleSubmit = (GameData) => {
+        console.log(GameData)
         // this.props.activeAccountActions.saveGame(GameData)
-        // this.props.modalActions.closeModal()
+        this.props.modalActions.closeModal()
     }
     render() {
-        // let GameData = {
-        //     matchMap: 
-        //     HeroSelected: 
-        //     didYouWin: 
-        //     postMatchSR: 
-        // }
+        let GameData = {
+            seasonOwnership: this.props.activeAccount.seasonData._id,
+            matchMap: this.props.addGameForm.matchMap,
+            heroSelected: this.props.addGameForm.heroSelected,
+            didYouWin: this.props.addGameForm.didYouWin,
+            postMatchSR: this.props.addGameForm.postMatchSR,
+        }
         return (
             <div className='account-form'>
                 <h1 className='u-margin-bottom-small'> is this information correct?</h1>
                 <div className='game-info'>
-                    {/* <h2>Battletag: {SeasonData.BattleTag}</h2>
-                    <h2>Starting SR: {SeasonData.StartingSR} </h2>
-                    <h2>Heros Focused this Season: {SeasonData.HerosFocused.toString()} </h2> */}
+                    <p>Map: {GameData.matchMap}</p>
+                    <p>Hero: {GameData.heroSelected}</p>
+                    <p>Victory: {GameData.didYouWin}</p>
+                    <p>SR After Match: {GameData.postMatchSR}</p>
                     <button className='btn btn--save-info' onClick={() => this.handleSubmit(
                         // SeasonData
                         )} >Save Info</button>
