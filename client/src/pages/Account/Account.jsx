@@ -57,7 +57,7 @@ class Account extends Component {
                     <h2>Season:</h2>
                     <p>Starting SR: {seasons.StartingSR}</p>
                     <p>Heros Focused: {seasons.HerosFocused.toString()}</p>
-                    <Link to= '/season'><button onClick={()=> this.props.activeAccountActions.selectSeason(seasons._id)}>Open season</button></Link>
+                    <Link to= '/season'><button className='btn' onClick={()=> this.props.activeAccountActions.selectSeason(seasons._id)}>Open season</button></Link>
                   </div>
                 )
               })

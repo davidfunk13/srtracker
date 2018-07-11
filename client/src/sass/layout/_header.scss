@@ -1,6 +1,8 @@
-.header{
+.header {
     text-align: center;
-    background-color: $color-ow-light-blue;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba);
     border-bottom: 1px solid black;
     height: 15rem;
 }

@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Pathway+Gothic+One);
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Questrial");
 *,
 *::after,
 *::before {
@@ -11,11 +13,18 @@ html {
 
 body {
   height: 100%;
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: .2rem;
   box-sizing: border-box;
   background: linear-gradient(to top, #43484c, #405275); }
 
 h1 {
   font-size: 2.8em; }
+
+.banner-text {
+  font-size: 9rem;
+  font-family: "Pathway Gothic One", sans-serif;
+  letter-spacing: 1.2rem; }
 
 h2 {
   font-size: 2.4rem; }
@@ -24,7 +33,9 @@ p {
   text-indent: 1rem;
   font-size: 1.8rem; }
 
-ol, li, ul {
+ol,
+li,
+ul {
   text-indent: 5rem;
   font-size: 1.8rem; }
 
@@ -36,6 +47,9 @@ a {
 
 .u-margin-top-small {
   margin-top: 2rem; }
+
+.underline {
+  text-decoration: underline; }
 
 .content {
   border: 1px solid black; }
@@ -56,9 +70,14 @@ a {
 .seasons__yes--saved-account {
   border: 1px solid black; }
 
+.seasons__no---saved-account {
+  border: 1px dotted black; }
+
 .header {
   text-align: center;
-  background-color: #218ffe;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background: linear-gradient(to top, #43484c, #405275);
   border-bottom: 1px solid black;
   height: 15rem; }
 
@@ -66,3 +85,9 @@ a {
   margin: 2rem;
   padding: 2rem;
   border: 2px dotted black; }
+
+.btn {
+  padding: .3rem;
+  border: 1px solid black;
+  width: auto;
+  height: auto; }

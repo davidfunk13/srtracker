@@ -1,19 +1,30 @@
+
 h1 {
-    font-size: $default-heading-size;
-    // text-decoration: underline;
-    // font-variant: small-caps;
+    font-size: $default-heading-size; // text-decoration: underline;
 }
+
+.banner-text {
+    font-size: 9rem;
+    font-family: $header-font;
+    letter-spacing: 1.2rem;
+}
+
 h2 {
     font-size: $default-heading-2-size;
 }
+
 p {
     text-indent: 1rem;
     font-size: $default-font-size
 }
-ol, li, ul {
+
+ol,
+li,
+ul {
     text-indent: 5rem;
     font-size: $default-font-size;
 }
-a{
+
+a {
     font-size: $default-font-size;
 }

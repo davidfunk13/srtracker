@@ -50,7 +50,7 @@ class Main extends Component {
           </button>
         </ReactModal>
         <h1 className="heading u-margin-bottom-small">Thank you for logging in! {this.props.profile.name}</h1>
-        <button onClick={() => { this.props.modalActions.openModal() }}>Track Account</button>
+        <button className='btn' onClick={() => { this.props.modalActions.openModal() }}>Track Account</button>
         {!Array.isArray(this.props.accounts) ||
           !this.props.accounts.length ? (
             <div className="seasons__no">
@@ -70,7 +70,7 @@ class Main extends Component {
                     <div>
                       <h2>BattleTag:</h2>
                       <p>{accounts.BattleTag}</p>
-                      <Link to='/account'><button onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
+                      <Link to='/account'><button className='btn' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
                     </div>
                   </div>
                 );

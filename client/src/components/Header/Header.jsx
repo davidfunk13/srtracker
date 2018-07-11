@@ -9,20 +9,21 @@ class Header extends Component {
   componentDidMount() {
     this.props.auth.isAuthenticated()
     this.props.auth.getProfile()
+    console.log(this.props.persistor)
   }
-  componentWillReceiveProps(){
+  componentWillReceiveProps() {
     this.props.auth.isAuthenticated()
   }
-  
+
   render() {
     return (
-        <header className="header">
-          <h1>SR TRACKER</h1>
-          {this.props.auth.isAuthenticated() ? 
-          <button onClick={() => this.props.auth.logout()}>Logout</button>
-           : 
-          <button onClick={() => this.props.auth.login()}>Login</button> }
-        </header>
+      <header className="header">
+        <h1 className='banner-text'>SR TRACKER</h1>
+        {this.props.auth.isAuthenticated() ?
+          <button className='btn' onClick={() => this.props.auth.logout()}>Logout</button>
+          :
+          <button className='btn' onClick={() => this.props.auth.login()}>Login</button>}
+      </header>
     );
   }
 }
