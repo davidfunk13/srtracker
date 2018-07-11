@@ -1,19 +1,33 @@
-.container{
+.container {
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid black;
     margin: 2rem;
     padding: 1rem;
 }
+
+.active-account {
+    &--yes {
+        display: flex;
+        flex-flow: column;
+        border: 1px solid black;
+        padding: 1rem;
+    }
+}
+
 .seasons {
     &__yes {
         &--saved-account {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            justify-content: right;
+            padding: 1rem;
             border: 1px solid black;
         }
     }
-    &__no {
-        &---saved-account{
-            border:  1px dotted black
-        }
-    }
-
+}
+.season{
+    border: 1px solid black;
+    display: flex;
+    flex-flow: column
 }

@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Pathway+Gothic+One);
-@import url("https://fonts.googleapis.com/css?family=Concert+One|Questrial");
 *,
 *::after,
 *::before {
@@ -9,11 +8,12 @@
 
 html {
   height: 100%;
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  font-family: "Pathway Gothic One", sans-serif; }
 
 body {
-  height: 100%;
   font-family: "Work Sans", sans-serif;
+  height: 100%;
   letter-spacing: .2rem;
   box-sizing: border-box;
   background: linear-gradient(to top, #43484c, #405275); }
@@ -23,23 +23,26 @@ h1 {
 
 .banner-text {
   font-size: 9rem;
-  font-family: "Pathway Gothic One", sans-serif;
   letter-spacing: 1.2rem; }
 
 h2 {
-  font-size: 2.4rem; }
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.2rem; }
 
 p {
+  font-family: "Work Sans", sans-serif;
   text-indent: 1rem;
   font-size: 1.8rem; }
 
 ol,
 li,
 ul {
+  font-family: "Work Sans", sans-serif;
   text-indent: 5rem;
   font-size: 1.8rem; }
 
 a {
+  font-family: "Work Sans", sans-serif;
   font-size: 1.8rem; }
 
 .u-margin-bottom-small {
@@ -51,14 +54,20 @@ a {
 .underline {
   text-decoration: underline; }
 
+.game-table {
+  margin: 2rem;
+  padding: 2rem;
+  border: 2px dotted black; }
+
+.btn {
+  padding: .5rem;
+  border: 1px solid black;
+  width: auto;
+  height: auto; }
+  .btn--open-battletag {
+    margin-left: 1rem; }
+
 .content {
-  border: 1px solid black; }
-
-.app-wrapper {
-  height: auto;
-  min-height: 100%; }
-
-.season {
   border: 1px solid black; }
 
 .container {
@@ -67,27 +76,30 @@ a {
   margin: 2rem;
   padding: 1rem; }
 
+.active-account--yes {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid black;
+  padding: 1rem; }
+
 .seasons__yes--saved-account {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: right;
+  padding: 1rem;
   border: 1px solid black; }
 
-.seasons__no---saved-account {
-  border: 1px dotted black; }
+.season {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column; }
 
 .header {
+  font-family: "Pathway Gothic One", sans-serif;
   text-align: center;
   color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   background: linear-gradient(to top, #43484c, #405275);
   border-bottom: 1px solid black;
   height: 15rem; }
-
-.game-table {
-  margin: 2rem;
-  padding: 2rem;
-  border: 2px dotted black; }
-
-.btn {
-  padding: .3rem;
-  border: 1px solid black;
-  width: auto;
-  height: auto; }

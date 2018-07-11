@@ -43,13 +43,12 @@ class Account extends Component {
             close modal
           </button>
         </ReactModal>
-        <h1 className="heading u-margin-bottom-small">Thank you for logging in! {this.props.profile.name}</h1>
         <button onClick={() => { this.props.modalActions.openModal() }}>Add a new Season!</button>
         {this.props.activeAccount.accountData._id ?
-          <div className='active-account--yes'>
-            <p>Account Selected:</p>
-            <p>{this.props.activeAccount.accountData.BattleTag}</p>
-            <p>Seasons tracked for this account:</p>
+          <div className='active-account--yes u-margin-top-small'>
+            <p className='u-margin-top-small'>Account Selected:</p>
+            <p className='u-margin-bottom-small'>{this.props.activeAccount.accountData.BattleTag}</p>
+            <p className='u-margin-bottom-small'>Seasons tracked for this account:</p>
             {this.props.activeAccount.accountData.Seasons.length ?
               this.props.activeAccount.accountData.Seasons.map(seasons => {
                 return (

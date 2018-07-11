@@ -32,7 +32,7 @@ class Main extends Component {
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log(`COMPONENT DID UPDATE`)
     console.log(this.props)
   }
@@ -50,28 +50,25 @@ class Main extends Component {
           </button>
         </ReactModal>
         <h1 className="heading u-margin-bottom-small">Thank you for logging in! {this.props.profile.name}</h1>
-        <button className='btn' onClick={() => { this.props.modalActions.openModal() }}>Track Account</button>
+        <button className='btn' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</button>
         {!Array.isArray(this.props.accounts) ||
           !this.props.accounts.length ? (
-            <div className="seasons__no">
+            <div className="battletag__no">
               <p>We have no accounts saved for you.</p>
               <p>Please see above to start tracking a new one!</p>
             </div>
           ) : (
-            <div className="seasons__yes">
-              <h2>You have a season saved with us! Your seasons:</h2>
+            <div className="battletag__yes">
+              <h2 className='u-margin-top-small'>You have a BattleTag being tracked with us! Your BattleTags:</h2>
               {this.props.accounts.map(accounts => {
                 return (
                   <div
                     className="seasons__yes--saved-account u-margin-top-small"
                     key={accounts._id}
                   >
-                    <div>Your uid: {accounts.uid}</div>
-                    <div>
-                      <h2>BattleTag:</h2>
-                      <p>{accounts.BattleTag}</p>
-                      <Link to='/account'><button className='btn' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
-                    </div>
+                    <p>BattleTag:</p>
+                    <p>{accounts.BattleTag}</p>
+                    <Link to='/account'><button className='btn btn--open-battletag' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
                   </div>
                 );
               })}
