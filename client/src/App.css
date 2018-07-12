@@ -16,7 +16,9 @@ body {
   height: 100%;
   letter-spacing: .2rem;
   box-sizing: border-box;
-  background: linear-gradient(to top, #43484c, #405275); }
+  background: linear-gradient(to top, #43484c, #405275);
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
 
 h1 {
   font-size: 2.8em; }
@@ -54,11 +56,6 @@ a {
 .underline {
   text-decoration: underline; }
 
-.game-table {
-  margin: 2rem;
-  padding: 2rem;
-  border: 2px dotted black; }
-
 .btn {
   padding: .5rem;
   border: 1px solid black;
@@ -66,6 +63,9 @@ a {
   height: auto; }
   .btn--open-battletag {
     margin-left: 1rem; }
+  .btn--new-season {
+    width: 15rem;
+    height: auto; }
 
 .content {
   border: 1px solid black; }
@@ -78,9 +78,11 @@ a {
 
 .active-account--yes {
   display: flex;
-  flex-flow: column;
-  border: 1px solid black;
-  padding: 1rem; }
+  flex-flow: column; }
+
+.parent-account {
+  display: flex;
+  flex-flow: row; }
 
 .seasons__yes--saved-account {
   display: flex;
@@ -91,9 +93,29 @@ a {
   border: 1px solid black; }
 
 .season {
+  margin: 1rem;
+  padding: 1rem;
   border: 1px solid black;
   display: flex;
-  flex-flow: column; }
+  flex-flow: row;
+  justify-content: space-evenly; }
+
+.game-table {
+  margin: 1rem; }
+  .game-table__active-season {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    border: 1px solid black; }
+  .game-table__games {
+    display: flex;
+    flex-direction: column; }
+  .game-table__cell {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black; }
 
 .header {
   font-family: "Pathway Gothic One", sans-serif;

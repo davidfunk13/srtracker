@@ -23,19 +23,19 @@ export default class Auth {
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResults) => {
-        if (authResults && authResults.accessToken && authResults.idToken) {
-            let expiresAt = JSON.stringify((authResults.expiresIn) * 1000 + new Date().getTime());
-            localStorage.setItem("access_token", authResults.accessToken);
-            localStorage.setItem("id_token", authResults.idToken);
-            localStorage.setItem("expires_at", expiresAt);
-            // location.hash = "";
-            // location.pathname = LOGIN_SUCCESS_PAGE;
-            history.replace('/');
-        } else if (err) {
-            // location.pathname = LOGIN_FAILURE_PAGE;
-            history.replace('/')
-            console.log(err);
-        }
+      if (authResults && authResults.accessToken && authResults.idToken) {
+        let expiresAt = JSON.stringify((authResults.expiresIn) * 1000 + new Date().getTime());
+        localStorage.setItem("access_token", authResults.accessToken);
+        localStorage.setItem("id_token", authResults.idToken);
+        localStorage.setItem("expires_at", expiresAt);
+        // location.hash = "";
+        // location.pathname = LOGIN_SUCCESS_PAGE;
+        history.replace('/');
+      } else if (err) {
+        // location.pathname = LOGIN_FAILURE_PAGE;
+        history.replace('/')
+        console.log(err);
+      }
     });
   }
 
@@ -43,27 +43,27 @@ export default class Auth {
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
-  
+
   logout() {
-      localStorage.removeItem("access_token");
-      localStorage.removeItem("id_token");
-      localStorage.removeItem('expires_at');
-      // location.pathname = LOGIN_FAILURE_PAGE;
-      history.replace('/');
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("id_token");
+    localStorage.removeItem('expires_at');
+    // location.pathname = LOGIN_FAILURE_PAGE;
+    history.replace('/');
   }
 
   getProfile() {
     if (localStorage.getItem("id_token")) {
-        // console.log(jwtDecode(localStorage.getItem("id_token")))
-        // console.log(localStorage.getItem("id_token"));
-        return jwtDecode(localStorage.getItem("id_token"));
+      // console.log(jwtDecode(localStorage.getItem("id_token")))
+      // console.log(localStorage.getItem("id_token"));
+      return jwtDecode(localStorage.getItem("id_token"));
     } else {
-        return {
-          name: 'Anon',
-          nickname: 'Anon',
-          picture: 'placeholder',
-          uid: null,
-        }
+      return {
+        name: 'Anon',
+        nickname: 'Anon',
+        picture: 'placeholder',
+        uid: null,
+      }
     }
   }
 }

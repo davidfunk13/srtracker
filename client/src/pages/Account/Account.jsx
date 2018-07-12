@@ -43,20 +43,22 @@ class Account extends Component {
             close modal
           </button>
         </ReactModal>
-        <button onClick={() => { this.props.modalActions.openModal() }}>Add a new Season!</button>
+
         {this.props.activeAccount.accountData._id ?
           <div className='active-account--yes u-margin-top-small'>
-            <p className='u-margin-top-small'>Account Selected:</p>
-            <p className='u-margin-bottom-small'>{this.props.activeAccount.accountData.BattleTag}</p>
-            <p className='u-margin-bottom-small'>Seasons tracked for this account:</p>
+            <div className='parent-account'>
+              <h1>BattleTag Selected:</h1>
+              <h1>{this.props.activeAccount.accountData.BattleTag}</h1>
+            </div>
+            <h2 className='u-margin-top-small u-margin-bottom-small'>Seasons tracked for this BattleTag:</h2>
+            <button className='btn btn--new-season' onClick={() => { this.props.modalActions.openModal() }}>Add a new Season!</button>
             {this.props.activeAccount.accountData.Seasons.length ?
               this.props.activeAccount.accountData.Seasons.map(seasons => {
                 return (
                   <div key={seasons._id} className='season'>
-                    <h2>Season:</h2>
                     <p>Starting SR: {seasons.StartingSR}</p>
                     <p>Heros Focused: {seasons.HerosFocused.toString()}</p>
-                    <Link to= '/season'><button className='btn' onClick={()=> this.props.activeAccountActions.selectSeason(seasons._id)}>Open season</button></Link>
+                    <Link to='/season'><button className='btn' onClick={() => this.props.activeAccountActions.selectSeason(seasons._id)}>Open season</button></Link>
                   </div>
                 )
               })

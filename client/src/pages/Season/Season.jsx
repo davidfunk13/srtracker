@@ -44,18 +44,18 @@ class Season extends Component {
             close modal
           </button>
         </ReactModal>
-        <h1 className="heading u-margin-bottom-small">Season Page! {this.props.profile.name}</h1>
-        <button onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</button>
-        <div className='season'>
-          <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
-          <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
-          <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
-          <div className='game-table'>
-            <p>Make this a neat table and not a stupid looking box div map</p>
+        <div className='game-table'>
+        <button className='u-margin-bottom-small btn' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</button>
+          <div className='game-table__active-season'>
+            <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
+            <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
+            <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
+          </div>
+          <div className='game-table__games'>
             {this.props.activeAccount.seasonData.Games ?
               this.props.activeAccount.seasonData.Games.map(game => {
                 return (
-                  <div key={game._id}>
+                  <div className='game-table__cell' key={game._id}>
                     <p>Map: {game.matchMap}</p>
                     <p>Hero: {game.heroSelected}</p>
                     <p>Victory: {game.didYouWin}</p>

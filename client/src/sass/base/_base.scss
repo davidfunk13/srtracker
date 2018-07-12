@@ -17,5 +17,7 @@ body {
     height: 100%;
     letter-spacing: .2rem;
     box-sizing: border-box;
-    background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba)
+    background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }

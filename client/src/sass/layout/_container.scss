@@ -9,9 +9,11 @@
     &--yes {
         display: flex;
         flex-flow: column;
-        border: 1px solid black;
-        padding: 1rem;
     }
+}
+.parent-account {
+    display: flex;
+    flex-flow: row;
 }
 
 .seasons {
@@ -27,7 +29,33 @@
     }
 }
 .season{
+    margin: 1rem;
+    padding: 1rem;
     border: 1px solid black;
     display: flex;
-    flex-flow: column
+    flex-flow: row;
+    justify-content: space-evenly;
+}
+
+.game-table {
+    margin: 1rem;
+    &__active-season {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        border: 1px solid black;
+    }
+
+    &__games{
+        display: flex;
+        flex-direction: column;
+        // border: 1px solid black;
+    } 
+    &__cell {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid black;
+    }
 }
