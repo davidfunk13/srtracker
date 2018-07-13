@@ -64,8 +64,8 @@ class Season extends Component {
                 )
               }) : <div>no</div>}
           </div>
-        </div>
         <Link to='/account'>GO BACK TO SAVED SEASONS</Link>
+        </div>
       </div>
     );
   }

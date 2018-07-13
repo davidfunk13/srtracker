@@ -44,3 +44,22 @@ export const getAccountsSuccess = data => {
         data: data,
     }
 }
+//selecting heros focused for a season. failure data for too many (> 3)
+export const pushHero = key => {
+    return {
+        type: actionTypes.SELECT_FOCUSED_HERO,
+        data: key,
+    }
+}
+export const pushHeroSuccess = successKey => {
+    return {
+        type: actionTypes.SELECT_FOCUSED_HERO_SUCCESS,
+        data: successKey,
+    }
+}
+export const pushHeroFailure = failureKey => {
+    return {
+        type: actionTypes.SELECT_FOCUSED_HERO_FAILURE,
+        data: failureKey,
+    }
+}

@@ -11,6 +11,7 @@
         flex-flow: column;
     }
 }
+
 .parent-account {
     display: flex;
     flex-flow: row;
@@ -28,13 +29,17 @@
         }
     }
 }
-.season{
-    margin: 1rem;
-    padding: 1rem;
-    border: 1px solid black;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
+
+.season {
+    &__cell {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border: 1px solid black;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+    }
 }
 
 .game-table {
@@ -47,13 +52,15 @@
         justify-content: space-around;
         border: 1px solid black;
     }
-
-    &__games{
+    &__games {
         display: flex;
         flex-direction: column;
-        // border: 1px solid black;
-    } 
+    }
     &__cell {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
         padding: 1rem;
         margin-bottom: 1rem;
         border: 1px solid black;

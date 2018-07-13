@@ -7,6 +7,7 @@ class ConfirmSeason extends Component {
     handleSubmit = (SeasonData) => {
         console.log(SeasonData)
         this.props.activeAccountActions.saveSeason(SeasonData)
+        this.props.addSeasonFormActions.resetSeasonForm()
         this.props.modalActions.closeModal()
     }
     render() {

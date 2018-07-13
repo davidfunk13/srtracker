@@ -31,6 +31,10 @@ class Account extends Component {
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
+  closeModalandResetForm =()=> {
+    this.props.modalActions.closeModal()
+    this.props.addSeasonFormActions.resetSeasonForm()
+}
   render() {
     return (
       <div className="container">
@@ -38,7 +42,7 @@ class Account extends Component {
           <AddSeasonForm {...this.props} />
           <button
             className="btn btn--close-modal"
-            onClick={() => this.props.modalActions.closeModal()}
+            onClick={() => this.closeModalandResetForm()}
           >
             close modal
           </button>
@@ -51,25 +55,27 @@ class Account extends Component {
               <h1>{this.props.activeAccount.accountData.BattleTag}</h1>
             </div>
             <h2 className='u-margin-top-small u-margin-bottom-small'>Seasons tracked for this BattleTag:</h2>
-            <button className='btn btn--new-season' onClick={() => { this.props.modalActions.openModal() }}>Add a new Season!</button>
-            {this.props.activeAccount.accountData.Seasons.length ?
-              this.props.activeAccount.accountData.Seasons.map(seasons => {
-                return (
-                  <div key={seasons._id} className='season'>
-                    <p>Starting SR: {seasons.StartingSR}</p>
-                    <p>Heros Focused: {seasons.HerosFocused.toString()}</p>
-                    <Link to='/season'><button className='btn' onClick={() => this.props.activeAccountActions.selectSeason(seasons._id)}>Open season</button></Link>
-                  </div>
-                )
-              })
-              :
-              <div>NO :(</div>
-            }
+            <div className='season'>
+              <button className='btn btn--new-season' onClick={() => { this.props.modalActions.openModal() }}>Add a new Season!</button>
+              {this.props.activeAccount.accountData.Seasons.length ?
+                this.props.activeAccount.accountData.Seasons.map(seasons => {
+                  return (
+                    <div key={seasons._id} className='season__cell'>
+                      <p>Starting SR: {seasons.StartingSR}</p>
+                      <p>Heros Focused: {seasons.HerosFocused.toString()}</p>
+                      <Link to='/season'><button className='btn' onClick={() => this.props.activeAccountActions.selectSeason(seasons._id)}>Open season</button></Link>
+                    </div>
+                  )
+                })
+                :
+                <div>NO :(</div>
+              }
+              <Link to='/'>GO BACK</Link>
+            </div>
           </div>
           :
           <div className='active-account--no'>NO :(</div>
         }
-        <Link to='/'>GO BACK</Link>
       </div>
     );
   }

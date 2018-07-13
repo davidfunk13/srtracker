@@ -92,8 +92,9 @@ a {
   padding: 1rem;
   border: 1px solid black; }
 
-.season {
-  margin: 1rem;
+.season__cell {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   border: 1px solid black;
   display: flex;
@@ -113,6 +114,10 @@ a {
     display: flex;
     flex-direction: column; }
   .game-table__cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
     padding: 1rem;
     margin-bottom: 1rem;
     border: 1px solid black; }

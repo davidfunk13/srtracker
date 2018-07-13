@@ -20,31 +20,23 @@ class HerosFocused extends Component {
           console.log(`BattleTag input: ${this.state.HerosFocused}`)
       };
 
-      handleHerosFocused = event => {
-          event.preventDefault();
-          console.log(this.props.addSeasonFormActions)
-          this.props.addSeasonFormActions.setHerosFocused(this.state.HerosFocused)
-          this.props.addSeasonFormActions.nextStepSeasonForm();
-
+      handleHerosFocused = (icon) => {
+          this.props.addSeasonFormActions.setHerosFocused(icon)
+          console.log(this.props.addSeasonForm.HerosFocused.length)
+          if(this.props.addSeasonForm.HerosFocused.length === 2) {
+              this.props.addSeasonFormActions.nextStepSeasonForm();
+          }
       }
 
 
     render() {
+        let heros = ['ana', 'bastion', 'brigitte', 'doomfist', 'genji', 'hammond', 'hanzo', 'junkrat', 'lucio', 'mcree', 'mei', 'mercy', 'moira', 'orisa', 'phara', 'reaper', 'rein', 'roadhog', 'soldier', 'sombra', 'symm', 'torb', 'tracer', 'widow', 'winston'];
+        let icons = heros.map(icon => {
+            return <img key={icon} onClick={() => this.handleHerosFocused(icon)} src={require(`./icons/${icon}.png`)} alt={icon + '_icon'}/>
+        })
         return (
-            <div className='account-form'>
-                {/* <h1 className='u-margin-bottom-small'>Hello {this.props.profile.nickname}</h1> */}
-                <form className="account-form__form">
-                {this.state.Errors ? <div><p>{this.state.Errors}</p></div> : <div><p>no errors to show</p></div> } 
-                    <input
-                        className='account-form__form--starting-sr'
-                        value={this.state.HerosFocused}
-                        name="HerosFocused"
-                        onChange={this.handleInputChange}
-                        type="text"
-                        placeholder="HerosFocused"
-                    />
-                    <button className='btn btn--submit-form' onClick={this.handleHerosFocused}>Submit</button>
-                </form>
+            <div className='heros-focused'>
+                {icons}
             </div>
         )
     }
@@ -55,7 +47,7 @@ function mapStateToProps(state) {
         showModal: state.showModal,
         accounts: state.accounts,
         activeAccount: state.activeAccount,
-        addSeasonForm: state.addSeasonForm
+        addSeasonForm: state.addSeasonForm,
     };
 }
 
@@ -64,7 +56,7 @@ function mapDispatchToProps(dispatch) {
         modalActions: bindActionCreators(modalActionCreators, dispatch),
         accountActions: bindActionCreators(accountActionCreators, dispatch),
         activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
+        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch),
     }
 }
 

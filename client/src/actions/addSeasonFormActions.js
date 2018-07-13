@@ -1,4 +1,3 @@
-import axios from 'axios';
 import actionTypes from './actionTypes';
 
 export const setStartingSR = StartingSR => {
@@ -16,5 +15,10 @@ export const setHerosFocused = HerosFocused => {
 export const nextStepSeasonForm = () => {
     return {
         type: actionTypes.NEXT_STEP_SEASON_FORM,
+    }
+}
+export const resetSeasonForm = () => {
+    return {
+        type: actionTypes.RESET_SEASON_FORM,
     }
 }
