@@ -6,10 +6,9 @@ class ConfirmGame extends Component {
         console.log(this.props)
     }
     handleSubmit = (GameData) => {
-        
         console.log(GameData)
         this.props.activeAccountActions.saveGame(GameData)
-        // this.props.modalActions.closeModal()
+        this.props.modalActions.closeModal()
     }
     render() {
         let GameData = {

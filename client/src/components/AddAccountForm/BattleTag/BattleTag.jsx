@@ -20,15 +20,16 @@ class BattleTag extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let BattleTag = this.state.BattleTag;
-        let uidOBJ = { uid: this.props.profile.sub, BattleTag: BattleTag}
+        let uidOBJ = { uid: this.props.profile.sub, BattleTag: BattleTag }
         if (BattleTag === "") {
             console.log('empty')
-            this.setState({ Errors: 'Battletag Cannot be Empty Field!'})
+            this.setState({ Errors: 'Battletag Cannot be Empty Field!' })
             return this.state.Errors
         }
         if (BattleTag !== "") {
-            this.setState({Errors: []})
-            this.props.accountActions.createUserNode(uidOBJ)            
+            this.setState({ Errors: [] })
+            this.props.accountActions.createUserNode(uidOBJ)
+            this.props.modalActions.closeModal()
         }
     }
 
@@ -36,10 +37,10 @@ class BattleTag extends Component {
     render() {
         return (
             <div className='account-form'>
-                <h1 className='u-margin-bottom-small'>please tell us your battletag.</h1>
-                <p>No account numbers are required, this is simply to put at the top of your spreadsheet in case you want to track another account.</p>
+                <h1 className='u-margin-bottom-small'>Please tell us your Battletag!</h1>
+                <h2>No trailing numbers are required, this is simply to put at the top of your spreadsheet in case you want to track another account.</h2>
                 <form className="account-form__form">
-                {this.state.Errors ? <div><p>{this.state.Errors}</p></div> : <div><p>no errors to show</p></div> } 
+                    {this.state.Errors ? <div><p className='form-errors'>{this.state.Errors}</p></div> : ""}
                     <input
                         className='account-form__form--BattleTag'
                         value={this.state.BattleTag}

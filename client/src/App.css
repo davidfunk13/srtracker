@@ -56,6 +56,22 @@ a {
 .underline {
   text-decoration: underline; }
 
+.account-form {
+  display: flex;
+  text-align: center;
+  flex-flow: column;
+  margin-top: 20%; }
+  .account-form__form--BattleTag {
+    height: 2.5rem;
+    border: 1px solid black; }
+  .account-form__form--StartingSR {
+    width: 10rem;
+    border: 1px solid black; }
+
+.form-errors {
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
+
 .btn {
   padding: .5rem;
   border: 1px solid black;
@@ -66,6 +82,9 @@ a {
   .btn--new-season {
     width: 15rem;
     height: auto; }
+  .btn--close-modal {
+    position: absolute;
+    bottom: 5rem; }
 
 .content {
   border: 1px solid black; }
