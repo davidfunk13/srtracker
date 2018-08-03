@@ -2,13 +2,14 @@
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
-@import 'base/base';
 @import 'base/typography';
+@import 'base/base';
 @import 'base/utilities';
+
+@import 'layout/container';
+@import 'layout/header';
 
 @import 'components/battletag-form';
 @import 'components/btn';
 
-@import 'layout/content';
-@import 'layout/container';
-@import 'layout/header';
+@import 'pages/main';

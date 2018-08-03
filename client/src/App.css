@@ -1,4 +1,39 @@
-@import url(https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Pathway+Gothic+One);
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One|Permanent+Marker");
+.banner-text {
+  font-variant: normal;
+  font-family: "Pathway Gothic One", sans-serif;
+  font-weight: 900;
+  font-size: 7.3rem; }
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  border-bottom: .2rem solid black;
+  text-underline-position: above; }
+
+h1 {
+  font-size: 4rem; }
+
+h2 {
+  font-size: 3rem; }
+
+.prop {
+  font-family: "Work Sans", sans-serif;
+  font-variant: small-caps; }
+
+p {
+  font-weight: bold;
+  font-size: 1.8rem; }
+
+ol,
+li,
+ul {
+  font-weight: bold;
+  font-size: 1.8rem; }
+
 *,
 *::after,
 *::before {
@@ -8,44 +43,17 @@
 
 html {
   height: 100%;
-  font-size: 62.5%;
-  font-family: "Pathway Gothic One", sans-serif; }
+  font-size: 62.5%; }
 
 body {
-  font-family: "Work Sans", sans-serif;
-  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-variant-caps: all-petite-caps;
+  height: 100vh;
   letter-spacing: .2rem;
   box-sizing: border-box;
   background: linear-gradient(to top, #43484c, #405275);
   background-repeat: no-repeat;
   background-attachment: fixed; }
-
-h1 {
-  font-size: 2.8em; }
-
-.banner-text {
-  font-size: 9rem;
-  letter-spacing: 1.2rem; }
-
-h2 {
-  font-family: "Work Sans", sans-serif;
-  font-size: 1.2rem; }
-
-p {
-  font-family: "Work Sans", sans-serif;
-  text-indent: 1rem;
-  font-size: 1.8rem; }
-
-ol,
-li,
-ul {
-  font-family: "Work Sans", sans-serif;
-  text-indent: 5rem;
-  font-size: 1.8rem; }
-
-a {
-  font-family: "Work Sans", sans-serif;
-  font-size: 1.8rem; }
 
 .u-margin-bottom-small {
   margin-bottom: 2rem; }
@@ -55,6 +63,35 @@ a {
 
 .underline {
   text-decoration: underline; }
+
+.smallcaps {
+  font-variant: small-caps; }
+
+.container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid black;
+  margin: 2rem;
+  padding: 1rem;
+  line-height: 4rem; }
+  .container--main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .container--notfound {
+    flex-direction: column;
+    align-items: center; }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background: linear-gradient(to top, #43484c, #405275);
+  border-bottom: 1px solid black;
+  height: 18vh; }
 
 .account-form {
   display: flex;
@@ -77,8 +114,6 @@ a {
   border: 1px solid black;
   width: auto;
   height: auto; }
-  .btn--open-battletag {
-    margin-left: 1rem; }
   .btn--new-season {
     width: 15rem;
     height: auto; }
@@ -86,66 +121,10 @@ a {
     position: absolute;
     bottom: 5rem; }
 
-.content {
-  border: 1px solid black; }
-
-.container {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 1px solid black;
-  margin: 2rem;
-  padding: 1rem; }
-
-.active-account--yes {
+.battletags {
   display: flex;
-  flex-flow: column; }
-
-.parent-account {
-  display: flex;
-  flex-flow: row; }
-
-.seasons__yes--saved-account {
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: right;
-  padding: 1rem;
-  border: 1px solid black; }
-
-.season__cell {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border: 1px solid black;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-evenly; }
-
-.game-table {
-  margin: 1rem; }
-  .game-table__active-season {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    border: 1px solid black; }
-  .game-table__games {
-    display: flex;
-    flex-direction: column; }
-  .game-table__cell {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: center;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid black; }
-
-.header {
-  font-family: "Pathway Gothic One", sans-serif;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
   text-align: center;
-  color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  background: linear-gradient(to top, #43484c, #405275);
-  border-bottom: 1px solid black;
-  height: 15rem; }
+  line-height: 3rem; }

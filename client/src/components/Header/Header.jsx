@@ -18,7 +18,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <h1 className='banner-text'>SR TRACKER</h1>
+        <p className='banner-text'>OVERWATCH SR TRACKER</p>
         {this.props.auth.isAuthenticated() ?
           <button className='btn' onClick={() => this.props.auth.logout()}>Logout</button>
           :

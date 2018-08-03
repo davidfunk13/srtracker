@@ -26,54 +26,47 @@ const modalStyles = {
 class Main extends Component {
   componentDidMount() {
     this.props.accountActions.getAccounts(this.props.profile.sub);
-    console.log(`COMPONENT DID MOUNT: `)
     console.log(this.props);
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
   componentDidUpdate() {
-    console.log(`COMPONENT DID UPDATE`)
     console.log(this.props)
   }
 
   render() {
     return (
-      <div className="container">
+      <div className="container container--main">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
           <BattleTag {...this.props} />
-          <button
-            className="btn btn--close-modal"
-            onClick={() => this.props.modalActions.closeModal()}
-          >
-            close modal
-          </button>
+          <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>Close modal</button>
         </ReactModal>
-        <h1 className="heading u-margin-bottom-small">Thank you for logging in! {this.props.profile.name}</h1>
+        <h2 className="heading u-margin-bottom-small">thank you for logging in, <p className='prop'>{this.props.profile.name}</p></h2>
         <button className='btn' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</button>
-        {!Array.isArray(this.props.accounts) ||
-          !this.props.accounts.length ? (
-            <div className="battletag__no">
-              <p>We have no accounts saved for you.</p>
-              <p>Please see above to start tracking a new one!</p>
-            </div>
-          ) : (
-            <div className="battletag__yes">
-              <h2 className='u-margin-top-small'>You have a BattleTag being tracked with us! Your BattleTags:</h2>
-              {this.props.accounts.map(accounts => {
-                return (
-                  <div
-                    className="seasons__yes--saved-account u-margin-top-small"
-                    key={accounts._id}
-                  >
-                    <p>BattleTag:</p>
-                    <p>{accounts.BattleTag}</p>
-                    <Link to='/account'><button className='btn btn--open-battletag' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
-                  </div>
-                );
-              })}
-            </div>
-          )}
+        <div className='battletags'>
+          {!Array.isArray(this.props.accounts) ||
+            !this.props.accounts.length ? (
+              <div className='battletags--no'>
+                <p>We have no accounts saved for you.</p>
+                <p>Please see above to start tracking a new one!</p>
+              </div>
+            ) : (
+              <div>
+                <h2 className='u-margin-top-small'>Your BattleTags:</h2>
+                <div className='battletags battletags__yes'>
+                {this.props.accounts.map(accounts => {
+                  return (
+                    <div key={accounts._id}>
+                      <p className='smallcaps'>{accounts.BattleTag}</p>
+                      <Link to='/account'><button className='btn btn--open-battletag' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
+                    </div>
+                  );
+                })}
+                </div>
+              </div>
+            )}
+        </div>
       </div>
     );
   }

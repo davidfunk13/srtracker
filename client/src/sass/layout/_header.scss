@@ -1,9 +1,12 @@
 .header {
-    font-family: $header-font;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: white;
+    color: rgba(255, 255, 255, .9);
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba);
     border-bottom: 1px solid black;
-    height: 15rem;
+    height: 18vh;
 }

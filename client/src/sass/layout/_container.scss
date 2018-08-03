@@ -3,66 +3,78 @@
     border: 1px solid black;
     margin: 2rem;
     padding: 1rem;
-}
+    line-height: 4rem;
 
-.active-account {
-    &--yes {
-        display: flex;
-        flex-flow: column;
-    }
-}
-
-.parent-account {
-    display: flex;
-    flex-flow: row;
-}
-
-.seasons {
-    &__yes {
-        &--saved-account {
-            display: flex;
-            flex-flow: row;
-            align-items: center;
-            justify-content: right;
-            padding: 1rem;
-            border: 1px solid black;
-        }
-    }
-}
-
-.season {
-    &__cell {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        padding: 1rem;
-        border: 1px solid black;
-        display: flex;
-        flex-flow: row;
-        justify-content: space-evenly;
-    }
-}
-
-.game-table {
-    margin: 1rem;
-    &__active-season {
-        padding: 1rem;
-        margin-bottom: 1rem;
-        display: flex;
-        flex-flow: row;
-        justify-content: space-around;
-        border: 1px solid black;
-    }
-    &__games {
+    &--main{
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
-    &__cell {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: center;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border: 1px solid black;
+
+    &--notfound{
+        flex-direction: column;
+        align-items: center;
     }
 }
+
+// .active-account {
+//     &--yes {
+//         display: flex;
+//         flex-flow: column;
+//     }
+// }
+
+// .parent-account {
+//     display: flex;
+//     flex-flow: row;
+// }
+
+// .seasons {
+//     &__yes {
+//         &--saved-account {
+//             display: flex;
+//             flex-flow: row;
+//             align-items: center;
+//             justify-content: right;
+//             padding: 1rem;
+//             border: 1px solid black;
+//         }
+//     }
+// }
+
+// .season {
+//     &__cell {
+//         margin-top: 1rem;
+//         margin-bottom: 1rem;
+//         padding: 1rem;
+//         border: 1px solid black;
+//         display: flex;
+//         flex-flow: row;
+//         justify-content: space-evenly;
+//     }
+// }
+
+// .game-table {
+//     margin: 1rem;
+//     &__active-season {
+//         padding: 1rem;
+//         margin-bottom: 1rem;
+//         display: flex;
+//         flex-flow: row;
+//         justify-content: space-around;
+//         border: 1px solid black;
+//     }
+//     &__games {
+//         display: flex;
+//         flex-direction: column;
+//     }
+//     &__cell {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         text-align: center;
+//         padding: 1rem;
+//         margin-bottom: 1rem;
+//         border: 1px solid black;
+//     }
+// }

@@ -9,12 +9,12 @@
 html{
     height: 100%;
     font-size: 62.5%;
-    font-family: $header-font;
 }
 
 body {
-    font-family: $body-font;
-    height: 100%;
+    font-family: $montserrat-font;
+    font-variant-caps: all-petite-caps;
+    height: 100vh;
     letter-spacing: .2rem;
     box-sizing: border-box;
     background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba);
