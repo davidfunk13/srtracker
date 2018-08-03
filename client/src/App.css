@@ -10,15 +10,12 @@
 h1,
 h2,
 h3 {
+  font-size: 3rem;
+  border: .2rem solid black;
+  padding-left: 3rem;
+  background-color: #43484c;
   font-weight: bold;
-  border-bottom: .2rem solid black;
-  text-underline-position: above; }
-
-h1 {
-  font-size: 4rem; }
-
-h2 {
-  font-size: 3rem; }
+  padding-bottom: .5rem; }
 
 .prop {
   font-family: "Work Sans", sans-serif;
@@ -33,6 +30,9 @@ li,
 ul {
   font-weight: bold;
   font-size: 1.8rem; }
+
+.features-ol {
+  margin-left: 2rem; }
 
 *,
 *::after,
@@ -51,9 +51,12 @@ body {
   height: 100vh;
   letter-spacing: .2rem;
   box-sizing: border-box;
-  background: linear-gradient(to top, #43484c, #405275);
+  background: #43484c;
   background-repeat: no-repeat;
   background-attachment: fixed; }
+
+.features-ol {
+  margin-left: 2rem; }
 
 .u-margin-bottom-small {
   margin-bottom: 2rem; }
@@ -68,18 +71,17 @@ body {
   font-variant: small-caps; }
 
 .container {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #405275;
   border: 1px solid black;
   margin: 2rem;
   padding: 1rem;
-  line-height: 4rem; }
+  line-height: 4rem;
+  display: flex;
+  overflow: none; }
   .container--main {
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
+    flex-direction: column; }
   .container--notfound {
-    flex-direction: column;
-    align-items: center; }
+    flex-direction: column; }
 
 .header {
   display: flex;
@@ -89,9 +91,10 @@ body {
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  background: linear-gradient(to top, #43484c, #405275);
+  background: #405275;
   border-bottom: 1px solid black;
-  height: 18vh; }
+  height: 18vh;
+  overflow: none; }
 
 .account-form {
   display: flex;

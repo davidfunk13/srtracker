@@ -27,18 +27,21 @@ $default-h2-size: 3rem;
 h1,
 h2,
 h3 {
-
+  font-size: $default-h2-size;
+  border: .2rem solid black;
+  padding-left: 3rem;
+  background-color: $color-ow-grey;
   font-weight: bold;
-  border-bottom: .2rem solid black;
-  text-underline-position: above;
+  padding-bottom: .5rem;
 }
 
 h1 {
-  font-size: $default-h1-size;
+
+  
 }
 
 h2 {
-  font-size: $default-h2-size;
+  
 }
 
 .prop{
@@ -52,6 +55,10 @@ p {
 ol,
 li,
 ul {
+
   font-weight: bold;
   font-size: $default-font-size;
+}
+.features-ol{
+  margin-left: 2rem;
 }

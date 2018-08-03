@@ -17,7 +17,10 @@ body {
     height: 100vh;
     letter-spacing: .2rem;
     box-sizing: border-box;
-    background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba);
+    background: $color-ow-grey;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+.features-ol{
+    margin-left: 2rem;
 }

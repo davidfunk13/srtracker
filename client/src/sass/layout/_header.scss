@@ -6,7 +6,8 @@
     text-align: center;
     color: rgba(255, 255, 255, .9);
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    background: linear-gradient(to top, $color-ow-grey-rgba, $color-ow-dark-blue-rgba);
+    background: $color-ow-dark-blue;
     border-bottom: 1px solid black;
     height: 18vh;
+    overflow: none;
 }
