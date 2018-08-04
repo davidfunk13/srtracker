@@ -20,9 +20,9 @@ class Header extends Component {
       <header className="header">
         <p className='banner-text'>SR TRACKER</p>
         {this.props.auth.isAuthenticated() ?
-          <button className='btn' onClick={() => this.props.auth.logout()}>Logout</button>
+          <button className='btn--login' onClick={() => this.props.auth.logout()}>Logout</button>
           :
-          <button className='btn' onClick={() => this.props.auth.login()}>Login</button>}
+          <button className='btn--login' onClick={() => this.props.auth.login()}>Login</button>}
       </header>
     );
   }

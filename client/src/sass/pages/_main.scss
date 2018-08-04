@@ -1,17 +1,13 @@
 .main-info{
   display: flex;
   flex-direction: column;
-  margin: 0 0 1rem 0;
 }
 .battletags {
   margin: 1rem 0 1rem 0;
   &__yes {
   display: flex;
-  flex-flow: column;
-  align-items: center;
-    &--tag {
-      // margin: 1rem;
-      border: 0.1rem solid black;
-    }
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 1rem 1rem 1rem 5%;
   }
 }

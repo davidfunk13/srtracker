@@ -1,8 +1,6 @@
 .btn {
     padding: .5rem;
     border: 1px solid black;
-    width: auto;
-    height: auto;
     font-variant-caps: all-petite-caps;
 
     &--new-season {
@@ -19,10 +17,14 @@
         align-self: center;
         margin: 1rem 0 0 0;
     }
-    &--open-battletag{
-       
+    &--open-battletag {
         width: 25rem;
         border: .1rem solid black;
-        margin: 0 1rem 0 1rem;
+        margin:1rem;
+    }
+    &--login{
+        padding: .5rem 0 .5rem 0;
+        width: 10rem;
+        align-self: center;
     }
 }
