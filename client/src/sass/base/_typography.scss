@@ -31,7 +31,7 @@ $default-h2-size: 2rem;
 h1,
 h2,
 h3 {
-  border: .2rem solid black;
+  border: .1rem solid black;
   padding-left: 3rem;
   background-color: $color-ow-orange;
   font-weight: bold;
@@ -86,7 +86,7 @@ ul {
 .nav-link:active {
   font-size: $default-h2-size;
   color: black;
-  border: .2rem solid black;
+  border: .1rem solid black;
   background: $color-ow-light-blue;
   text-decoration: none;
 }
@@ -117,5 +117,26 @@ ul {
   &--go-back{
     width: 15rem;
     text-align: center;
+  }
+  &--open-modal{
+    
+    &__battletag{
+      background-color: rgba(255, 255, 255, 0.705);
+      width: 30rem;
+      align-self: center;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    
+  }
+  &--close-modal{
+    
+    &__battletag{
+      background-color: rgba(255, 255, 255, 0.705);
+      width: auto;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    
   }
 }

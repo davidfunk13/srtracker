@@ -2,12 +2,13 @@
     &--cell{
         margin: 0 0 1rem 0;
     }
-    &--games{
-        height: 100vh;
+}
+.games{
         &--cell{
+            border: .1rem solid black; 
+            margin: 0 0 1rem 0;
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
         }
-    }
 }

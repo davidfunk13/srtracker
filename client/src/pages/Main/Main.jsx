@@ -40,11 +40,15 @@ class Main extends Component {
       <div className="container container--main">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
           <BattleTag {...this.props} />
-          <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>Close modal</button>
+          <div className='nav-link nav-link--close-modal__battletag'>
+            <Link to='/' onClick={() => this.props.modalActions.closeModal()}>Close modal</Link>
+          </div>
         </ReactModal>
         <div className='section main-info'>
           <h2>thank you for logging in, {this.props.profile.name}</h2>
-          <button className='btn btn--add-battletag' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</button>
+          <div className='nav-link nav-link--open-modal__battletag'>
+            <Link to='/' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</Link>
+          </div>
         </div>
         <div className='section battletags'>
           {!Array.isArray(this.props.accounts) ||

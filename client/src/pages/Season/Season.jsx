@@ -39,39 +39,41 @@ class Season extends Component {
           <AddGameForm {...this.props} />
           <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>close modal</button>
         </ReactModal>
-        <div className='active-season'>
-          <div className='section active-season active-season--info'>
-            <h1>Active Season</h1>
-            <div className='section active-season--cell'>
-              <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
-              <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
-              <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
-            </div>
-            <div className='nav-link nav-link--add-game'>
-              <Link to='/season' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</Link>
-            </div>
+        <div className='section active-season'>
+          <h1>Active Season</h1>
+          <div className='section active-season--cell'>
+            <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
+            <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
+            <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
           </div>
-          <div className='section active-season active-season--games'>
-            <h1 className='u-margin-bottom-small'>Games</h1>
-            {this.props.activeAccount.seasonData.Games ?
+          <div className='nav-link nav-link--add-game'>
+            <Link to='/season' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</Link>
+          </div>
+        </div>
+        <div className='section games'>
+          <h1 className='u-margin-bottom-small'>Games</h1>
+          {this.props.activeAccount.seasonData.Games.length > 0 ?
             this.props.activeAccount.seasonData.Games.map(game => {
-                return (
-                  <div className='section active-season active-season--games active-season--games--cell' key={game._id}>
-                    <p>Map: {game.matchMap}</p>
-                    <p>|</p>
-                    <p>Hero: {game.heroSelected}</p>
-                    <p>|</p>
-                    <p>Victory: {game.didYouWin}</p>
-                    <p>|</p>
-                    <p>Post Match SR: {game.postMatchSR}</p>
-                  </div>
-                )
-              }) :
+              return (
+                <div className='section games--cell' key={game._id}>
+                  <p>Map: {game.matchMap}</p>
+                  <p>|</p>
+                  <p>Hero: {game.heroSelected}</p>
+                  <p>|</p>
+                  <p>Victory: {game.didYouWin}</p>
+                  <p>|</p>
+                  <p>Post Match SR: {game.postMatchSR}</p>
+                </div>
+              )
+            }) :
 
-                <div>:(</div>
-            }
-          </div>
-          <Link to='/account'>GO BACK TO SAVED SEASONS</Link>
+            <div className='section games--none'>
+              <p>You havent logged any games yet! Click the button to add a new game to this season</p>
+            </div>
+          }
+        </div>
+        <div className='nav-link nav-link--go-back u-margin-top-small'>
+        <Link to='/account'>GO BACK</Link>
         </div>
       </div>
     );
