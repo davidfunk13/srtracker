@@ -1,0 +1,13 @@
+.active-season{
+    &--cell{
+        margin: 0 0 1rem 0;
+    }
+    &--games{
+        height: 100vh;
+        &--cell{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+    }
+}

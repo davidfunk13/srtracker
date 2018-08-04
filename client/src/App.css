@@ -80,6 +80,11 @@ ul {
   text-align: center;
   margin: 0 auto; }
 
+.nav-link--add-game {
+  width: 30rem;
+  text-align: center;
+  margin: 0 auto; }
+
 .nav-link--go-back {
   width: 15rem;
   text-align: center; }
@@ -131,6 +136,8 @@ body {
   .container--notfound {
     flex-direction: column; }
   .container--active-account {
+    flex-direction: column; }
+  .container--season {
     flex-direction: column; }
 
 .section {
@@ -202,3 +209,13 @@ body {
   align-items: center;
   border: .1rem solid black;
   margin: 0 0 1rem 0; }
+
+.active-season--cell {
+  margin: 0 0 1rem 0; }
+
+.active-season--games {
+  height: 100vh; }
+  .active-season--games--cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; }

@@ -34,37 +34,44 @@ class Season extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container container--season">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
           <AddGameForm {...this.props} />
-          <button
-            className="btn btn--close-modal"
-            onClick={() => this.props.modalActions.closeModal()}
-          >
-            close modal
-          </button>
+          <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>close modal</button>
         </ReactModal>
-        <div className='game-table'>
-        <button className='u-margin-bottom-small btn' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</button>
-          <div className='game-table__active-season'>
-            <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
-            <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
-            <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
+        <div className='active-season'>
+          <div className='section active-season active-season--info'>
+            <h1>Active Season</h1>
+            <div className='section active-season--cell'>
+              <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
+              <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
+              <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
+            </div>
+            <div className='nav-link nav-link--add-game'>
+              <Link to='/season' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</Link>
+            </div>
           </div>
-          <div className='game-table__games'>
+          <div className='section active-season active-season--games'>
+            <h1 className='u-margin-bottom-small'>Games</h1>
             {this.props.activeAccount.seasonData.Games ?
-              this.props.activeAccount.seasonData.Games.map(game => {
+            this.props.activeAccount.seasonData.Games.map(game => {
                 return (
-                  <div className='game-table__cell' key={game._id}>
+                  <div className='section active-season active-season--games active-season--games--cell' key={game._id}>
                     <p>Map: {game.matchMap}</p>
+                    <p>|</p>
                     <p>Hero: {game.heroSelected}</p>
+                    <p>|</p>
                     <p>Victory: {game.didYouWin}</p>
+                    <p>|</p>
                     <p>Post Match SR: {game.postMatchSR}</p>
                   </div>
                 )
-              }) : <div>no</div>}
+              }) :
+
+                <div>:(</div>
+            }
           </div>
-        <Link to='/account'>GO BACK TO SAVED SEASONS</Link>
+          <Link to='/account'>GO BACK TO SAVED SEASONS</Link>
         </div>
       </div>
     );

@@ -63,7 +63,7 @@ class Account extends Component {
                   )
                 })
                 :
-                <div className='active-account active-account--no u-margin-top-small u-margin-bottom-small'>
+                <div className='section active-account active-account--no u-margin-top-small u-margin-bottom-small'>
                   <p>We Dont Have Any Seasons Saved for This Account. Please Add One to Start Tracking</p>
                 </div>
               }
