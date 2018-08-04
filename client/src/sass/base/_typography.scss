@@ -2,63 +2,115 @@
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Fredoka+One|Permanent+Marker");
-
 //core fonts
-$header-font: "Pathway Gothic One", sans-serif;
-$body-font: "Work Sans", sans-serif;
+$header-font: "Pathway Gothic One",
+sans-serif;
+$body-font: "Work Sans",
+sans-serif;
 //other fonts
-$permanent-marker-font: "Permanent Marker", cursive;
-$fredoka-one-font: "Fredoka One", cursive;
-$montserrat-font: "Montserrat", sans-serif;
-
+$permanent-marker-font: "Permanent Marker",
+cursive;
+$fredoka-one-font: "Fredoka One",
+cursive;
+$montserrat-font: "Montserrat",
+sans-serif;
 //font sizing
 $default-font-size: 1.8rem;
-$default-h1-size: 4rem;
-$default-h2-size: 3rem;
-
+$default-h1-size: 3rem;
+$default-h2-size: 2rem;
 //headings
-
 .banner-text {
   font-variant: normal;
   font-family: $header-font;
   font-weight: 900;
   font-size: 7.3rem;
+  color: white;
+  line-height: 7rem;
 }
+
 h1,
 h2,
 h3 {
-  font-size: $default-h2-size;
   border: .2rem solid black;
   padding-left: 3rem;
-  background-color: $color-ow-grey;
+  background-color: $color-ow-orange;
   font-weight: bold;
   padding-bottom: .5rem;
 }
 
 h1 {
-
-  
+  font-size: $default-h1-size;
 }
 
 h2 {
-  
+  font-size: $default-h2-size;
+  font-weight: bold;
 }
 
-.prop{
-  font-family:  $body-font;
+.prop {
+  font-family: $body-font;
   font-variant: small-caps;
 }
+
+a,
+a:link,
+a:hover,
+a:visited,
+a:active{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: white;
+}
+
 p {
   font-weight: bold;
   font-size: $default-font-size;
 }
+
 ol,
 li,
 ul {
-
   font-weight: bold;
   font-size: $default-font-size;
 }
-.features-ol{
+
+.features-ol {
   margin-left: 2rem;
+}
+
+.nav-link,
+.nav-link:link,
+.nav-link:visited,
+.nav-link:active {
+  font-size: $default-h2-size;
+  color: black;
+  border: .2rem solid black;
+  background: $color-ow-light-blue;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: white;
+}
+.nav-link{
+  &--battletag{
+    width: auto;
+    margin: 1rem;
+    text-align: center;
+  }
+  &--login{
+    width: 15rem;
+    align-self: center;
+  }
+  &--add-season{
+    width: 20rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+  &--go-back{
+    width: 15rem;
+    text-align: center;
+  }
 }

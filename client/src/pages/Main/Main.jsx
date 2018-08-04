@@ -42,25 +42,25 @@ class Main extends Component {
           <BattleTag {...this.props} />
           <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>Close modal</button>
         </ReactModal>
-        <div className='main-info'>
+        <div className='section main-info'>
           <h2>thank you for logging in, {this.props.profile.name}</h2>
           <button className='btn btn--add-battletag' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</button>
         </div>
-        <div className='battletags'>
+        <div className='section battletags'>
           {!Array.isArray(this.props.accounts) ||
             !this.props.accounts.length ? (
-              <div className='battletags--no'>
+              <div className='section battletags battletags__no'>
                 <p>We have no accounts saved for you.</p>
                 <p>Please see above to start tracking a new one!</p>
               </div>
             ) : (
-              <div>
-                <h2>Your BattleTags:</h2>
-                <div className='battletags battletags__yes'>
+              <div className='battletags battletags__yes'>
+                <h2 className='u-margin-bottom-small'>Your BattleTags:</h2>
+                <div className='battletags battletags__yes battletags__yes--flex-container'>
                   {this.props.accounts.map(accounts => {
                     return (
-                      <div className='battletags__yes--tag' key={accounts._id}>
-                        <Link to='/account'><button className='btn btn--open-battletag' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.BattleTag}</button></Link>
+                      <div className='nav-link nav-link--battletag' key={accounts._id}>
+                        <Link to='/account' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.BattleTag}</Link>
                       </div>
                     );
                   })}

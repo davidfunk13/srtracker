@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from '../../actions/accountActions';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   componentDidMount() {
@@ -18,11 +19,11 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <p className='banner-text'>SR TRACKER</p>
+        <p className='banner-text u-margin-bottom-small'>SR TRACKER</p>
         {this.props.auth.isAuthenticated() ?
-          <button className='btn--login' onClick={() => this.props.auth.logout()}>Logout</button>
+          <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.props.auth.logout()}>Logout</Link>
           :
-          <button className='btn--login' onClick={() => this.props.auth.login()}>Login</button>}
+          <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.props.auth.login()}>Login</Link>}
       </header>
     );
   }

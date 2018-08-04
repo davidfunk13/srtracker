@@ -1,13 +1,18 @@
-.main-info{
+.main-info {
   display: flex;
   flex-direction: column;
 }
+
 .battletags {
-  margin: 1rem 0 1rem 0;
-  &__yes {
+// overflow: auto;
+&__yes {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  margin: 1rem 1rem 1rem 5%;
+  flex-direction: column;
+  &--flex-container{
+    // display: flex;
+    // flex-flow: row wrap;
+    // justify-content: center;
+    // align-items: center;
+    }
   }
 }

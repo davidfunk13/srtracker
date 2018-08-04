@@ -5,21 +5,40 @@
   font-variant: normal;
   font-family: "Pathway Gothic One", sans-serif;
   font-weight: 900;
-  font-size: 7.3rem; }
+  font-size: 7.3rem;
+  color: white;
+  line-height: 7rem; }
 
 h1,
 h2,
 h3 {
-  font-size: 3rem;
   border: .2rem solid black;
   padding-left: 3rem;
-  background-color: #43484c;
+  background-color: #d38715;
   font-weight: bold;
   padding-bottom: .5rem; }
+
+h1 {
+  font-size: 3rem; }
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold; }
 
 .prop {
   font-family: "Work Sans", sans-serif;
   font-variant: small-caps; }
+
+a,
+a:link,
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: black; }
+
+a:hover {
+  color: white; }
 
 p {
   font-weight: bold;
@@ -33,6 +52,37 @@ ul {
 
 .features-ol {
   margin-left: 2rem; }
+
+.nav-link,
+.nav-link:link,
+.nav-link:visited,
+.nav-link:active {
+  font-size: 2rem;
+  color: black;
+  border: .2rem solid black;
+  background: #2379cf;
+  text-decoration: none; }
+
+.nav-link:hover {
+  color: white; }
+
+.nav-link--battletag {
+  width: auto;
+  margin: 1rem;
+  text-align: center; }
+
+.nav-link--login {
+  width: 15rem;
+  align-self: center; }
+
+.nav-link--add-season {
+  width: 20rem;
+  text-align: center;
+  margin: 0 auto; }
+
+.nav-link--go-back {
+  width: 15rem;
+  text-align: center; }
 
 *,
 *::after,
@@ -71,28 +121,33 @@ body {
 .container {
   background-color: #405275;
   border: 1px solid black;
-  margin: 2rem;
+  margin: 2rem 1rem 2rem 1rem;
   padding: 1rem;
+  height: 100vh;
   display: flex;
   overflow: auto; }
   .container--main {
     flex-flow: column; }
   .container--notfound {
     flex-direction: column; }
+  .container--active-account {
+    flex-direction: column; }
+
+.section {
+  background: rgba(255, 255, 255, 0.466);
+  padding: 1rem; }
+  .section:not(:first-child) {
+    margin-top: 2rem; }
 
 .header {
   background: #405275;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 10rem;
-  height: 100%;
+  height: 20vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   border-bottom: 1px solid black;
-  overflow: none;
-  padding: 0 0 1rem 0; }
+  overflow: auto; }
 
 .account-form {
   display: flex;
@@ -127,7 +182,7 @@ body {
   .btn--open-battletag {
     width: 25rem;
     border: .1rem solid black;
-    margin: 1rem; }
+    margin: 0 .5rem 0 .5rem; }
   .btn--login {
     padding: .5rem 0 .5rem 0;
     width: 10rem;
@@ -137,10 +192,13 @@ body {
   display: flex;
   flex-direction: column; }
 
-.battletags {
-  margin: 1rem 0 1rem 0; }
-  .battletags__yes {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    margin: 1rem 1rem 1rem 5%; }
+.battletags__yes {
+  display: flex;
+  flex-direction: column; }
+
+.season--cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: .1rem solid black;
+  margin: 0 0 1rem 0; }

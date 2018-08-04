@@ -1,17 +1,26 @@
 .container {
   background-color: $color-ow-dark-blue;
   border: 1px solid black;
-  margin: 2rem;
+  margin: 2rem 1rem 2rem 1rem;
   padding: 1rem;
-  // line-height: 4rem;
+  height: 100vh;
   display: flex;
   overflow: auto;
   &--main {
     flex-flow: column;
   }
-
   &--notfound {
     flex-direction: column;
+  }
+  &--active-account{
+    flex-direction: column;
+  }
+}
+.section{
+  background: rgba(255, 255, 255, 0.466);
+  padding: 1rem;
+  &:not(:first-child){
+    margin-top: 2rem;
   }
 }
 
