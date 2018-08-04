@@ -49,14 +49,11 @@ body {
   font-family: "Montserrat", sans-serif;
   font-variant-caps: all-petite-caps;
   height: 100vh;
-  letter-spacing: .2rem;
+  letter-spacing: .1rem;
   box-sizing: border-box;
   background: #43484c;
   background-repeat: no-repeat;
   background-attachment: fixed; }
-
-.features-ol {
-  margin-left: 2rem; }
 
 .u-margin-bottom-small {
   margin-bottom: 2rem; }
@@ -75,11 +72,10 @@ body {
   border: 1px solid black;
   margin: 2rem;
   padding: 1rem;
-  line-height: 4rem;
   display: flex;
-  overflow: none; }
+  overflow: auto; }
   .container--main {
-    flex-direction: column; }
+    flex-flow: column; }
   .container--notfound {
     flex-direction: column; }
 
@@ -116,18 +112,33 @@ body {
   padding: .5rem;
   border: 1px solid black;
   width: auto;
-  height: auto; }
+  height: auto;
+  font-variant-caps: all-petite-caps; }
   .btn--new-season {
     width: 15rem;
     height: auto; }
   .btn--close-modal {
     position: absolute;
     bottom: 5rem; }
+  .btn--add-battletag {
+    width: 20rem;
+    align-self: center;
+    margin: 1rem 0 0 0; }
+  .btn--open-battletag {
+    width: 25rem;
+    border: .1rem solid black;
+    margin: 0 1rem 0 1rem; }
 
-.battletags {
+.main-info {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: space-between;
-  text-align: center;
-  line-height: 3rem; }
+  margin: 0 0 1rem 0; }
+
+.battletags {
+  margin: 1rem 0 1rem 0; }
+  .battletags__yes {
+    display: flex;
+    flex-flow: column;
+    align-items: center; }
+    .battletags__yes--tag {
+      border: 0.1rem solid black; }

@@ -42,8 +42,10 @@ class Main extends Component {
           <BattleTag {...this.props} />
           <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>Close modal</button>
         </ReactModal>
-        <h2 className="heading u-margin-bottom-small">thank you for logging in, <p className='prop'>{this.props.profile.name}</p></h2>
-        <button className='btn' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</button>
+        <div className='main-info'>
+          <h2>thank you for logging in, {this.props.profile.name}</h2>
+          <button className='btn btn--add-battletag' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</button>
+        </div>
         <div className='battletags'>
           {!Array.isArray(this.props.accounts) ||
             !this.props.accounts.length ? (
@@ -53,16 +55,15 @@ class Main extends Component {
               </div>
             ) : (
               <div>
-                <h2 className='u-margin-top-small'>Your BattleTags:</h2>
+                <h2>Your BattleTags:</h2>
                 <div className='battletags battletags__yes'>
-                {this.props.accounts.map(accounts => {
-                  return (
-                    <div key={accounts._id}>
-                      <p className='smallcaps'>{accounts.BattleTag}</p>
-                      <Link to='/account'><button className='btn btn--open-battletag' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>Open Account</button></Link>
-                    </div>
-                  );
-                })}
+                  {this.props.accounts.map(accounts => {
+                    return (
+                      <div className='battletags__yes--tag' key={accounts._id}>
+                        <Link to='/account'><button className='btn btn--open-battletag' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.BattleTag}</button></Link>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}

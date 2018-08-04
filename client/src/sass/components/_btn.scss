@@ -3,7 +3,7 @@
     border: 1px solid black;
     width: auto;
     height: auto;
-
+    font-variant-caps: all-petite-caps;
 
     &--new-season {
         width: 15rem;
@@ -13,5 +13,16 @@
     &--close-modal{
         position: absolute;
         bottom: 5rem;;
+    }
+    &--add-battletag{
+        width: 20rem;
+        align-self: center;
+        margin: 1rem 0 0 0;
+    }
+    &--open-battletag{
+       
+        width: 25rem;
+        border: .1rem solid black;
+        margin: 0 1rem 0 1rem;
     }
 }
