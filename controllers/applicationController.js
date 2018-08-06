@@ -33,6 +33,16 @@ module.exports = {
 				throw err;
 			})
 	},
+	deleteAccount: (req, res) => {
+		console.log(req.params)
+		db.User.findByIdAndRemove(req.params.uid)
+			.then(data => {
+				console.log(`DELETE ACCOUNT DATA ${data}`)
+				res.json(data)
+			}).catch(err => {
+				throw err;
+			})
+	},
 	getActiveSeason: (req, res) => {
 		console.log(req.params)
 		db.Season.findById(req.params.uid)

@@ -104,3 +104,25 @@ export const saveGameFailure = gameFailureData => {
         data: gameFailureData,
     }
 }
+export const deleteAccount = activeAccountId => {
+    return function (dispatch){
+        console.log(activeAccountId)
+        axios.get('/api/deleteaccount/' + activeAccountId).then(data => {
+            dispatch(deleteAccountSuccess(data.data))
+        }).catch(err => {
+            dispatch(deleteAccountFailure(err));
+        })
+    }
+}
+export const deleteAccountSuccess = deleteAccountSuccessData => {
+    return {
+        type: actionTypes.DELETE_ACCOUNT_SUCCESS,
+        data: deleteAccountSuccessData,
+    }
+}
+export const deleteAccountFailure = deleteAccountError => {
+    return{
+        type: actionTypes.DELETE_ACCOUNT_FAILURE,
+        error: deleteAccountError,
+    }
+}
