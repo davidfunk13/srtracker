@@ -3,7 +3,9 @@ const db = require('../models/index');
 module.exports = {
 	getAccounts: (req, res) => {
 		let uid = req.params.uid;
-		db.User.find({ 'uid': uid })
+		db.User.find({
+				'uid': uid
+			})
 			.populate('Seasons')
 			.then(data => {
 				console.log(`FETCHED ALL USERS BATTLETAGS/ACCOUNTS ${data}`)
@@ -35,18 +37,24 @@ module.exports = {
 	},
 	deleteAccount: (req, res) => {
 		console.log(req.params)
-		db.User.findByIdAndRemove(req.params.uid)
+		db.User.findOneAndRemove(req.params.account)
 			.then(data => {
-				console.log(`DELETE ACCOUNT DATA ${data}`)
+				return db.User.find({
+						'uid': req.params.user
+					})
+					.populate('Seasons')	
+			}).then(data =>{
+				console.log(`returned user obj after account delete ${data}`)
 				res.json(data)
-			}).catch(err => {
+			})
+			.catch(err => {
 				throw err;
 			})
 	},
 	getActiveSeason: (req, res) => {
 		console.log(req.params)
 		db.Season.findById(req.params.uid)
-		.populate('Games')
+			.populate('Games')
 			.then(data => {
 				console.log(`ACTIVE SEASON DATA ${data}`)
 				res.json(data)
@@ -68,7 +76,15 @@ module.exports = {
 		console.log(req.body);
 		db.Season.create(req.body)
 			.then(data => {
-				return db.User.findOneAndUpdate({ BattleTag: data.BattleTagOwnership }, { $push: { Seasons: data } }, { new: true })
+				return db.User.findOneAndUpdate({
+						BattleTag: data.BattleTagOwnership
+					}, {
+						$push: {
+							Seasons: data
+						}
+					}, {
+						new: true
+					})
 					.populate('Seasons')
 			})
 			.then(data => {
@@ -81,9 +97,16 @@ module.exports = {
 	saveGame: (req, res) => {
 		console.log(req.body);
 		db.Game.create(req.body)
-			.then(data => {console.log('data going in')
-			console.log(data)
-				return db.Season.findByIdAndUpdate(data.seasonOwnership, { $push: { Games: data } }, { new: true })
+			.then(data => {
+				console.log('data going in')
+				console.log(data)
+				return db.Season.findByIdAndUpdate(data.seasonOwnership, {
+						$push: {
+							Games: data
+						}
+					}, {
+						new: true
+					})
 					.populate('Games')
 			})
 			.then(data => {

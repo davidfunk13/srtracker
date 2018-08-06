@@ -30,16 +30,6 @@ export default function activeAccountReducer(state = initialState, action) {
                 ...state,
                 Err: action.data
             }
-        case actionTypes.DELETE_ACCOUNT_SUCCESS:
-            return {
-                ...state,
-                accountData: action.data
-            }
-        case actionTypes.DELETE_ACCOUNT_FAILURE:
-            return {
-                ...state,
-                Err: action.data
-            }
         case actionTypes.GET_ACTIVE_SEASON_SUCCESS:
             return {
                 ...state,

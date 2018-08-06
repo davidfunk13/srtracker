@@ -63,3 +63,19 @@ export const pushHeroFailure = failureKey => {
         data: failureKey,
     }
 }
+export const deleteBattletag = data => {
+    return function (dispatch){
+        console.log(data)
+        axios.get('/api/deletebattletag/' + data).then(data => {
+            dispatch(deleteBattletagSuccess(data.data))
+        }).catch(err => {
+            throw err;
+        })
+    }
+}
+export const deleteBattletagSuccess = deleteBattletagSuccessData => {
+    return {
+        type: actionTypes.DELETE_BATTLETAG_SUCCESS,
+        data: deleteBattletagSuccessData,
+    }
+}
