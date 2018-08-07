@@ -8,6 +8,9 @@ const actions = {
   CREATE_USER_NODE: "CREATE_USER_NODE",
   CREATE_USER_SUCCESS: "CREATE_USER_SUCCESS",
   CREATE_USER_FAILURE: "CREATE_USER_FAILURE",
+  //save battletag
+  CREATE_BATTLETAG_SUCCESS: 'CREATE_BATTLETAG_SUCCESS',
+  CREATE_BATTLETAG_FAILURE: 'CREATE_BATTLETAG_FAILURE',
   //selecting specific account to pass id to /accounts.jsx
   SELECT_ACCOUNT: "SELECT_ACCOUNT",
   //fetching specific acct from db with id from SELECT_ACCOUNT

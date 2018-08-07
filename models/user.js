@@ -7,14 +7,10 @@ var UserSchema = new Schema({
         type: String,
         required: true,
     },
-    BattleTag: {
-        type: String,
-        required: true,
-    },
-    Seasons: [
+    Accounts: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Season',
+            ref: 'Battletag',
         }
     ]
 }, {timestamps: Date});
