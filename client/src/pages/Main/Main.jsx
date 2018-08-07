@@ -29,7 +29,7 @@ class Main extends Component {
   componentDidMount() {
     // purgeStoredState()
     this.props.currentUserActions.createUserNode(this.props.profile.sub)
-    // this.props.accountActions.getAccounts(this.props.profile.sub);
+    this.props.accountActions.getAccounts(this.props.profile.sub);
     console.log(this.props);
   }
   componentWillMount() {

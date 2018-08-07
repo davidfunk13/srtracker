@@ -25,3 +25,8 @@ export const createUserFailure = (error) => {
         error: error,
     }
 }
+export const currentUserPurge = () => {
+    return {
+        type: actionTypes.USER_REDUCER_PURGE,
+    }
+}

@@ -11,6 +11,8 @@ export default function userReducer(state = initialState.currentUser, action) {
     return action.data
   case actionTypes.CREATE_USER_FAILURE:
   return action.data
+  case actionTypes.USER_REDUCER_PURGE:
+  return initialState;
     default:
       {
         return state;

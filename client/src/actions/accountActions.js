@@ -81,3 +81,8 @@ export const deleteBattletagSuccess = deleteBattletagSuccessData => {
         data: deleteBattletagSuccessData,
     }
 }
+export const purgeAccounts = () => {
+    return {
+        type: actionTypes.ACCOUNTS_REDUCER_PURGE,
+    }
+}
