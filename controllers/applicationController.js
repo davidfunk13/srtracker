@@ -116,7 +116,8 @@ module.exports = {
 			.then(data => {
 				console.log(`DATA BEFORE RETURN ${data}`)
 				return db.Battletag.findOneAndUpdate({
-						Battletag: data.BattletagOwnership
+						Battletag: req.body.BattletagOwnership,
+						uid: req.body.uid
 					}, {
 						$push: {
 							Seasons: data

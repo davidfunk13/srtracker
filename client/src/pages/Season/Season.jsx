@@ -42,7 +42,7 @@ class Season extends Component {
         <div className='section active-season'>
           <h1>Active Season</h1>
           <div className='section active-season--cell'>
-            <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
+            <p>Battletag: {this.props.activeAccount.seasonData.BattletagOwnership}</p>
             <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
             <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
           </div>
@@ -52,7 +52,7 @@ class Season extends Component {
         </div>
         <div className='section games'>
           <h1 className='u-margin-bottom-small'>Games</h1>
-          {this.props.activeAccount.seasonData.Games.length ?
+          {this.props.activeAccount.seasonData.Games.length >= 1 ?
             this.props.activeAccount.seasonData.Games.map(game => {
               return (
                 <div className='section games--cell' key={game._id}>
