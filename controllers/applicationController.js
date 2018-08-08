@@ -3,17 +3,25 @@ const db = require('../models/index');
 module.exports = {
 	getAccounts: (req, res) => {
 		let uid = req.params.uid;
-		db.Battletag.find({
-				'uid': uid
-			})
-			.populate('BelongsTo')
-			.populate('Seasons')
-			.then(data => {
-				console.log(`FETCHED ALL USERS BATTLETAGS ${data}`)
-				res.json(data)
-			}).catch(err => {
-				throw err;
-			})
+		console.log(uid)
+		db.User.findOne({'uid':uid})
+		.populate('Accounts').then(data => {
+			console.log('====getaccounts=====')
+			res.json(data.Accounts)
+		}).catch(err => {
+			throw err
+		})
+		// db.Battletag.find({
+		// 		'uid': uid
+		// 	})
+		// 	.populate('BelongsTo')
+		// 	.populate('Seasons')
+		// 	.then(data => {
+		// 		console.log(`FETCHED ALL USERS BATTLETAGS ${data}`)
+		// 		res.json(data)
+		// 	}).catch(err => {
+		// 		throw err;
+		// 	})
 	},
 	saveAccountNode: (req, res) => {
 		let userHash = req.body.uidOBJ;
@@ -42,13 +50,21 @@ module.exports = {
 				db.Battletag.create(req.body)
 					.then(data => {
 						console.log(`BATTLETAG SAVED :${data}`)
-						res.json(data)
-					}).catch(err => {
-						throw err;
-					})
-			} else {
-				res.json(data)
-			}
+						return db.User.findOneAndUpdate({
+							uid: req.body.uid
+						}, {
+							$push: {
+								Accounts: data
+							}
+						}, {
+							new: true
+						})
+						.populate('Accounts').then(data=>{
+							console.log(`Accounts? ${data.Accounts}`)
+							res.json(data)
+						})
+				})
+			} 
 		})
 
 	},
@@ -63,21 +79,15 @@ module.exports = {
 				throw err;
 			})
 	},
-	deleteAccount: (req, res) => {
-		console.log(req.params)
-		db.User.findOneAndRemove(req.params.account)
-			.then(data => {
-				return db.User.find({
-						'uid': req.params.user
-					})
-					.populate('Seasons')	
-			}).then(data =>{
-				console.log(`returned user obj after account delete ${data}`)
-				res.json(data)
-			})
-			.catch(err => {
-				throw err;
-			})
+	deleteBattletag: (req, res) => {
+		console.log(req.body)
+		let User = req.body.user;
+		let Battletag = req.body.account;
+		console.log(User, Battletag)
+		db.Battletag.findByIdAndRemove(req.params.account).then(data=>{
+			console.log(data)
+		})
+			
 	},
 	getActiveSeason: (req, res) => {
 		console.log(req.params)

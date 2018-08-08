@@ -7,6 +7,10 @@ var BattletagSchema = new Schema({
         type: String,
         required: true,
     },
+    BelongsTo: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     Battletag: {
         type: String,
         required: true,

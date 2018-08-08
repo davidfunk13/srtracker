@@ -69,10 +69,10 @@ class Main extends Component {
                     return (
                       <div className='nav-link nav-link--battletag' key={accounts._id}>
                         <Link to='/account' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.Battletag}</Link>
-                        {/* <p onClick={() => this.props.accountActions.deleteBattletag({
+                        <p onClick={() => this.props.accountActions.deleteBattletag({
                           account: accounts._id,
                           user: this.props.activeAccount.accountData.uid
-                          })}>delete </p> */}
+                          })}>delete </p>
                       </div>
                     );
                   })}

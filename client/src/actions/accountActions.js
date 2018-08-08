@@ -68,7 +68,8 @@ export const pushHeroFailure = failureKey => {
 export const deleteBattletag = data => {
     return function (dispatch){
         console.log(data)
-        axios.get('/api/deletebattletag/' + data).then(data => {
+        axios.post('/api/deletebattletag/' , data).then(data => {
+            console.log(data)
             dispatch(deleteBattletagSuccess(data.data))
         }).catch(err => {
             throw err;

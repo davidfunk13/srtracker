@@ -10,7 +10,7 @@ export default function accountReducer(state = initialState.accounts, action) {
     case actionTypes.GET_ACCOUNTS_SUCCESS:
       return action.data
     case actionTypes.CREATE_BATTLETAG_SUCCESS:
-    return [...state, action.data]
+    return action.data.Accounts
     case actionTypes.DELETE_BATTLETAG_SUCCESS:
       return [...action.data]
     case actionTypes.ACCOUNTS_REDUCER_PURGE:
