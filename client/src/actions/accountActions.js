@@ -2,30 +2,32 @@ import axios from 'axios';
 import actionTypes from './actionTypes';
 
 //storing your battletag, auth0 uid.
-export const createUserNode = (uidOBJ) => {
+
+export const createBattletag = (uidOBJ) => {
+    console.log(uidOBJ)
     return function (dispatch) {
-        axios.post('/api/createuser/', uidOBJ)
+        axios.post('/api/createbattletag/', uidOBJ)
         .then(data => {
-            dispatch(createUserSuccess(data.data));
+            dispatch(createBattletagSuccess(data.data));
         })
         .catch(error => {
-            dispatch(createUserFailure(error))
+            // throw error;
+            dispatch(createBattletagFailure(error))
         });
     };
 };
-export const createUserSuccess = (data) => {
+export const createBattletagSuccess = (data) => {
     return {
-        type: actionTypes.CREATE_USER_SUCCESS,
+        type: actionTypes.CREATE_BATTLETAG_SUCCESS,
         data: data,
     }
 }
-export const createUserFailure = (error) => {
+export const createBattletagFailure = (error) => {
     return {
-        type: actionTypes.CREATE_USER_FAILURE,
+        type: actionTypes.CREATE_BATTLETAG_FAILURE,
         error: error,
     }
 }
-
 //fetches all accounts matching your uid 
 export const getAccounts = uid => {
     return function (dispatch) {
@@ -61,5 +63,26 @@ export const pushHeroFailure = failureKey => {
     return {
         type: actionTypes.SELECT_FOCUSED_HERO_FAILURE,
         data: failureKey,
+    }
+}
+export const deleteBattletag = data => {
+    return function (dispatch){
+        console.log(data)
+        axios.get('/api/deletebattletag/' + data).then(data => {
+            dispatch(deleteBattletagSuccess(data.data))
+        }).catch(err => {
+            throw err;
+        })
+    }
+}
+export const deleteBattletagSuccess = deleteBattletagSuccessData => {
+    return {
+        type: actionTypes.DELETE_BATTLETAG_SUCCESS,
+        data: deleteBattletagSuccessData,
+    }
+}
+export const purgeAccounts = () => {
+    return {
+        type: actionTypes.ACCOUNTS_REDUCER_PURGE,
     }
 }

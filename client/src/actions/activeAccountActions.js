@@ -10,6 +10,7 @@ export const selectAccount = uid => {
     }
 }
 export const selectSeason = seasonId => {
+    console.log(seasonId)
     return {
         type: actionTypes.SELECT_SEASON,
         data: seasonId,
@@ -30,6 +31,7 @@ export const getActiveAccount = activeAccountId => {
     return function (dispatch){
         console.log(activeAccountId)
         axios.get('/api/activeaccount/' + activeAccountId).then(data => {
+            console.log(data)
             dispatch(getActiveAccountSuccess(data.data))
         }).catch(err => {
             dispatch(getActiveAccountFailure(err));
@@ -102,5 +104,27 @@ export const saveGameFailure = gameFailureData => {
     return {
         type: actionTypes.SAVE_GAME_FAILURE,
         data: gameFailureData,
+    }
+}
+export const deleteAccount = activeAccountId => {
+    return function (dispatch){
+        console.log(activeAccountId)
+        axios.get('/api/deleteaccount/' + activeAccountId).then(data => {
+            dispatch(deleteAccountSuccess(data.data))
+        }).catch(err => {
+            dispatch(deleteAccountFailure(err));
+        })
+    }
+}
+export const deleteAccountSuccess = deleteAccountSuccessData => {
+    return {
+        type: actionTypes.DELETE_ACCOUNT_SUCCESS,
+        data: deleteAccountSuccessData,
+    }
+}
+export const deleteAccountFailure = deleteAccountError => {
+    return{
+        type: actionTypes.DELETE_ACCOUNT_FAILURE,
+        error: deleteAccountError,
     }
 }

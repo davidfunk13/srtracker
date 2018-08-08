@@ -7,7 +7,7 @@ const GameSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    BattleTag: {
+    Battletag: {
         type: String,
         required: true,
     },

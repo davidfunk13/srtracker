@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as modalActionCreators from '../../../actions/modalActions';
-import * as accountActionCreators from '../../../actions/accountActions';
+import * as battletagActionCreators from '../../../actions/accountActions';
 class BattleTag extends Component {
     state = {
-        BattleTag: "",
+        Battletag: "",
         Errors: "",
     };
 
@@ -19,16 +19,16 @@ class BattleTag extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        let BattleTag = this.state.BattleTag;
-        let uidOBJ = { uid: this.props.profile.sub, BattleTag: BattleTag }
-        if (BattleTag === "") {
+        let Battletag = this.state.Battletag;
+        let uidOBJ = { uid: this.props.profile.sub, Battletag: Battletag }
+        if (Battletag === "") {
             console.log('empty')
             this.setState({ Errors: 'Battletag Cannot be Empty Field!' })
             return this.state.Errors
         }
-        if (BattleTag !== "") {
+        if (Battletag !== "") {
             this.setState({ Errors: [] })
-            this.props.accountActions.createUserNode(uidOBJ)
+            this.props.battletagActions.createBattletag(uidOBJ)
             this.props.modalActions.closeModal()
         }
     }
@@ -43,8 +43,8 @@ class BattleTag extends Component {
                     {this.state.Errors ? <div><p className='form-errors'>{this.state.Errors}</p></div> : ""}
                     <input
                         className='account-form__form--BattleTag'
-                        value={this.state.BattleTag}
-                        name="BattleTag"
+                        value={this.state.Battletag}
+                        name="Battletag"
                         onChange={this.handleInputChange}
                         type="text"
                         placeholder="Battletag"
@@ -66,7 +66,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         modalActions: bindActionCreators(modalActionCreators, dispatch),
-        accountActions: bindActionCreators(accountActionCreators, dispatch),
+        battletagActions: bindActionCreators(battletagActionCreators, dispatch),
     }
 }
 

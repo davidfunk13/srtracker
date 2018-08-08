@@ -7,7 +7,9 @@ import { bindActionCreators } from "redux";
 import * as activeAccountActionCreators from '../../actions/activeAccountActions';
 import * as modalActionCreators from "../../actions/modalActions";
 import * as accountActionCreators from '../../actions/accountActions';
+import * as currentUserActionCreators from '../../actions/userActions';
 import { Link } from 'react-router-dom';
+
 
 const modalStyles = {
   content: {
@@ -25,6 +27,8 @@ const modalStyles = {
 
 class Main extends Component {
   componentDidMount() {
+    // purgeStoredState()
+    this.props.currentUserActions.createUserNode(this.props.profile.sub)
     this.props.accountActions.getAccounts(this.props.profile.sub);
     console.log(this.props);
   }
@@ -64,7 +68,11 @@ class Main extends Component {
                   {this.props.accounts.map(accounts => {
                     return (
                       <div className='nav-link nav-link--battletag' key={accounts._id}>
-                        <Link to='/account' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.BattleTag}</Link>
+                        <Link to='/account' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.Battletag}</Link>
+                        {/* <p onClick={() => this.props.accountActions.deleteBattletag({
+                          account: accounts._id,
+                          user: this.props.activeAccount.accountData.uid
+                          })}>delete </p> */}
                       </div>
                     );
                   })}
@@ -82,6 +90,7 @@ function mapStateToProps(state) {
     showModal: state.showModal,
     accounts: state.accounts,
     activeAccount: state.activeAccount,
+    currentUser: state.currentUser
   };
 }
 
@@ -90,6 +99,7 @@ function mapDispatchToProps(dispatch) {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
     accountActions: bindActionCreators(accountActionCreators, dispatch),
     activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
+    currentUserActions: bindActionCreators(currentUserActionCreators, dispatch)
   };
 }
 

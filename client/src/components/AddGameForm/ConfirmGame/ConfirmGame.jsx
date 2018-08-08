@@ -13,7 +13,7 @@ class ConfirmGame extends Component {
     render() {
         let GameData = {
             seasonOwnership: this.props.activeAccount.seasonIdForLookup,
-            BattleTag: this.props.activeAccount.accountData.BattleTag,
+            Battletag: this.props.activeAccount.accountData.Battletag,
             matchMap: this.props.addGameForm.matchMap,
             heroSelected: this.props.addGameForm.heroSelected,
             didYouWin: this.props.addGameForm.didYouWin,

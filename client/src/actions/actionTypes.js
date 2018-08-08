@@ -8,6 +8,9 @@ const actions = {
   CREATE_USER_NODE: "CREATE_USER_NODE",
   CREATE_USER_SUCCESS: "CREATE_USER_SUCCESS",
   CREATE_USER_FAILURE: "CREATE_USER_FAILURE",
+  //save battletag
+  CREATE_BATTLETAG_SUCCESS: 'CREATE_BATTLETAG_SUCCESS',
+  CREATE_BATTLETAG_FAILURE: 'CREATE_BATTLETAG_FAILURE',
   //selecting specific account to pass id to /accounts.jsx
   SELECT_ACCOUNT: "SELECT_ACCOUNT",
   //fetching specific acct from db with id from SELECT_ACCOUNT
@@ -40,5 +43,11 @@ const actions = {
   SELECT_FOCUSED_HERO_FAILURE: 'SELECT_FOCUSED_HERO_FAILURE',
   //reset the season form
   RESET_SEASON_FORM: 'RESET_SEASON_FORM',
+  //Deleting account
+  DELETE_BATTLETAG_SUCCESS: 'DELETE_BATTLETAG_SUCCESS',
+  //purge current user on logout
+  USER_REDUCER_PURGE: 'USER_REDUCER_PURGE',
+  //purge current accounts on logout
+  ACCOUNTS_REDUCER_PURGE: 'ACCOUNTS_REDUCER_PURGE',
 };
 export default actions;

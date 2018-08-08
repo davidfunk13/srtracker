@@ -3,28 +3,58 @@ const db = require('../models/index');
 module.exports = {
 	getAccounts: (req, res) => {
 		let uid = req.params.uid;
-		db.User.find({ 'uid': uid })
+		db.Battletag.find({
+				'uid': uid
+			})
+			.populate('BelongsTo')
 			.populate('Seasons')
 			.then(data => {
-				console.log(`FETCHED ALL USERS BATTLETAGS/ACCOUNTS ${data}`)
+				console.log(`FETCHED ALL USERS BATTLETAGS ${data}`)
 				res.json(data)
 			}).catch(err => {
 				throw err;
 			})
 	},
 	saveAccountNode: (req, res) => {
-		console.log(req.body);
-		db.User.create(req.body)
-			.then(data => {
-				console.log(`BATTLETAG SAVED :${data}`)
+		let userHash = req.body.uidOBJ;
+		let User = { 'uid': userHash }
+		db.User.findOne({ 'uid': userHash }).then(data => {
+			console.log(data)
+			if (data === null) {
+				db.User.create(User)
+					.then(data => {
+						console.log(`Master Account SAVED :${data}`)
+						res.json(data)
+					}).catch(err => {
+						throw err;
+					})
+			} else {
 				res.json(data)
-			}).catch(err => {
-				throw err;
-			})
+			}
+		})
+
+	},
+	saveBattletag: (req, res) => {
+		console.log(req.body)
+		db.Battletag.findOne(req.body).then(data => {
+			console.log(data)
+			if (data === null) {
+				db.Battletag.create(req.body)
+					.then(data => {
+						console.log(`BATTLETAG SAVED :${data}`)
+						res.json(data)
+					}).catch(err => {
+						throw err;
+					})
+			} else {
+				res.json(data)
+			}
+		})
+
 	},
 	getActiveAccount: (req, res) => {
 		console.log(req.params)
-		db.User.findById(req.params.uid)
+		db.Battletag.findById(req.params.uid)
 			.populate('Seasons')
 			.then(data => {
 				console.log(`ACTIVE ACCOUNT DATA ${data}`)
@@ -33,10 +63,26 @@ module.exports = {
 				throw err;
 			})
 	},
+	deleteAccount: (req, res) => {
+		console.log(req.params)
+		db.User.findOneAndRemove(req.params.account)
+			.then(data => {
+				return db.User.find({
+						'uid': req.params.user
+					})
+					.populate('Seasons')	
+			}).then(data =>{
+				console.log(`returned user obj after account delete ${data}`)
+				res.json(data)
+			})
+			.catch(err => {
+				throw err;
+			})
+	},
 	getActiveSeason: (req, res) => {
 		console.log(req.params)
 		db.Season.findById(req.params.uid)
-		.populate('Games')
+			.populate('Games')
 			.then(data => {
 				console.log(`ACTIVE SEASON DATA ${data}`)
 				res.json(data)
@@ -58,7 +104,16 @@ module.exports = {
 		console.log(req.body);
 		db.Season.create(req.body)
 			.then(data => {
-				return db.User.findOneAndUpdate({ BattleTag: data.BattleTagOwnership }, { $push: { Seasons: data } }, { new: true })
+				console.log(`DATA BEFORE RETURN ${data}`)
+				return db.Battletag.findOneAndUpdate({
+						Battletag: data.BattletagOwnership
+					}, {
+						$push: {
+							Seasons: data
+						}
+					}, {
+						new: true
+					})
 					.populate('Seasons')
 			})
 			.then(data => {
@@ -71,9 +126,16 @@ module.exports = {
 	saveGame: (req, res) => {
 		console.log(req.body);
 		db.Game.create(req.body)
-			.then(data => {console.log('data going in')
-			console.log(data)
-				return db.Season.findByIdAndUpdate(data.seasonOwnership, { $push: { Games: data } }, { new: true })
+			.then(data => {
+				console.log('data going in')
+				console.log(data)
+				return db.Season.findByIdAndUpdate(data.seasonOwnership, {
+						$push: {
+							Games: data
+						}
+					}, {
+						new: true
+					})
 					.populate('Games')
 			})
 			.then(data => {
