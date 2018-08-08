@@ -30,6 +30,7 @@ export const getActiveAccount = activeAccountId => {
     return function (dispatch){
         console.log(activeAccountId)
         axios.get('/api/activeaccount/' + activeAccountId).then(data => {
+            console.log(data)
             dispatch(getActiveAccountSuccess(data.data))
         }).catch(err => {
             dispatch(getActiveAccountFailure(err));

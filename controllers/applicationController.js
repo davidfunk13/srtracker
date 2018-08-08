@@ -7,6 +7,7 @@ module.exports = {
 				'uid': uid
 			})
 			.populate('BelongsTo')
+			.populate('Seasons')
 			.then(data => {
 				console.log(`FETCHED ALL USERS BATTLETAGS ${data}`)
 				res.json(data)
@@ -103,6 +104,7 @@ module.exports = {
 		console.log(req.body);
 		db.Season.create(req.body)
 			.then(data => {
+				console.log(`DATA BEFORE RETURN ${data}`)
 				return db.Battletag.findOneAndUpdate({
 						Battletag: data.BattletagOwnership
 					}, {
