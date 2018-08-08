@@ -26,7 +26,7 @@ const modalStyles = {
 
 class Season extends Component {
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props.activeAccount.seasonData)
     this.props.activeAccountActions.getActiveSeason(this.props.activeAccount.seasonIdForLookup)
   }
   componentWillMount() {
@@ -52,7 +52,7 @@ class Season extends Component {
         </div>
         <div className='section games'>
           <h1 className='u-margin-bottom-small'>Games</h1>
-          {this.props.activeAccount.seasonData.Games.length > 0 ?
+          {this.props.activeAccount.seasonData.Games.length ?
             this.props.activeAccount.seasonData.Games.map(game => {
               return (
                 <div className='section games--cell' key={game._id}>

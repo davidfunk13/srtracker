@@ -10,6 +10,7 @@ export const selectAccount = uid => {
     }
 }
 export const selectSeason = seasonId => {
+    console.log(seasonId)
     return {
         type: actionTypes.SELECT_SEASON,
         data: seasonId,
