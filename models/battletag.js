@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BattletagSchema = new Schema({
-    uid:{
+    auth0Uid:{
         type: String,
         required: true,
     },
-    BelongsTo: {
+    UserId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },

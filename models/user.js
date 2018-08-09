@@ -7,7 +7,7 @@ var UserSchema = new Schema({
         type: String,
         required: true,
     },
-    Accounts: [
+    Battletags: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Battletag',

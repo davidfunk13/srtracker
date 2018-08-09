@@ -4,13 +4,17 @@ module.exports = {
 	getAccounts: (req, res) => {
 		let uid = req.params.uid;
 		console.log(uid)
-		db.User.findOne({'uid':uid})
-		.populate('Accounts').then(data => {
-			console.log('====getaccounts=====')
-			res.json(data.Accounts)
-		}).catch(err => {
-			throw err
-		})
+		db.User.findOne({
+				'uid': uid
+			})
+			.populate('Battletags')
+			.then(data => {
+				console.log('====getaccounts=====')
+				console.log(data)
+				res.json(data.Battletags)
+			}).catch(err => {
+				throw err
+			})
 		// db.Battletag.find({
 		// 		'uid': uid
 		// 	})
@@ -25,8 +29,12 @@ module.exports = {
 	},
 	saveAccountNode: (req, res) => {
 		let userHash = req.body.uidOBJ;
-		let User = { 'uid': userHash }
-		db.User.findOne({ 'uid': userHash }).then(data => {
+		let User = {
+			'uid': userHash
+		}
+		db.User.findOne({
+			'uid': userHash
+		}).then(data => {
 			console.log(data)
 			if (data === null) {
 				db.User.create(User)
@@ -45,26 +53,27 @@ module.exports = {
 	saveBattletag: (req, res) => {
 		console.log(req.body)
 		db.Battletag.findOne(req.body).then(data => {
-			console.log(data)
+			console.log(`Battletag exists? ${data}`)
 			if (data === null) {
 				db.Battletag.create(req.body)
 					.then(data => {
 						console.log(`BATTLETAG SAVED :${data}`)
 						return db.User.findOneAndUpdate({
-							uid: req.body.uid
-						}, {
-							$push: {
-								Accounts: data
-							}
-						}, {
-							new: true
-						})
-						.populate('Accounts').then(data=>{
-							console.log(`Accounts? ${data.Accounts}`)
-							res.json(data)
-						})
-				})
-			} 
+								uid: data.auth0Uid
+							}, {
+								$push: {
+									Battletags: data
+								}
+							}, {
+								new: true
+							})
+							.populate('Battletags')
+							.then(data => {
+								console.log(`datatatatat ${data}`);
+								res.json(data.Battletags)
+							})
+					})
+			}
 		})
 
 	},
@@ -83,10 +92,12 @@ module.exports = {
 		let User = req.body.user;
 		let BattletagId = req.body.account;
 		console.log(BattletagId)
-		db.Battletag.findById(BattletagId).populate('Seasons').then(data=> {
+		db.Battletag.findById(BattletagId).populate('Seasons').then(data => {
 			data.Seasons.forEach(season => {
 				console.log(season._id)
-				db.Game.find({'seasonOwnership': season._id}).remove().then(data=>{
+				db.Game.find({
+					'seasonOwnership': season._id
+				}).remove().then(data => {
 					res.json(data)
 				})
 			})
@@ -97,7 +108,7 @@ module.exports = {
 		// 	// 	console.log(data)
 		// 	// })
 		// })
-			
+
 	},
 	getActiveSeason: (req, res) => {
 		console.log(req.params)

@@ -20,7 +20,7 @@ class BattleTag extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let Battletag = this.state.Battletag;
-        let uidOBJ = { uid: this.props.profile.sub, Battletag: Battletag }
+        let uidOBJ = { auth0Uid: this.props.profile.sub, Battletag: Battletag }
         if (Battletag === "") {
             console.log('empty')
             this.setState({ Errors: 'Battletag Cannot be Empty Field!' })

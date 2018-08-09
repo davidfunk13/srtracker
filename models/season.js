@@ -3,9 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const SeasonSchema = new Schema({
-    accountOwnership:{
+    userId:{
         type: Schema.Types.ObjectId,
         ref: 'User',
+    },
+    BattletagId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Battletag'
     },
     BattletagOwnership: {
         type: String,

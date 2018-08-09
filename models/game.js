@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
-    accountOwnership:{
+    userId:{
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
@@ -11,9 +11,9 @@ const GameSchema = new Schema({
         type: String,
         required: true,
     },
-    seasonOwnership: {
-        type: String,
-        required: true,
+    seasonId: {
+        type: Schema.Types.ObjectId,
+        required: 'Season',
     },
     matchMap: {
         type: String,
