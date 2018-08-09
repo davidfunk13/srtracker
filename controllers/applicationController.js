@@ -42,24 +42,15 @@ module.exports = {
 				db.Battletag.create(req.body)
 					.then(data => {
 						console.log(`BATTLETAG SAVED :${data}`)
-						return db.User.findOneAndUpdate({
-								uid: data.auth0Uid
-							}, {
-								$push: {
-									Battletags: data
-								}
-							}, {
-								new: true
-							})
+						return db.User.findOneAndUpdate({uid: data.auth0Uid}, {$push: {Battletags: data}}, {new: true})
 							.populate('Battletags')
 							.then(data => {
-								console.log(`datatatatat ${data}`);
+								console.log(`User Updated and returned with populated Battletags ${data}`);
 								res.json(data.Battletags)
 							})
 					})
 			}
 		})
-
 	},
 	getActiveAccount: (req, res) => {
 		console.log(req.params)
@@ -94,25 +85,32 @@ module.exports = {
 		db.Season.create(req.body)
 			.then(data => {
 				console.log(`DATA BEFORE RETURN ${data}`)
-				console.log(data.BattletagId)
-				return db.Battletag.findOneAndUpdate({
-						Battletag: req.body.BattletagOwnership,
-						uid: req.body.uid
-					}, {
-						$push: {
-							Seasons: data
-						}
-					}, {
-						new: true
-					})
-					.populate('Seasons')
+				return db.Battletag.findOneAndUpdate({'auth0Uid': req.body.auth0Uid, 'Battletag': req.body.BattletagOwnership}, { $push: {Seasons: data} }, { new: true })
+				.populate('Seasons')
+				.then(data=>{
+					console.log(data)
+					res.json(data)
+				})
+				.catch(err=>{
+					throw err;
+				})
+					// 	Battletag: req.body.BattletagOwnership,
+					// 	uid: req.body.uid
+					// }, {
+					// 	$push: {
+					// 		Seasons: data
+					// 	}
+					// }, {
+					// 	new: true
+					// })
+					// .populate('Seasons')
 			})
-			.then(data => {
-				console.log(`SEASON SAVED :${data}`)
-				res.json(data)
-			}).catch(err => {
-				throw err;
-			})
+			// .then(data => {
+			// 	console.log(`SEASON SAVED :${data}`)
+			// 	res.json(data)
+			// }).catch(err => {
+			// 	throw err;
+			// })
 	},
 	saveGame: (req, res) => {
 		console.log(req.body);
@@ -120,7 +118,7 @@ module.exports = {
 			.then(data => {
 				console.log('data going in')
 				console.log(data)
-				return db.Season.findOneAndUpdate(data.seasonOwnership, {
+				return db.Season.findByIdAndUpdate(data.seasonOwnership, {
 						$push: {
 							Games: data
 						}

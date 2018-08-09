@@ -52,7 +52,7 @@ class Season extends Component {
         </div>
         <div className='section games'>
           <h1 className='u-margin-bottom-small'>Games</h1>
-          {this.props.activeAccount.seasonData.Games.length >= 1 ?
+          {this.props.activeAccount.seasonData.Games.length ?
             this.props.activeAccount.seasonData.Games.map(game => {
               return (
                 <div className='section games--cell' key={game._id}>
