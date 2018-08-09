@@ -80,13 +80,23 @@ module.exports = {
 			})
 	},
 	deleteBattletag: (req, res) => {
-		console.log(req.body)
 		let User = req.body.user;
-		let Battletag = req.body.account;
-		console.log(User, Battletag)
-		db.Battletag.findByIdAndRemove(req.params.account).then(data=>{
-			console.log(data)
+		let BattletagId = req.body.account;
+		console.log(BattletagId)
+		db.Battletag.findById(BattletagId).populate('Seasons').then(data=> {
+			data.Seasons.forEach(season => {
+				console.log(season._id)
+				db.Game.find({'seasonOwnership': season._id}).remove().then(data=>{
+					res.json(data)
+				})
+			})
 		})
+		// db.Season.find({'accountOwnership':Battletag}).then(data=>{
+		// 	console.log(data)
+		// 	// return db.Season.find().then(data=>{
+		// 	// 	console.log(data)
+		// 	// })
+		// })
 			
 	},
 	getActiveSeason: (req, res) => {
