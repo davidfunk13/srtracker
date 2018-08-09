@@ -3,17 +3,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
-    userId:{
+    userId:[{
         type: Schema.Types.ObjectId,
         ref: 'User',
+    }],
+    seasonId: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Season',
+    }],
+    seasonOwnership:{
+        type: String,
+        required: true,
     },
     Battletag: {
         type: String,
         required: true,
-    },
-    seasonId: {
-        type: Schema.Types.ObjectId,
-        required: 'Season',
     },
     matchMap: {
         type: String,

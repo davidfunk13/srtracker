@@ -2,36 +2,20 @@ const db = require('../models/index');
 
 module.exports = {
 	getAccounts: (req, res) => {
+		console.log('getAccounts')
+		console.log(req.params)
 		let uid = req.params.uid;
-		console.log(uid)
-		db.User.findOne({
-				'uid': uid
-			})
+		db.User.findOne({'uid': uid})
 			.populate('Battletags')
 			.then(data => {
-				console.log('====getaccounts=====')
-				console.log(data)
 				res.json(data.Battletags)
 			}).catch(err => {
 				throw err
 			})
-		// db.Battletag.find({
-		// 		'uid': uid
-		// 	})
-		// 	.populate('BelongsTo')
-		// 	.populate('Seasons')
-		// 	.then(data => {
-		// 		console.log(`FETCHED ALL USERS BATTLETAGS ${data}`)
-		// 		res.json(data)
-		// 	}).catch(err => {
-		// 		throw err;
-		// 	})
 	},
 	saveAccountNode: (req, res) => {
 		let userHash = req.body.uidOBJ;
-		let User = {
-			'uid': userHash
-		}
+		let User = {'uid': userHash}
 		db.User.findOne({
 			'uid': userHash
 		}).then(data => {
@@ -81,6 +65,7 @@ module.exports = {
 		console.log(req.params)
 		db.Battletag.findById(req.params.uid)
 			.populate('Seasons')
+			.populate('User')
 			.then(data => {
 				console.log(`ACTIVE ACCOUNT DATA ${data}`)
 				res.json(data)
@@ -92,23 +77,6 @@ module.exports = {
 		let User = req.body.user;
 		let BattletagId = req.body.account;
 		console.log(BattletagId)
-		db.Battletag.findById(BattletagId).populate('Seasons').then(data => {
-			data.Seasons.forEach(season => {
-				console.log(season._id)
-				db.Game.find({
-					'seasonOwnership': season._id
-				}).remove().then(data => {
-					res.json(data)
-				})
-			})
-		})
-		// db.Season.find({'accountOwnership':Battletag}).then(data=>{
-		// 	console.log(data)
-		// 	// return db.Season.find().then(data=>{
-		// 	// 	console.log(data)
-		// 	// })
-		// })
-
 	},
 	getActiveSeason: (req, res) => {
 		console.log(req.params)
@@ -121,21 +89,12 @@ module.exports = {
 				throw err;
 			})
 	},
-	// getGames: (req, res) => {
-	// 	console.log(req.params)
-	// 	db.Season.findById(req.params.uid)
-	// 		.then(data => {
-	// 			console.log(`ALL GAMES BELONGING TO SEASON ID ${data}`)
-	// 			res.json(data)
-	// 		}).catch(err => {
-	// 			throw err;
-	// 		})
-	// },
 	saveSeason: (req, res) => {
 		console.log(req.body);
 		db.Season.create(req.body)
 			.then(data => {
 				console.log(`DATA BEFORE RETURN ${data}`)
+				console.log(data.BattletagId)
 				return db.Battletag.findOneAndUpdate({
 						Battletag: req.body.BattletagOwnership,
 						uid: req.body.uid
@@ -161,7 +120,7 @@ module.exports = {
 			.then(data => {
 				console.log('data going in')
 				console.log(data)
-				return db.Season.findByIdAndUpdate(data.seasonOwnership, {
+				return db.Season.findOneAndUpdate(data.seasonOwnership, {
 						$push: {
 							Games: data
 						}

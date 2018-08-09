@@ -9,7 +9,11 @@ const SeasonSchema = new Schema({
     },
     BattletagId: {
         type: Schema.Types.ObjectId,
-        ref: 'Battletag'
+        ref: 'Battletag',
+    },
+    auth0Uid:{
+        type: String,
+        required: true,
     },
     BattletagOwnership: {
         type: String,
