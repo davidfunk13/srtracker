@@ -7,7 +7,6 @@ var BattletagSchema = new Schema({
         type: String,
         required: true,
     },
-
     Battletag: {
         type: String,
         required: true,

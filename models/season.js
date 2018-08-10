@@ -1,16 +1,8 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-
+//query games with this._id, and battletagownership.
 const SeasonSchema = new Schema({
-    userId:{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    BattletagId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Battletag',
-    },
     auth0Uid:{
         type: String,
         required: true,

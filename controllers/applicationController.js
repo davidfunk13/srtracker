@@ -73,9 +73,7 @@ module.exports = {
       });
   },
   deleteBattletag: (req, res) => {
-    let User = req.body.user;
-    let BattletagId = req.body.account;
-    console.log(BattletagId);
+    console.log(req.body)
   },
   getActiveSeason: (req, res) => {
     console.log(req.params);

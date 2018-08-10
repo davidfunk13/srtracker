@@ -67,18 +67,15 @@ class Season extends Component {
                   </div>
                 )
               }) :
-
               <div className='section games--none'>
                 <p>You havent logged any games yet! Click the button to add a new game to this season</p>
               </div>
             : <div className='section games--none'>
               <p>You havent logged any games yet! Click the button to add a new game to this season</p>
             </div>}
-         
-          
         </div>
         <div className='nav-link nav-link--go-back u-margin-top-small'>
-        <Link to='/account'>GO BACK</Link>
+          <Link to='/account'>GO BACK</Link>
         </div>
       </div>
     );

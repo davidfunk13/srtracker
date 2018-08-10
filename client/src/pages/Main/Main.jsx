@@ -71,8 +71,9 @@ class Main extends Component {
                         <Link to='/account' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.Battletag}</Link>
                         <div>
                           <Link to='/' onClick={() => this.props.accountActions.deleteBattletag({
-                            account: accounts._id,
-                            user: this.props.activeAccount.accountData.uid
+                            BattletagId: accounts._id,
+                            Battletag: accounts.Battletag,
+                            auth0Uid: this.props.activeAccount.accountData.auth0Uid,
                           })}>delete </Link>
                         </div>
                       </div>
