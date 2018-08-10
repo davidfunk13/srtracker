@@ -55,7 +55,9 @@ module.exports = {
               res.json(data.Battletags);
             });
         });
-      }
+      }74.
+
+      
     });
   },
   getActiveAccount: (req, res) => {
@@ -74,6 +76,18 @@ module.exports = {
   },
   deleteBattletag: (req, res) => {
     console.log(req.body)
+    let BattletagId = req.body.BattletagId;
+    let Battletag = req.body.Battletag;
+    let auth0Uid = req.body.auth0Uid;
+    db.Game.deleteMany({auth0Uid:auth0Uid, Battletag:Battletag}).then(gameDelete=>{
+      console.log(gameDelete)
+    })
+    db.Season.deleteMany({auth0Uid:auth0Uid, BattletagOwnership:Battletag}).then(seasonDelete=>{
+      console.log(seasonDelete)
+    })
+    db.Battletag.deleteOne({auth0Uid:auth0Uid, Battletag:Battletag}).then(deleteBattletag=>{
+      console.log(deleteBattletag)
+    })
   },
   getActiveSeason: (req, res) => {
     console.log(req.params);
