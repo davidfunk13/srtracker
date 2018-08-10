@@ -42,7 +42,7 @@ class Season extends Component {
         <div className='section active-season'>
           <h1>Active Season</h1>
           <div className='section active-season--cell'>
-            <p>Battletag: {this.props.activeAccount.seasonData.BattleTagOwnership}</p>
+            <p>Battletag: {this.props.activeAccount.seasonData.BattletagOwnership}</p>
             <p>Starting SR: {this.props.activeAccount.seasonData.StartingSR}</p>
             <p>Heros Focused: {this.props.activeAccount.seasonData.HerosFocused}</p>
           </div>
@@ -52,28 +52,30 @@ class Season extends Component {
         </div>
         <div className='section games'>
           <h1 className='u-margin-bottom-small'>Games</h1>
-          {this.props.activeAccount.seasonData.Games.length ?
-            this.props.activeAccount.seasonData.Games.map(game => {
-              return (
-                <div className='section games--cell' key={game._id}>
-                  <p>Map: {game.matchMap}</p>
-                  <p>|</p>
-                  <p>Hero: {game.heroSelected}</p>
-                  <p>|</p>
-                  <p>Victory: {game.didYouWin}</p>
-                  <p>|</p>
-                  <p>Post Match SR: {game.postMatchSR}</p>
-                </div>
-              )
-            }) :
-
-            <div className='section games--none'>
+          {this.props.activeAccount.seasonData.Games ?
+            this.props.activeAccount.seasonData.Games.length ?
+              this.props.activeAccount.seasonData.Games.map(game => {
+                return (
+                  <div className='section games--cell' key={game._id}>
+                    <p>Map: {game.matchMap}</p>
+                    <p>|</p>
+                    <p>Hero: {game.heroSelected}</p>
+                    <p>|</p>
+                    <p>Victory: {game.didYouWin}</p>
+                    <p>|</p>
+                    <p>Post Match SR: {game.postMatchSR}</p>
+                  </div>
+                )
+              }) :
+              <div className='section games--none'>
+                <p>You havent logged any games yet! Click the button to add a new game to this season</p>
+              </div>
+            : <div className='section games--none'>
               <p>You havent logged any games yet! Click the button to add a new game to this season</p>
-            </div>
-          }
+            </div>}
         </div>
         <div className='nav-link nav-link--go-back u-margin-top-small'>
-        <Link to='/account'>GO BACK</Link>
+          <Link to='/account'>GO BACK</Link>
         </div>
       </div>
     );

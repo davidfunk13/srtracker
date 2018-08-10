@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-
+// all games for a battletag queried by {auth0uid: '', Battletag: ''}
 const GameSchema = new Schema({
-    accountOwnership:{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    Battletag: {
+    auth0Uid: {
         type: String,
         required: true,
     },
-    seasonOwnership: {
+    seasonOwnership:{
+        type: String,
+        required: true,
+    },
+    Battletag: {
         type: String,
         required: true,
     },

@@ -12,7 +12,7 @@ class ConfirmSeason extends Component {
     }
     render() {
         let SeasonData = {
-            accountOwnership: this.props.activeAccount.accountData._id,
+            auth0Uid: this.props.profile.sub,
             BattletagOwnership: this.props.activeAccount.accountData.Battletag,
             StartingSR: this.props.addSeasonForm.StartingSR,
             HerosFocused: this.props.addSeasonForm.HerosFocused,
