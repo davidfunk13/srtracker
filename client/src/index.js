@@ -12,8 +12,8 @@ const { persistor, store } = createAppStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate persistor={persistor} loading='herro'>
-            <App {...persistor} />
+        <PersistGate persistor={persistor}>
+            <App persistor={persistor}/>
         </PersistGate>
     </Provider>,
     document.getElementById('root'));

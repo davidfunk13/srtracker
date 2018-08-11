@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from "redux";
-import * as modalActionCreators from '../../actions/modalActions';
-import { Link } from 'react-router-dom'
+// import AddSeasonForm from '../../components/AddSeasonForm/AddSeasonForm'
 
 const modalStyles = {
   content: {
@@ -42,18 +38,4 @@ class Account extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    showModal: state.showModal,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    modalActions: bindActionCreators(modalActionCreators, dispatch),
-  }
-}
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Account));
+export default Account;

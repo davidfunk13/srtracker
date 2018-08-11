@@ -24,6 +24,7 @@ const modalStyles = {
 
 class Main extends Component {
   componentDidMount() {
+    console.log(this.props)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");

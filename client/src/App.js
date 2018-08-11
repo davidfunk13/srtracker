@@ -42,7 +42,7 @@ class App extends Component {
               )} />
           <Route exact path="/season" render={props =>
             auth.isAuthenticated() ? (
-              <Season profile={auth.getProfile()} auth={auth} {...this.props} />
+              <Season profile={auth.getProfile()} auth={auth} {...props} />
             ) : (
                 <NotFound />
               )} />

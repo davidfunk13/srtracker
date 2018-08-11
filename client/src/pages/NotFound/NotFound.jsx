@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
 export default class NotFound extends Component {
+  componentDidMount(){
+    console.log(this.props)
+  }
   render() {
     return (
       <div className="section container container--notfound">
