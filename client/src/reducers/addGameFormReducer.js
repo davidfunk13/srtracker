@@ -42,6 +42,9 @@ export default function addGameFormReducer(state = initialState.addGameForm, act
             ...state,
             gameFormStep: 1,
         }
+        case actionTypes.RESET_GAME_FORM:{
+            return initialState
+        }
         default:
             {
                 return state;

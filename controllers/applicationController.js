@@ -40,7 +40,8 @@ module.exports = {
     db.Battletag.findOne(req.body).then(data => {
       console.log(`Battletag exists? ${data}`);
       if (data === null) {
-        db.Battletag.create(req.body).then(data => {
+        db.Battletag.create(req.body)
+        .then(data => {
           console.log(`BATTLETAG SAVED :${data}`);
           return db.User.findOneAndUpdate(
             { uid: data.auth0Uid },
@@ -79,15 +80,7 @@ module.exports = {
     let BattletagId = req.body.BattletagId;
     let Battletag = req.body.Battletag;
     let auth0Uid = req.body.auth0Uid;
-    db.Game.deleteMany({auth0Uid:auth0Uid, Battletag:Battletag}).then(gameDelete=>{
-      console.log(gameDelete)
-    })
-    db.Season.deleteMany({auth0Uid:auth0Uid, BattletagOwnership:Battletag}).then(seasonDelete=>{
-      console.log(seasonDelete)
-    })
-    db.Battletag.deleteOne({auth0Uid:auth0Uid, Battletag:Battletag}).then(deleteBattletag=>{
-      console.log(deleteBattletag)
-    })
+    // db.Game.find({auth0Uid:auth0Uid, Battletag:Battletag}).then(data=> console.log(data))
   },
   getActiveSeason: (req, res) => {
     console.log(req.params);

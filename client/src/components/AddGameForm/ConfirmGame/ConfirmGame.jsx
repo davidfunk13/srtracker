@@ -9,6 +9,7 @@ class ConfirmGame extends Component {
         console.log(GameData)
         this.props.activeAccountActions.saveGame(GameData)
         this.props.modalActions.closeModal()
+        this.props.addGameFormActions.resetGameForm()
     }
     render() {
         let GameData = {

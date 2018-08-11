@@ -1,4 +1,3 @@
-
 import actionTypes from './actionTypes';
 
 
@@ -30,5 +29,10 @@ export const setPostMatchSR = postMatchSR => {
 export const nextStepGameForm = () => {
     return {
         type: actionTypes.NEXT_STEP_GAME_FORM,
+    }
+}
+export const resetGameForm = () => {
+    return {
+        type: actionTypes.RESET_GAME_FORM,
     }
 }

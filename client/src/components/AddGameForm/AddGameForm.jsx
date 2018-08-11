@@ -9,6 +9,7 @@ class AddGameForm extends Component {
 
     componentDidMount(){
         console.log(this.props.addGameForm.gameFormStep)
+        console.log(this.props)
     }
 
     render() {

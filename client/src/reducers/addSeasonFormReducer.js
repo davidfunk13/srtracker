@@ -40,10 +40,6 @@ export default function addSeasonFormReducer(state = initialState.addSeasonForm,
             }
         case actionTypes.RESET_SEASON_FORM:
         return initialState.addSeasonForm;
-        // case actionTypes.CLOSE_MODAL:
-        //     return {
-        //         initialState
-        //     }
         default:
             {
                 return state;

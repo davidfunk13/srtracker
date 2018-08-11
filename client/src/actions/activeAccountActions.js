@@ -128,3 +128,8 @@ export const deleteAccountFailure = deleteAccountError => {
         error: deleteAccountError,
     }
 }
+export const purgeActiveAccount = () =>{
+    return{
+        type: actionTypes.ACTIVE_ACCOUNT_PURGE,
+    }
+}

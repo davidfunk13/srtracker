@@ -67,6 +67,8 @@ export default function activeAccountReducer(state = initialState, action) {
                 ...state,
                 Err: action.data,
             }
+            case actionTypes.ACTIVE_ACCOUNT_PURGE:
+            return initialState
         default:
             {
                 return state;
