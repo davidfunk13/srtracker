@@ -3,16 +3,11 @@ const db = require("../models/index");
 module.exports = {
   getAccounts: (req, res) => {
     console.log("getAccounts");
-    console.log(req.params);
     let uid = req.params.uid;
-    db.User.findOne({ uid: uid })
-      .populate("Battletags")
-      .then(data => {
-        res.json(data.Battletags);
-      })
-      .catch(err => {
-        throw err;
-      });
+    db.Battletag.find({auth0Uid: uid}).then(data=>{
+      console.log(data)
+      res.json(data)
+    })
   },
   saveAccountNode: (req, res) => {
     let userHash = req.body.uidOBJ;
@@ -36,7 +31,6 @@ module.exports = {
     });
   },
   saveBattletag: (req, res) => {
-    console.log(req.body);
     db.Battletag.findOne(req.body).then(data => {
       console.log(`Battletag exists? ${data}`);
       if (data === null) {
