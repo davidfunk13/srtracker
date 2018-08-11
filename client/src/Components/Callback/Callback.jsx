@@ -9,7 +9,7 @@ export default class Callback extends Component {
 
     render() {
         return(
-            <p className="loading">Loading.....</p>
+            <p className='section'>Loading.....</p>
         )
     }
 }

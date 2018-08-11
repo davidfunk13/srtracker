@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
-import BattleTag from "../../components/AddAccountForm/BattleTag/BattleTag";
+// import BattleTag from "../../components/AddAccountForm/BattleTag/BattleTag";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from "redux";
-import * as activeAccountActionCreators from '../../actions/activeAccountActions';
 import * as modalActionCreators from "../../actions/modalActions";
-import * as accountActionCreators from '../../actions/accountActions';
-import * as currentUserActionCreators from '../../actions/userActions';
 import { Link } from 'react-router-dom';
 
 
@@ -27,10 +24,7 @@ const modalStyles = {
 
 class Main extends Component {
   componentDidMount() {
-    // purgeStoredState()
-    this.props.currentUserActions.createUserNode(this.props.profile.sub)
-    this.props.accountActions.getAccounts(this.props.profile.sub);
-    console.log(this.props);
+    console.log(this.props)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
@@ -43,7 +37,7 @@ class Main extends Component {
     return (
       <div className="container container--main">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
-          <BattleTag {...this.props} />
+          {/* <BattleTag {...this.props} /> */}
           <div className='nav-link nav-link--close-modal__battletag'>
             <Link to='/' onClick={() => this.props.modalActions.closeModal()}>Close modal</Link>
           </div>
@@ -55,33 +49,7 @@ class Main extends Component {
           </div>
         </div>
         <div className='section battletags'>
-          {!Array.isArray(this.props.accounts) ||
-            !this.props.accounts.length ? (
-              <div className='section battletags battletags__no'>
-                <p>We have no accounts saved for you.</p>
-                <p>Please see above to start tracking a new one!</p>
-              </div>
-            ) : (
-              <div className='battletags battletags__yes'>
-                <h2 className='u-margin-bottom-small'>Your BattleTags:</h2>
-                <div className='battletags battletags__yes battletags__yes--flex-container'>
-                  {this.props.accounts.map(accounts => {
-                    return (
-                      <div className='nav-link nav-link--battletag' key={accounts._id}>
-                        <Link to='/account' onClick={() => this.props.activeAccountActions.selectAccount(accounts._id)}>{accounts.Battletag}</Link>
-                        <div>
-                          <Link to='/' onClick={() => this.props.accountActions.deleteBattletag({
-                            BattletagId: accounts._id,
-                            Battletag: accounts.Battletag,
-                            auth0Uid: this.props.activeAccount.accountData.auth0Uid,
-                          })}>delete </Link>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
+          <div className='section'></div>
         </div>
       </div>
     );
@@ -91,18 +59,12 @@ class Main extends Component {
 function mapStateToProps(state) {
   return {
     showModal: state.showModal,
-    accounts: state.accounts,
-    activeAccount: state.activeAccount,
-    currentUser: state.currentUser
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
-    accountActions: bindActionCreators(accountActionCreators, dispatch),
-    activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-    currentUserActions: bindActionCreators(currentUserActionCreators, dispatch)
   };
 }
 

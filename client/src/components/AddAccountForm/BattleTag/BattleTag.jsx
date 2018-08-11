@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as modalActionCreators from '../../../actions/modalActions';
-import * as battletagActionCreators from '../../../actions/accountActions';
 class BattleTag extends Component {
     state = {
         Battletag: "",
@@ -20,17 +19,17 @@ class BattleTag extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         let Battletag = this.state.Battletag;
-        let uidOBJ = { auth0Uid: this.props.profile.sub, Battletag: Battletag }
-        if (Battletag === "") {
-            console.log('empty')
-            this.setState({ Errors: 'Battletag Cannot be Empty Field!' })
-            return this.state.Errors
-        }
-        if (Battletag !== "") {
-            this.setState({ Errors: [] })
-            this.props.battletagActions.createBattletag(uidOBJ)
-            this.props.modalActions.closeModal()
-        }
+
+        // if (Battletag === "") {
+        //     console.log('empty')
+        //     this.setState({ Errors: 'Battletag Cannot be Empty Field!' })
+        //     return this.state.Errors
+        // }
+        // if (Battletag !== "") {
+        //     this.setState({ Errors: [] })
+        //     this.props.battletagActions.createBattletag(uidOBJ)
+        //     this.props.modalActions.closeModal()
+        // }
     }
 
 
@@ -59,14 +58,12 @@ class BattleTag extends Component {
 function mapStateToProps(state) {
     return {
         showModal: state.showModal,
-        accounts: state.accounts,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         modalActions: bindActionCreators(modalActionCreators, dispatch),
-        battletagActions: bindActionCreators(battletagActionCreators, dispatch),
     }
 }
 

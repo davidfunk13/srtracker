@@ -1,16 +1,14 @@
 const applicationController = require('./controllers/applicationController');
 
 const routes = function(app){
-	app.post('/api/createuser/', applicationController.saveAccountNode),
-	app.post('/api/createbattletag', applicationController.saveBattletag)
-	app.post('/api/saveseason/', applicationController.saveSeason),
-	app.post('/api/savegame/', applicationController.saveGame),
-	app.get('/api/getaccounts/:uid' , applicationController.getAccounts),
-	app.get('/api/activeaccount/:uid' , applicationController.getActiveAccount),
-	app.get('/api/activeseason/:uid' , applicationController.getActiveSeason),
-	app.post('/api/deletebattletag/' , applicationController.deleteBattletag)
-
-	// app.get('/api/game/:uid' , applicationController.getGames)
+	// //GET ROUTE retrieve and populate user by auth0UID
+	// app.get('/api/user/', applicationController.getUserByAuth0),
+	// //GET ROUTE retrieve and populate battletag
+	// app.get('/api/battletag/', applicationController.getBattletag),
+	//POST ROUTE create and store user and auth0UID
+	app.post('/api/createuser/', applicationController.createUser),
+	//POST ROUTE create and store Battletag.
+	app.post('/api/createbattletag/', applicationController.createBattletag)
 }
 
 module.exports = routes

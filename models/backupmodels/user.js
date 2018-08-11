@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    auth0Uid:{
+    uid:{
         type: String,
         required: true,
     },

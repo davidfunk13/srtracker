@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from "redux";
-import * as modalActionCreators from "../../actions/modalActions";
-import * as accountActionCreators from '../../actions/accountActions';
-import * as userActionCreators from '../../actions/userActions';
-import * as activeAccountActionCreators from '../../actions/activeAccountActions';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
@@ -19,9 +13,6 @@ class Header extends Component {
   }
 
   logout(){
-    this.props.currentUserActions.currentUserPurge()
-    this.props.accountActions.purgeAccounts()
-    this.props.activeAccountActions.purgeActiveAccount()
     this.props.auth.logout()
   }
 
@@ -38,25 +29,9 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    showModal: state.showModal,
-    accounts: state.accounts,
-    currentUser: state.currentUser,
-    activeAccount: state.activeAccount,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    modalActions: bindActionCreators(modalActionCreators, dispatch),
-    accountActions: bindActionCreators(accountActionCreators, dispatch),
-    activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-    currentUserActions: bindActionCreators(userActionCreators, dispatch)
-  };
-}
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header));
+export default Header
+// withRouter(connect(
+  // mapStateToProps,
+  // mapDispatchToProps
+// )(Header)
+// );
