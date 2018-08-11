@@ -14,8 +14,9 @@ class Header extends Component {
 
   logout(){
     this.props.auth.logout()
+    this.props.currentUserActions.purgeCurrentUser()
   }
-
+  
   render() {
     return (
       <header className="header">

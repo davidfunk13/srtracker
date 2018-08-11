@@ -11,6 +11,7 @@ import Season from "./pages/Season/Season";
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux";
 import * as modalActionCreators from './actions/modalActions';
+import * as currentUserActionCreators from './actions/currentUserActions';
 const auth = new Auth();
 
 class App extends Component {
@@ -54,12 +55,14 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     showModal: state.showModal,
+    currentUser: state.currentUser,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
+    currentUserActions: bindActionCreators(currentUserActionCreators, dispatch),
   };
 }
 // export default 

@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 // import BattleTag from "../../components/AddAccountForm/BattleTag/BattleTag";
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from "redux";
-import * as modalActionCreators from "../../actions/modalActions";
+
 import { Link } from 'react-router-dom';
 
 
@@ -25,6 +22,7 @@ const modalStyles = {
 class Main extends Component {
   componentDidMount() {
     console.log(this.props)
+    this.props.currentUserActions.createUser(this.props.profile.sub)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
@@ -49,26 +47,18 @@ class Main extends Component {
           </div>
         </div>
         <div className='section battletags'>
-          <div className='section'></div>
+          {this.props.currentUser.Battletags ?
+            <div className='section'>
+              {this.props.currentUser.Battletags.map(Battletag => {
+               return <p className=''>{Battletag.Battletag}</p>
+              })}
+            </div>
+            :
+            <div className='section'>no</div>}
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    showModal: state.showModal,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    modalActions: bindActionCreators(modalActionCreators, dispatch),
-  };
-}
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main));
+export default Main;
