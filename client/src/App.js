@@ -17,47 +17,27 @@ class App extends Component {
       <Router history={history}>
         <div>
           <Header profile={auth.getProfile()} auth={auth} />
-          <Route
-            exact
-            path="/"
-            render={props =>
-              auth.isAuthenticated() ? (
-                <Main profile={auth.getProfile()} auth={auth} {...props} />
-              ) : (
+          <Route exact path="/" render={props =>
+            auth.isAuthenticated() ? (
+              <Main profile={auth.getProfile()} auth={auth} {...props} />
+            ) : (
                 <NotFound />
-              )
-            }
-          />
-          <Route
-            path="/callback"
-            render={props => {
-              return (
-                <Callback profile={auth.getProfile()} auth={auth} {...props} />
-              );
-            }}
-          />
-          <Route
-            exact
-            path="/account"
-            render={props =>
-              auth.isAuthenticated() ? (
-                <Account profile={auth.getProfile()} auth={auth} {...props} />
-              ) : (
+              )} />
+          <Route path="/callback" render={props => {
+            return (<Callback profile={auth.getProfile()} auth={auth} {...props} />);
+          }} />
+          <Route exact path="/account" render={props =>
+            auth.isAuthenticated() ? (
+              <Account profile={auth.getProfile()} auth={auth} {...props} />
+            ) : (
                 <NotFound />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/season"
-            render={props =>
-              auth.isAuthenticated() ? (
-                <Season profile={auth.getProfile()} auth={auth} {...props} />
-              ) : (
-                <NotFound />
-              )
-            }
-          />
+              )} />
+          <Route exact path="/season" render={props =>
+            auth.isAuthenticated() ? (
+              <Season profile={auth.getProfile()} auth={auth} {...props} />
+            ) : (
+              <NotFound/>
+              )}/>
         </div>
       </Router>
     );

@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
-
+const userSchema = require('./user')
 var Schema = mongoose.Schema;
 
 var BattletagSchema = new Schema({
-    User:{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
     auth0Uid:{
         type: String,
         required: true,
