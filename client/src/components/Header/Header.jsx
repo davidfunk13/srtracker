@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from "redux";
-import * as modalActionCreators from "../../actions/modalActions";
-import { withRouter } from 'react-router-dom';
+// import { connect } from 'react-redux'
+// import { bindActionCreators } from "redux";
+
+// import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
@@ -32,19 +32,9 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    showModal: state.showModal,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    modalActions: bindActionCreators(modalActionCreators, dispatch),
-  };
-}
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header));
+export default Header
+// withRouter(connect(
+  // mapStateToProps,
+  // mapDispatchToProps
+// )(Header)
+// );

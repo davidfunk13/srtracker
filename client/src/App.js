@@ -8,39 +8,60 @@ import Header from "./components/Header/Header";
 import NotFound from "./pages/NotFound/NotFound";
 import Account from "./pages/Account/Account";
 import Season from "./pages/Season/Season";
-
+import { connect } from 'react-redux'
+import { bindActionCreators } from "redux";
+import * as modalActionCreators from './actions/modalActions';
 const auth = new Auth();
 
 class App extends Component {
+  componentDidMount() {
+    console.log(this.props)
+  }
+  componentDidUpdate(){
+    console.log(this.props)
+  }
   render() {
     return (
       <Router history={history}>
         <div>
-          <Header profile={auth.getProfile()} auth={auth} />
+          <Header profile={auth.getProfile()} auth={auth} {...this.props} />
           <Route exact path="/" render={props =>
             auth.isAuthenticated() ? (
-              <Main profile={auth.getProfile()} auth={auth} {...props} />
+              <Main profile={auth.getProfile()} auth={auth} {...this.props} />
             ) : (
                 <NotFound />
               )} />
           <Route path="/callback" render={props => {
-            return (<Callback profile={auth.getProfile()} auth={auth} {...props} />);
+            return (<Callback profile={auth.getProfile()} auth={auth} {...this.props} />);
           }} />
           <Route exact path="/account" render={props =>
             auth.isAuthenticated() ? (
-              <Account profile={auth.getProfile()} auth={auth} {...props} />
+              <Account profile={auth.getProfile()} auth={auth} {...this.props} />
             ) : (
                 <NotFound />
               )} />
           <Route exact path="/season" render={props =>
             auth.isAuthenticated() ? (
-              <Season profile={auth.getProfile()} auth={auth} {...props} />
+              <Season profile={auth.getProfile()} auth={auth} {...this.props} />
             ) : (
-              <NotFound/>
-              )}/>
+                <NotFound />
+              )} />
         </div>
       </Router>
     );
   }
 }
-export default App;
+function mapStateToProps(state) {
+  return {
+    showModal: state.showModal,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    modalActions: bindActionCreators(modalActionCreators, dispatch),
+  };
+}
+// export default 
+// withRouter(
+  export default connect(mapStateToProps, mapDispatchToProps)(App);
