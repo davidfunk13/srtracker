@@ -8,19 +8,14 @@ const userPost = {
             if (exists === null) {
                 console.log('User Does Not Exist. User Being Created...')
                 db.User.create(postUser).then(user => {
-                    res.json({
-                        message: 'User has been created',
-                        payload: user
-                })
+                    console.log({ message: 'User has been created', payload: user })
+                    res.json({ message: 'User has been created', payload: user })
                 }).catch(err => {
                     res.json(err)
                 })
             } else {
-                res.json(exists)
-                res.json({
-                    message: 'User exists. Here is the user object',
-                    payload: exists
-            })
+                console.log({ message: 'User exists. Here is the user object', payload: exists })
+                res.json({ message: 'User exists. Here is the user object', payload: exists })
             }
         })
     },
