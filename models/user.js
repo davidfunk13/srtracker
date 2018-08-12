@@ -3,27 +3,15 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    auth0UID:
-    {
+    auth0UID: {
         type: String,
         required: true,
     },
-    Battletags:
-        [{
-            type: Schema.Types.ObjectId,
-            ref: 'Battletag',
-        }],
-    AllSeasons:
-     [{
+    Battletags: [{
         type: Schema.Types.ObjectId,
-        ref: 'Season',
+        ref: 'Battletag',
     }],
-    AllGames: 
-    [{
-        type: Schema.Types.ObjectId,
-        ref: 'Game'
-    }]
-}, { timestamps: Date });
+}, {timestamps: Date});
 
 const User = mongoose.model('User', UserSchema);
 

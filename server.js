@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/overwatch_sr_tracker").then(() => {
-  console.log('connected');
+  console.log('Connected to database...');
 })
 
 

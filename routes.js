@@ -1,14 +1,17 @@
-const applicationController = require('./controllers/applicationController');
+const Controller = require('./controllers/index');
 
-const routes = function(app){
-	// //GET ROUTE retrieve and populate user by auth0UID
-	// app.get('/api/user/', applicationController.getUserByAuth0),
-	// //GET ROUTE retrieve and populate battletag
-	// app.get('/api/battletag/', applicationController.getBattletag),
+let User = Controller.User;
+let Battletag = Controller.Battletag;
+
+const routes = function (app) {
 	//POST ROUTE create and store user and auth0UID
-	app.post('/api/createuser/', applicationController.createUser),
+	app.post('/api/createuser/', User.createUser),
 	//POST ROUTE create and store Battletag.
-	app.post('/api/createbattletag/', applicationController.createBattletag)
+	app.post('/api/createbattletag/', Battletag.createBattletag),
+	//GET ROUTE get all users for dev purposes
+	app.get('/api/allusers/', User.getAllUsers),
+	//GET ROUTE get one user
+	app.get('/api/user/', User.getOneUser)
 }
 
 module.exports = routes

@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //query games with this._id, and battletagownership.
 const SeasonSchema = new Schema({
-    auth0Uid:{
+    auth0UID: {
         type: String,
-        required: true,
+        required: true
     },
-    BattletagOwnership: {
+    Battletag: {
         type: String,
-        required: true,
+        required: true
     },
     StartingSR:{
         type: Number,
