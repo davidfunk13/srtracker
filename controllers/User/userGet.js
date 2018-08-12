@@ -20,8 +20,8 @@ const userGet ={
     })
   },
   getOneUserbyAuth0: (req, res) => {
-    console.log(req.query._id)
-    db.User.findOne(req.query.auth0UID).populate('Battletags').then(oneUser => {
+    console.log(req.query)
+    db.User.findOne(req.query).populate('Battletags').then(oneUser => {
       res.json({
         message: 'User has been retrieved by Auth0UID',
         payload: oneUser
