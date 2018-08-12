@@ -6,6 +6,7 @@ createBattletag: (req, res) => {
     console.log(postBattletag)
     db.Battletag.create(postBattletag).then(battletag => {
       console.log(`New Battletag created: ${battletag}`)
+      res.json(battletag)
     })
   },
 }
