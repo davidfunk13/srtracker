@@ -16,18 +16,24 @@ const routes = function (app) {
 	app.get('/api/user/auth0/', userGet.getOneUserbyAuth0),
 	//USER DELETE
 	app.get('/api/user/remove/all/', userDelete.deleteAllUsers),
-	app.get('/api/user/remove/id/', userDelete.deleteOneUserByID),
+	app.get('/api/user/remove/id/', userDelete.deleteOneUserById),
 	app.get('/api/user/remove/auth0/', userDelete.deleteOneUserByAuth0),
 	//BATTLETAG POST
 	app.post('/api/battletag/create/', battletagPost.createBattletag),
 	//BATTLETAG GET
-	app.get('/api/battletag/all/', battletagGet.getAllBattletags),
+	//one
 	app.get('/api/battletag/id/', battletagGet.getOneBattletagById),
-	app.get('/api/battletag/auth0/', battletagGet.getOneBattletagByAuth0),
+	//multi
+	app.get('/api/battletags/all/', battletagGet.getAllBattletags),
+	app.get('/api/battletags/id/', battletagGet.getUserBattletagsByUserId),
+	app.get('/api/battletags/auth0/', battletagGet.getUserBattletagsByAuth0),
 	//BATTLETAG DELETE
+	//one
+	app.get('/api/battletags/remove/id/', battletagDelete.deleteOneBattletagById),
+	//multi
 	app.get('/api/battletag/remove/all', battletagDelete.deleteAllBattletags),
-	app.get('/api/battletag/remove/auth0/', battletagDelete.deleteOneBattletagByAuth0),
-	app.get('/api/battletag/remove/id/', battletagDelete.deleteOneBattletagById)
+	app.get('/api/battletags/remove/auth0/', battletagDelete.deleteUserBattletagsByAuth0),
+	app.get('/api/battletags/remove/id/', battletagDelete.deleteUserBattletagsByUserId)
 }
 
 module.exports = routes
