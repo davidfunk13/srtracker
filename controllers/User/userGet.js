@@ -2,7 +2,7 @@ const db = require("../../models/index");
 
 const userGet ={
   getAllUsers: (req, res) => {
-    db.User.find({}).populate('Battlettags').then(allUsers => {
+    db.User.find({}).populate('Battletags').then(allUsers => {
       console.log({message: 'All Users retrieved', payload: allUsers})
       res.json({message: 'All Users retrieved', payload: allUsers})
     })

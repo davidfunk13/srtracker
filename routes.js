@@ -31,9 +31,8 @@ const routes = function (app) {
 	//one
 	app.get('/api/battletags/remove/id/', battletagDelete.deleteOneBattletagById),
 	//multi
-	app.get('/api/battletag/remove/all', battletagDelete.deleteAllBattletags),
-	app.get('/api/battletags/remove/auth0/', battletagDelete.deleteUserBattletagsByAuth0),
-	app.get('/api/battletags/remove/id/', battletagDelete.deleteUserBattletagsByUserId)
+	app.get('/api/battletags/remove/all', battletagDelete.deleteAllBattletags),
+	app.get('/api/battletags/remove/auth0/', battletagDelete.deleteUserBattletagsByAuth0)
 }
 
 module.exports = routes

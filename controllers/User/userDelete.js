@@ -1,7 +1,7 @@
 const db = require("../../models/index");
 
 const userDelete = {
-    deleteOneUserByID: (req, res) => {
+    deleteOneUserById: (req, res) => {
         console.log(req.query)
         db.User.findByIdAndRemove(req.query._id).then(oneUser => {
             console.log({message: 'User has been deleted by _id', payload: oneUser})
