@@ -11,6 +11,10 @@ let battletagPost = Controller.Battletag.post;
 let seasonGet = Controller.Season.get;
 let seasonDelete = Controller.Season.delete;
 let seasonPost = Controller.Season.post;
+//Game
+let gameGet = Controller.Game.get;
+let gameDelete = Controller.Game.delete;
+let gamePost = Controller.Game.post;
 
 const routes = function (app) {
 
@@ -33,14 +37,14 @@ const routes = function (app) {
 	app.get('/api/battletag/id/', battletagGet.getOneBattletagById),
 	//multi
 	app.get('/api/battletags/all/', battletagGet.getAllBattletags),
-	app.get('/api/user/battletags/id/', battletagGet.getUserBattletagsByUserId),
+	app.get('/api/user/battletags/id/', battletagGet.getBattletagsByUserId),
 
 	//BATTLETAG DELETE
 	//one
 	app.get('/api/battletags/remove/id/', battletagDelete.deleteOneBattletagById),
 	//multi
 	app.get('/api/battletags/remove/all', battletagDelete.deleteAllBattletags),
-	app.get('/api/battletags/remove/id/', battletagDelete.deleteUserBattletagsByUserId),
+	app.get('/api/battletags/remove/id/', battletagDelete.deleteBattletagsByUserId),
 
 	// //SEASON POST
 	app.post('/api/user/battletag/season/create/', seasonPost.createSeason),
@@ -50,30 +54,30 @@ const routes = function (app) {
 	app.get('/api/user/battletag/season/id/', seasonGet.getOneSeasonById),
 
 	//multi
-	app.get('/api/seasons/', seasonsGet.getAllSeasons),
-	app.get('/api/user/battletag/seasons/id/', seasonGet.getBattletagsSeasonsById),
+	app.get('/api/seasons/', seasonGet.getAllSeasons),
+	app.get('/api/user/battletag/seasons/id/', seasonGet.getSeasonsByBattletagId),
 
 	// //SEASON DELETE
 	// //one
 	app.get('/api/user/battletag/season/remove/id/', seasonDelete.deleteOneSeasonById),
 	// //multi
 	app.get('/api/seasons/remove/all/', seasonDelete.deleteAllSeasons),
-	app.get('/api/user/battletag/seasons/remove/all/', seasonDelete.deleteAllSeasonsForBattletag)
+	app.get('/api/user/battletag/seasons/remove/all/', seasonDelete.deleteSeasonsByBattletagId),
 	// //GAME
 	
-	// //GAME POST
-	// app.post('/api/user/battletag/season/game/create/', gamePost.createGame),
+	// // //GAME POST
+	app.post('/api/user/battletag/season/game/create/', gamePost.createGame),
 
-	// //GAME GET//
-	// //one
-	// app.get('/api/user/battletag/season/game/id/', gameGet.getOneGameById),
-	// //multi
-	// app.get('/api/user/battletag/season/games/seasonid/', gameGet.getGamesForSeasonBySeasonId),
-	// //GAME DELETE
-	// app.get('/api/games/remove/all/', gameDelete.removeAllGames),
+	// // //GAME GET//
+	// // //one
+	app.get('/api/user/battletag/season/game/id/', gameGet.getOneGameById),
+	// // //multi
+	app.get('/api/user/battletag/season/games/seasonid/', gameGet.getGamesBySeasonId),
+	// // //GAME DELETE
+	app.get('/api/games/remove/all/', gameDelete.deleteAllGames),
 
-	// app.get('/api/user/battletag/season/game/remove/id', gameDelete.removeOneGameById),
-	// app.get('/api/user/battletag/season/games/remove/seaosnid/'. gameDelete.removeGamesBySeasonId)
+	app.get('/api/user/battletag/season/game/remove/id', gameDelete.deleteOneGameById),
+	app.get('/api/user/battletag/season/games/remove/seasonid/', gameDelete.deleteGamesbySeasonId)
 }
 
 module.exports = routes

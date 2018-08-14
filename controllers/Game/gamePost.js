@@ -1,10 +1,10 @@
 const db = require("../../models/index");
 
 const gamePost = {
-  createBattletag: (req, res) => {
+  createGame: (req, res) => {
     let postBattletag = req.body
     console.log(postBattletag)
-    db.Battletag.findOne(postBattletag).populate('Seasons').then(exists => {
+    db.Season.findOne(postBattletag).populate('Seasons').then(exists => {
       if (exists === null) {
         console.log('Battletag Does Not Exist. Battletag Being Created...')
         db.Battletag.create(postBattletag).then(battletag => {
