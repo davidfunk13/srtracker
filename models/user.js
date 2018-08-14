@@ -3,10 +3,6 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    auth0UID: {
-        type: String,
-        required: true,
-    },
     Battletags: [{
         type: Schema.Types.ObjectId,
         ref: 'Battletag',

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BattletagSchema = new Schema({
-    auth0UID:{
+    UserId:{
         type: String,
         required: true
     },
