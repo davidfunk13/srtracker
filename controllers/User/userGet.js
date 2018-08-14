@@ -14,12 +14,5 @@ const userGet ={
       res.json({message: 'User retrieved by _id', payload: oneUser})
     })
   },
-  getOneUserbyAuth0: (req, res) => {
-    console.log(req.query)
-    db.User.findOne(req.query).populate('Battletags').then(oneUser => {
-      console.log({ message: 'User has been retrieved by Auth0UID', payload: oneUser })
-      res.json({message: 'User has been retrieved by Auth0UID', payload: oneUser})
-    })
-  },
 }
   module.exports = userGet;
