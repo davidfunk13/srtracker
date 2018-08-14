@@ -8,6 +8,10 @@ const GameSchema = new Schema({
         type: String,
         required: true
     },
+    BattletagId: {
+        type: String,
+        required: true,
+    },
     Battletag:
     {
         type: String, required: true
