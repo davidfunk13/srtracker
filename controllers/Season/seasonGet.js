@@ -19,9 +19,9 @@ const seasonGet = {
     },
     getSeasonsByBattletagId: (req, res) => {
         console.log(req.query._id)
-        db.User.findById(req.query._id).populate('Battletags').then(userBattletagsById =>{
-            console.log({message: 'Fetched ALL OF THIS USERS Battletag by USER ID', payload: userBattletagsById})
-            res.json({message: 'Fetched ALL OF THIS USERS Battletag by USER ID', payload: userBattletagsById})
+        db.Battletag.findById(req.query._id).populate('Seasons').then(userSeasonsByBattletagId =>{
+            console.log({message: 'Fetched ALL OF THIS USERS Seasons by BATTLETAG ID', payload: userSeasonsByBattletagId})
+            res.json({message: 'Fetched ALL OF THIS USERS Seasons by BATTLETAG ID', payload: userSeasonsByBattletagId})
         })
     }
 }
