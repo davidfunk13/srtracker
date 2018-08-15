@@ -8,8 +8,9 @@ const battletagPost = {
       if (exists === null) {
         console.log('Battletag Does Not Exist. Battletag Being Created...')
         db.Battletag.create(postBattletag).then(battletag => {
-          return db.User.findOneAndUpdate(
-            { auth0UID: battletag.auth0UID },
+          console.log(battletag)
+          return db.User.findByIdAndUpdate(
+            battletag.UserId,
             { $push: { Battletags: battletag } },
             { new: true })
             .populate('Battletags')
@@ -17,7 +18,6 @@ const battletagPost = {
               console.log({ message: 'New Battletag created and pushed to its corresponding user', payload: updatedUser })
               res.json({ message: 'New Battletag created and pushed to its corresponding user', payload: updatedUser })
             })
-
         })
       } else {
         console.log({ message: 'Battletag belonging to this user exists. Here is the Battletag object', payload: exists })

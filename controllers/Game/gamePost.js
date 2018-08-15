@@ -6,7 +6,7 @@ const gamePost = {
     console.log(postGame)
     db.Game.create(postGame).then(game => {
       return db.Season.findByIdAndUpdate(
-        req.body.seasonId,
+        req.body.SeasonId,
         { $push: { Games: game } },
         { new: true })
         .populate('Games')
