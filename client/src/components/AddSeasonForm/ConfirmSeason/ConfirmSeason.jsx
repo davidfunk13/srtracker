@@ -6,8 +6,8 @@ class ConfirmSeason extends Component {
     }
     handleSubmit = (SeasonData) => {
         console.log(SeasonData)
-        this.props.activeAccountActions.saveSeason(SeasonData)
-        this.props.addSeasonFormActions.resetSeasonForm()
+        // this.props.forms.seasonForm.saveSeason(SeasonData)
+        this.props.formActions.seasonFormActions.resetSeasonForm()
         this.props.modalActions.closeModal()
     }
     render() {
@@ -21,10 +21,10 @@ class ConfirmSeason extends Component {
             <div className='account-form'>
                 <h1 className='u-margin-bottom-small'> is this information correct?</h1>
                 <div className='account-info'>
-                    <h2>Battletag: {SeasonData.BattletagOwnership}</h2>
+                    {/* <h2>Battletag: {SeasonData.BattletagOwnership}</h2>
                     <h2>Starting SR: {SeasonData.StartingSR} </h2>
-                    <h2>Heros Focused this Season: {SeasonData.HerosFocused.toString()} </h2>
-                    <button className='btn btn--save-info' onClick={() => this.handleSubmit(SeasonData)} >Save Info</button>
+                    <h2>Heros Focused this Season: {SeasonData.HerosFocused.toString()} </h2>*/}
+                <button className='btn btn--save-info' onClick={() => this.handleSubmit(SeasonData)} >Save Info</button> 
                 </div>
             </div>
         )

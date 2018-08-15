@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
-// import AddSeasonForm from '../../components/AddSeasonForm/AddSeasonForm'
+import AddSeasonForm from '../../components/AddSeasonForm/AddSeasonForm'
 
 const modalStyles = {
   content: {
@@ -18,9 +18,9 @@ const modalStyles = {
 
 class Account extends Component {
   componentDidMount() {
-    console.log(this.props.currentBattletag.battletagId)
-    this.props.battletagActions.selectBattletag(this.props.currentBattletag.battletagId)
+    
   }
+
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
@@ -31,11 +31,18 @@ class Account extends Component {
     return (
       <div className="container container--active-account">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
-          {/* <AddSeasonForm {...this.props} /> */}
+          <AddSeasonForm {...this.props} />
           <button className="btn btn--close-modal" onClick={() => this.closeModalandResetForm()}>Close modal</button>
         </ReactModal>
-      <div className='section'></div>
-      </div>
+     
+      <div className='section'>
+       {this.props.currentBattletag ?  <h2>Battletag: {this.props.currentBattletag.Battletag}</h2> : <h2>Battletag: 'Error'</h2> }
+       <button className="btn btn--close-modal" onClick={() => this.props.modalActions.openModal()}>Open modal</button>
+       <div className='section'>
+       {this.props.currentBattletag.Seasons.length ? <div>yis</div>: <p>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p> }
+       </div>
+    </div>
+    </div>
     );
   }
 }

@@ -13,6 +13,7 @@ import { bindActionCreators } from "redux";
 import * as modalActionCreators from './actions/modalActions';
 import * as currentUserActionCreators from './actions/currentUserActions';
 import * as battletagActionCreators from './actions/battletagActions';
+import * as seasonFormActionCreators from './actions/forms/seasonFormActions';
 const auth = new Auth();
 
 class App extends Component {
@@ -58,6 +59,9 @@ function mapStateToProps(state) {
     showModal: state.showModal,
     currentUser: state.currentUser,
     currentBattletag: state.currentBattletag,
+    forms:{
+      seasonForm: state.seasonForm
+    }
   };
 }
 
@@ -66,6 +70,7 @@ function mapDispatchToProps(dispatch) {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
     currentUserActions: bindActionCreators(currentUserActionCreators, dispatch),
     battletagActions: bindActionCreators(battletagActionCreators, dispatch),
+    formActions: {seasonFormActions: bindActionCreators(seasonFormActionCreators, dispatch)}
   };
 }
 // export default 

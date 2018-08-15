@@ -34,7 +34,7 @@ export const selectBattletag = (battletagId) => {
     return function (dispatch) {
         axios.get('/api/battletag/' + battletagId).then(battletag => {
             console.log(battletag.data)
-            if (battletag) {
+            if (battletag.data) {
                 dispatch(selectBattletagSuccess(battletag.data.payload))
             } else {
                 dispatch(selectBattletagFailure(battletag.data))

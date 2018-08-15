@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as modalActionCreators from '../../../actions/modalActions';
-import * as accountActionCreators from '../../../actions/accountActions';
-import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
+
 
 class StartingSR extends Component {
     state = {
@@ -51,8 +46,8 @@ class StartingSR extends Component {
         }
         console.log(this.state.StartingSR.length)
 
-        this.props.addSeasonFormActions.setStartingSR(this.state.StartingSR);
-        this.props.addSeasonFormActions.nextStepSeasonForm();
+        this.props.formActions.seasonFormActions.setStartingSR(this.state.StartingSR);
+        this.props.formActions.seasonFormActions.nextStepSeasonForm();
     }
 
     render() {
@@ -76,22 +71,4 @@ class StartingSR extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        showModal: state.showModal,
-        accounts: state.accounts,
-        activeAccount: state.activeAccount,
-        addSeasonForm: state.addSeasonForm
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        modalActions: bindActionCreators(modalActionCreators, dispatch),
-        accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(StartingSR)
+export default StartingSR;

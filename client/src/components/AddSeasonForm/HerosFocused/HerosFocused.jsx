@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as modalActionCreators from '../../../actions/modalActions';
-import * as accountActionCreators from '../../../actions/accountActions';
-import * as activeAccountActionCreators from '../../../actions/activeAccountActions';
-import * as addSeasonFormActionCreators from '../../../actions/addSeasonFormActions';
 
 class HerosFocused extends Component {
     state = {
@@ -21,10 +15,10 @@ class HerosFocused extends Component {
       };
 
       handleHerosFocused = (icon) => {
-          this.props.addSeasonFormActions.setHerosFocused(icon)
-          console.log(this.props.addSeasonForm.HerosFocused.length)
-          if(this.props.addSeasonForm.HerosFocused.length === 2) {
-              this.props.addSeasonFormActions.nextStepSeasonForm();
+          this.props.formActions.seasonFormActions.setHerosFocused(icon)
+          console.log(this.props.forms.seasonForm.HerosFocused.length)
+          if(this.props.forms.seasonForm.HerosFocused.length === 2) {
+              this.props.formActions.seasonFormActions.nextStepSeasonForm();
           }
       }
 
@@ -42,22 +36,5 @@ class HerosFocused extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        showModal: state.showModal,
-        accounts: state.accounts,
-        activeAccount: state.activeAccount,
-        addSeasonForm: state.addSeasonForm,
-    };
-}
 
-function mapDispatchToProps(dispatch) {
-    return {
-        modalActions: bindActionCreators(modalActionCreators, dispatch),
-        accountActions: bindActionCreators(accountActionCreators, dispatch),
-        activeAccountActions: bindActionCreators(activeAccountActionCreators, dispatch),
-        addSeasonFormActions: bindActionCreators(addSeasonFormActionCreators, dispatch),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HerosFocused)
+export default HerosFocused;
