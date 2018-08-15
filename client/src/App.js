@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from "redux";
 import * as modalActionCreators from './actions/modalActions';
 import * as currentUserActionCreators from './actions/currentUserActions';
+import * as battletagActionCreators from './actions/battletagActions';
 const auth = new Auth();
 
 class App extends Component {
@@ -56,6 +57,7 @@ function mapStateToProps(state) {
   return {
     showModal: state.showModal,
     currentUser: state.currentUser,
+    currentBattletag: state.currentBattletag,
   };
 }
 
@@ -63,6 +65,7 @@ function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
     currentUserActions: bindActionCreators(currentUserActionCreators, dispatch),
+    battletagActions: bindActionCreators(battletagActionCreators, dispatch),
   };
 }
 // export default 

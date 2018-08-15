@@ -3,11 +3,12 @@ const db = require("../../models/index");
 const userPost = {
     //POST
     createUser: (req, res) => {
-        let postUser = req.body
-        db.User.findOne(postUser).populate('Battletags').then(exists => {
+        let auth0 = req.body
+        console.log(auth0)
+        db.User.findOne(auth0).populate('Battletags').then(exists => {
             if (exists === null) {
                 console.log('User Does Not Exist. User Being Created...')
-                db.User.create(postUser).then(user => {
+                db.User.create(auth0).then(user => {
                     console.log({ message: 'User has been created', payload: user })
                     res.json({ message: 'User has been created', payload: user })
                 }).catch(err => {

@@ -3,7 +3,8 @@ import actionTypes from './actionTypes';
 
 export const createUser = (auth0UID) => {
     return function (dispatch) {
-        axios.post('/api/createuser/', { auth0UID })
+        console.log(auth0UID)
+        axios.post('/api/user/create/', auth0UID )
             .then(data => {
                 console.log(data.data)
                 dispatch(createUserSuccess(data.data));

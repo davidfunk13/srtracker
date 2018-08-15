@@ -18,6 +18,8 @@ const modalStyles = {
 
 class Account extends Component {
   componentDidMount() {
+    console.log(this.props.currentBattletag.battletagId)
+    this.props.battletagActions.selectBattletag(this.props.currentBattletag.battletagId)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");

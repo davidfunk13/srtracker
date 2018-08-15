@@ -1,8 +1,7 @@
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    userID: '',
-    auth0UID: '',
+    userId: '',
     Battletags: [],
     Err: []
 }
@@ -12,9 +11,13 @@ export default function currentUserReducer(state = initialState, action) {
         case actionTypes.CREATE_USER_SUCCESS:
             return {
                 ...state,
-                userID: action.data._id,
-                auth0UID: action.data.auth0UID,
-                Battletags: action.data.Battletags
+                userId: action.data.payload._id,
+                Battletags: action.data.payload.Battletags
+            }
+            case actionTypes.CREATE_BATTLETAG_SUCCESS: 
+           return {
+                ...state,
+                Battletags: [...action.data.payload.Battletags]
             }
             case actionTypes.PURGE_CURRENT_USER:
             return initialState

@@ -34,7 +34,7 @@ const routes = function (app) {
 
 	//BATTLETAG GET
 	//one
-	app.get('/api/battletag/id/', battletagGet.getOneBattletagById),
+	app.get('/api/battletag/:id', battletagGet.getOneBattletagById),
 	//multi
 	app.get('/api/battletags/all/', battletagGet.getAllBattletags),
 	app.get('/api/user/battletags/id/', battletagGet.getBattletagsByUserId),

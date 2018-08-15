@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
-// import BattleTag from "../../components/AddAccountForm/BattleTag/BattleTag";
+import BattleTag from "../../components/AddBattletagForm/BattleTag/BattleTag";
 
 import { Link } from 'react-router-dom';
 
@@ -21,8 +21,7 @@ const modalStyles = {
 
 class Main extends Component {
   componentDidMount() {
-    console.log(this.props)
-    this.props.currentUserActions.createUser(this.props.profile.sub)
+    this.props.currentUserActions.createUser({auth0Uid: this.props.profile.sub})
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
@@ -35,7 +34,7 @@ class Main extends Component {
     return (
       <div className="container container--main">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
-          {/* <BattleTag {...this.props} /> */}
+          <BattleTag {...this.props} />
           <div className='nav-link nav-link--close-modal__battletag'>
             <Link to='/' onClick={() => this.props.modalActions.closeModal()}>Close modal</Link>
           </div>
@@ -50,7 +49,7 @@ class Main extends Component {
           {this.props.currentUser.Battletags ?
             <div className='section'>
               {this.props.currentUser.Battletags.map(Battletag => {
-               return <p className=''>{Battletag.Battletag}</p>
+               return <Link key={Battletag._id} to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}> <p key={Battletag._id} className='nav-link nav-link--battletag'>{Battletag.Battletag}</p></Link>
               })}
             </div>
             :

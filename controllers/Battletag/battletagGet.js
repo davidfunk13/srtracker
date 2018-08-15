@@ -4,8 +4,8 @@ const battletagGet = {
     //one
     getOneBattletagById: (req, res) => {
         //This endpoint serves ONE battletag by id.
-        console.log(req.query._id)
-        db.Battletag.findById(req.query._id).populate('Seasons').then(oneBattletag=>{
+        console.log(req.params.id)
+        db.Battletag.findById(req.params.id).populate('Seasons').then(oneBattletag=>{
             console.log({message: 'Fetched ONE Battletag by ID', payload: oneBattletag})
             res.json({message: 'Fetched ONE Battletag by ID', payload: oneBattletag})
         })
