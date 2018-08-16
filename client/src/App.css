@@ -16,7 +16,8 @@ h3 {
   padding-left: 3rem;
   background-color: #d38715;
   font-weight: bold;
-  padding-bottom: .5rem; }
+  padding-bottom: .5rem;
+  width: 100%; }
 
 h1 {
   font-size: 3rem; }
@@ -53,7 +54,6 @@ ul {
 .features-ol {
   margin-left: 2rem; }
 
-.nav-link,
 .nav-link:link,
 .nav-link:visited,
 .nav-link:active {
@@ -66,41 +66,45 @@ ul {
 .nav-link:hover {
   color: white; }
 
-.nav-link--battletag {
-  width: auto;
-  margin: 1rem;
-  text-align: center; }
+.nav-link {
+  font-size: 2rem;
+  color: black;
+  border: .1rem solid black;
+  background: #2379cf;
+  text-decoration: none; }
+  .nav-link--battletag {
+    width: auto;
+    margin: 1rem;
+    text-align: center; }
+  .nav-link--login {
+    width: 15rem;
+    align-self: center; }
+  .nav-link--add-season {
+    width: 20rem;
+    margin: 0 auto; }
+  .nav-link--add-game {
+    width: 30rem;
+    margin: 0 auto; }
+  .nav-link--go-back {
+    margin-top: .4rem;
+    padding: .2rem 0 .2rem .1rem; }
+  .nav-link--open-modal__battletag {
+    background-color: rgba(255, 255, 255, 0.705);
+    width: 30rem;
+    align-self: center;
+    text-align: center;
+    margin-top: 1rem; }
+  .nav-link--close-modal__battletag {
+    background-color: rgba(255, 255, 255, 0.705);
+    width: auto;
+    text-align: center;
+    margin-top: 1rem; }
 
-.nav-link--login {
-  width: 15rem;
-  align-self: center; }
-
-.nav-link--add-season {
-  width: 20rem;
-  text-align: center;
-  margin: 0 auto; }
-
-.nav-link--add-game {
-  width: 30rem;
-  text-align: center;
-  margin: 0 auto; }
-
-.nav-link--go-back {
-  width: 15rem;
-  text-align: center; }
-
-.nav-link--open-modal__battletag {
-  background-color: rgba(255, 255, 255, 0.705);
-  width: 30rem;
-  align-self: center;
-  text-align: center;
-  margin-top: 1rem; }
-
-.nav-link--close-modal__battletag {
-  background-color: rgba(255, 255, 255, 0.705);
-  width: auto;
-  text-align: center;
-  margin-top: 1rem; }
+.custom-heading__seasons-box {
+  display: flex;
+  flex-flow: row; }
+  .custom-heading__seasons-box--selected-battletag {
+    margin-right: 2rem; }
 
 *,
 *::after,
@@ -157,6 +161,12 @@ body {
   .section:not(:first-child) {
     margin-top: 2rem; }
 
+.subsection {
+  background: rgba(255, 255, 255, 0.466);
+  padding: 1rem;
+  border: .1rem solid black;
+  margin-bottom: 1rem; }
+
 .header {
   background: #405275;
   height: 20vh;
@@ -208,7 +218,8 @@ body {
 
 .main-info {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: center; }
 
 .battletags__yes {
   display: flex;

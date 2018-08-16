@@ -36,6 +36,7 @@ h3 {
   background-color: $color-ow-orange;
   font-weight: bold;
   padding-bottom: .5rem;
+  width: 100%;
 }
 
 h1 {
@@ -56,11 +57,12 @@ a,
 a:link,
 a:hover,
 a:visited,
-a:active{
+a:active {
   text-decoration: none;
   color: black;
 }
-a:hover{
+
+a:hover {
   color: white;
 }
 
@@ -80,7 +82,6 @@ ul {
   margin-left: 2rem;
 }
 
-.nav-link,
 .nav-link:link,
 .nav-link:visited,
 .nav-link:active {
@@ -94,49 +95,59 @@ ul {
 .nav-link:hover {
   color: white;
 }
-.nav-link{
-  &--battletag{
+
+.nav-link {
+  font-size: $default-h2-size;
+  color: black;
+  border: .1rem solid black;
+  background: $color-ow-light-blue;
+  text-decoration: none;
+  &--battletag {
     width: auto;
     margin: 1rem;
     text-align: center;
   }
-  &--login{
+  &--login {
     width: 15rem;
     align-self: center;
   }
-  &--add-season{
+  &--add-season {
     width: 20rem;
-    text-align: center;
     margin: 0 auto;
   }
-  &--add-game{
+  &--add-game {
     width: 30rem;
-    text-align: center;
     margin: 0 auto;
   }
-  &--go-back{
-    width: 15rem;
-    text-align: center;
+  &--go-back {
+    margin-top: .4rem;
+    padding: .2rem 0 .2rem .1rem;
   }
-  &--open-modal{
-    
-    &__battletag{
+  &--open-modal {
+    &__battletag {
       background-color: rgba(255, 255, 255, 0.705);
       width: 30rem;
       align-self: center;
       text-align: center;
       margin-top: 1rem;
     }
-    
   }
-  &--close-modal{
-    
-    &__battletag{
+  &--close-modal {
+    &__battletag {
       background-color: rgba(255, 255, 255, 0.705);
       width: auto;
       text-align: center;
       margin-top: 1rem;
     }
-    
+  }
+}
+
+.custom-heading {
+  &__seasons-box {
+    display: flex;
+    flex-flow: row;
+    &--selected-battletag {
+      margin-right: 2rem;
+    }
   }
 }

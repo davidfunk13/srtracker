@@ -48,9 +48,13 @@ class Main extends Component {
         <div className='section battletags'>
           {this.props.currentUser.Battletags.length ?
             // this.props.currentUser.Battletags ?
-            <div className='section'>
+            <div className=''>
+            <h2>Battletags:</h2>
               {this.props.currentUser.Battletags.map(Battletag => {
-                return <Link key={Battletag._id} to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}> <p key={Battletag._id} className='nav-link nav-link--battletag'>{Battletag.Battletag}</p></Link>
+                return <div className='nav-link nav-link--battletag'>
+                          <Link key={Battletag._id} to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}> <p key={Battletag._id} >{Battletag.Battletag}</p></Link>
+                          <Link to='/'><p>Delete</p></Link>
+                      </div> 
               })}
             </div>
             // :

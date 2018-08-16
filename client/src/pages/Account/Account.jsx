@@ -37,27 +37,33 @@ class Account extends Component {
           <button className="btn btn--close-modal" onClick={() => this.closeModalandResetForm()}>Close modal</button>
         </ReactModal>
 
-        <div className='section'>
-          {this.props.currentBattletag ? 
-          <div>
-            <h2><p>Selected Battletag: {this.props.currentBattletag.Battletag} </p><p> Seasons Tracked: {this.props.currentBattletag.Seasons.length}</p></h2>
-          </div>
-           : <h2>Battletag: 'Error'</h2>}
+        <div>
+          {this.props.currentBattletag ?
+            <div className='section main-info '>
+              <h2 className='custom-heading__seasons-box'><p className='custom-heading__seasons-box custom-heading__seasons-box--selected-battletag'>Selected Battletag: {this.props.currentBattletag.Battletag} </p><p className='custom-heading__seasons-box custom-heading__seasons-box--seasons-tracked'> Seasons Tracked: {this.props.currentBattletag.Seasons.length}</p></h2>
+              <Link to='/account' onClick={() => this.props.modalActions.openModal()}> <p className='nav-link nav-link--open-modal__battletag'>Create a Season</p>  </Link>
+            </div>
+            : <h2>Battletag: 'Error'</h2>}
 
           {this.props.currentBattletag.Seasons.length ?
-            this.props.currentBattletag.Seasons.map(season => {
-              return <div className='section'>
-                <p>Starting SR: {season.StartingSR}</p>
-                <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
-              </div>
-            })
-
+            <div className='section seasons'>
+              {this.props.currentBattletag.Seasons.map(season => {
+                return <div className='subsection'>
+                  <div className='season season--cell'>
+                    <p>Starting SR: {season.StartingSR}</p>
+                    <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
+                  </div>
+                </div>
+              })}
+              <Link to='/' className='nav-link nav-link--go-back'>Go Back</Link>
+            </div>
             :
-            <div className='section'>
-              <p>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p>
+            <div className='section seasons'>
+              <p className='section u-margin-bottom-small'>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p>
+              <Link to='/' className='nav-link'>Go Back</Link>
             </div>
           }
-          <Link to='/' className='nav-link'>Go Back</Link>
+
         </div>
       </div>
     );

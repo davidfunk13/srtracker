@@ -6,7 +6,7 @@ export default class NotFound extends Component {
   }
   render() {
     return (
-      <div className="section container container--notfound">
+      <div className="container container--notfound">
         <div className='section'>
           <h1>welcome</h1>
           <p>Please click Login above to create a username or login and begin using the app!</p>
