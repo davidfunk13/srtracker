@@ -14,8 +14,8 @@ class Header extends Component {
 
   logout(){
     this.props.auth.logout()
-    this.persistor.purge()
-    // this.props.currentUserActions.purgeCurrentUser()
+    // this.persistor.purge()
+    this.props.currentUserActions.purgeCurrentUser()
   }
   
   render() {

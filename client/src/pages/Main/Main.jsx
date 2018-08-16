@@ -21,7 +21,7 @@ const modalStyles = {
 
 class Main extends Component {
   componentDidMount() {
-    this.props.currentUserActions.createUser({auth0Uid: this.props.profile.sub})
+    this.props.currentUserActions.createUser({ auth0Uid: this.props.profile.sub })
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
@@ -46,14 +46,19 @@ class Main extends Component {
           </div>
         </div>
         <div className='section battletags'>
-          {this.props.currentUser.Battletags ?
+          {this.props.currentUser.Battletags.length ?
+            // this.props.currentUser.Battletags ?
             <div className='section'>
               {this.props.currentUser.Battletags.map(Battletag => {
-               return <Link key={Battletag._id} to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}> <p key={Battletag._id} className='nav-link nav-link--battletag'>{Battletag.Battletag}</p></Link>
+                return <Link key={Battletag._id} to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}> <p key={Battletag._id} className='nav-link nav-link--battletag'>{Battletag.Battletag}</p></Link>
               })}
             </div>
+            // :
+            // <div className='section'>no</div>
             :
-            <div className='section'>no</div>}
+            <div className='section'>
+              <p>We dont have any Battletags stored for you. Click the button to add one!</p>
+            </div>}
         </div>
       </div>
     );

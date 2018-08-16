@@ -47,7 +47,7 @@ const routes = function (app) {
 	app.get('/api/battletags/remove/id/', battletagDelete.deleteBattletagsByUserId),
 
 	// //SEASON POST
-	app.post('/api/user/battletag/season/create/', seasonPost.createSeason),
+	app.post('/api/season/create/', seasonPost.createSeason),
 
 	// //SEASON GET//
 	// //one

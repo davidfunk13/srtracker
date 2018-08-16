@@ -1,10 +1,10 @@
 import actionTypes from '../../actions/actionTypes';
 
 const initialState = {
-        step: 1,
-        StartingSR: "",
-        HerosFocused: [],
-        Err: [],
+    step: 1,
+    StartingSR: "",
+    HerosFocused: [],
+    Err: [],
 }
 
 export default function seasonFormReducer(state = initialState, action) {
@@ -29,7 +29,6 @@ export default function seasonFormReducer(state = initialState, action) {
                     HerosFocused: [...state.HerosFocused, action.data]
                 }
             }
-          
 
         case actionTypes.NEXT_STEP_SEASON_FORM:
             return {
@@ -37,7 +36,7 @@ export default function seasonFormReducer(state = initialState, action) {
                 step: state.step + 1,
             }
         case actionTypes.RESET_SEASON_FORM:
-        return initialState;
+            return initialState;
         default:
             {
                 return state;
