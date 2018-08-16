@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 import AddSeasonForm from '../../components/AddSeasonForm/AddSeasonForm'
+import { Link } from 'react-router-dom';
 
 const modalStyles = {
   content: {
@@ -37,20 +38,23 @@ class Account extends Component {
         </ReactModal>
 
         <div className='section'>
-          {this.props.currentBattletag ? <h2>Battletag: {this.props.currentBattletag.Battletag}</h2> : <h2>Battletag: 'Error'</h2>}
+          {this.props.currentBattletag ? <h2>Selected Battletag: {this.props.currentBattletag.Battletag} | Seasons Tracked: {this.props.currentBattletag.Seasons.length}</h2> : <h2>Battletag: 'Error'</h2>}
           <button className="btn btn--close-modal" onClick={() => this.props.modalActions.openModal()}>Open modal</button>
-          <div className='section'>
-            {this.props.currentBattletag.Seasons.length ?
-              this.props.currentBattletag.Seasons.map(season => {
-                return <div className='section'>
-                  <p>Starting SR: {season.startingSR}</p>
-                  <p>Heros Focused this Season: {season.HerosFocused}</p>
-                </div>
-              })
 
-              :
-              <p>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p>}
-          </div>
+          {this.props.currentBattletag.Seasons.length ?
+            this.props.currentBattletag.Seasons.map(season => {
+              return <div className='section'>
+                <p>Starting SR: {season.StartingSR}</p>
+                <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
+              </div>
+            })
+
+            :
+            <div className='section'>
+              <p>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p>
+            </div>
+          }
+          <Link to='/' className='nav-link'>Go Back</Link>
         </div>
       </div>
     );
