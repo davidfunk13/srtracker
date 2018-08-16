@@ -38,8 +38,11 @@ class Account extends Component {
         </ReactModal>
 
         <div className='section'>
-          {this.props.currentBattletag ? <h2>Selected Battletag: {this.props.currentBattletag.Battletag} | Seasons Tracked: {this.props.currentBattletag.Seasons.length}</h2> : <h2>Battletag: 'Error'</h2>}
-          <button className="btn btn--close-modal" onClick={() => this.props.modalActions.openModal()}>Open modal</button>
+          {this.props.currentBattletag ? 
+          <div>
+            <h2><p>Selected Battletag: {this.props.currentBattletag.Battletag} </p><p> Seasons Tracked: {this.props.currentBattletag.Seasons.length}</p></h2>
+          </div>
+           : <h2>Battletag: 'Error'</h2>}
 
           {this.props.currentBattletag.Seasons.length ?
             this.props.currentBattletag.Seasons.map(season => {
