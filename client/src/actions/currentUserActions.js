@@ -27,7 +27,7 @@ export const createUserFailure = (failure) => {
     }
 }
 export const purgeCurrentUser = () =>{
-    return{
+    return {
         type: actionTypes.PURGE_CURRENT_USER
     }
 }

@@ -82,12 +82,17 @@ ul {
   .nav-link--add-season {
     width: 20rem;
     margin: 0 auto; }
+  .nav-link--open {
+    text-align: center;
+    width: 20rem;
+    margin: 0 auto; }
   .nav-link--add-game {
     width: 30rem;
     margin: 0 auto; }
   .nav-link--go-back {
+    width: 20rem;
     margin-top: .4rem;
-    padding: .2rem 0 .2rem .1rem; }
+    padding: .2rem .5rem .2rem .5rem; }
   .nav-link--open-modal__battletag {
     background-color: rgba(255, 255, 255, 0.705);
     width: 30rem;
@@ -129,7 +134,7 @@ body {
   line-height: 3rem; }
 
 .u-margin-bottom-small {
-  margin-bottom: 2rem; }
+  margin-bottom: 1rem; }
 
 .u-margin-top-small {
   margin-top: 2rem; }

@@ -2,13 +2,15 @@ const db = require("../../models/index");
 
 const battletagDelete = {
   deleteOneBattletagById: (req, res) => {
-    console.log(req.query._id)
-    db.Battletag.findByIdAndRemove(req.query._id).then(oneBattletag => {
-      console.log({ message: 'Succesfully removed Battletag by ID', payload: oneBattletag })
-      res.json({ message: 'Succesfully removed Battletag by ID', payload: oneBattletag })
-    }).catch(err => {
-      throw err;
-    })
+    console.log(req.query.seasonId)
+    console.log(req.query.battletagId)
+
+    // db.Season.findByIdAndUpdate(req.query.seasonId, { $pull: { Games: { battletagId: req.query.battletagId }}}).then(pulledGames => {
+    //   console.log({ message: 'Succesfully pulled Games by Battletag ID', payload: pulledGames })
+    //   res.json({ message: 'Succesfully pulled Games by Battletag ID', payload: pulledGames })
+    // }).catch(err => {
+    //   throw err;
+    // })
   },
   deleteAllBattletags: (req, res) => {
     db.Battletag.remove({}).then(allBattletags => {

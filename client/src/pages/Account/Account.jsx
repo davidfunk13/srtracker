@@ -47,11 +47,13 @@ class Account extends Component {
 
           {this.props.currentBattletag.Seasons.length ?
             <div className='section seasons'>
+            <h2 className='u-margin-bottom-small'>Saved Seasons:</h2>
               {this.props.currentBattletag.Seasons.map(season => {
                 return <div className='subsection'>
                   <div className='season season--cell'>
                     <p>Starting SR: {season.StartingSR}</p>
                     <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
+                    <Link to='/season' className='nav-link nav-link--open' >Open</Link>
                   </div>
                 </div>
               })}
@@ -60,7 +62,7 @@ class Account extends Component {
             :
             <div className='section seasons'>
               <p className='section u-margin-bottom-small'>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p>
-              <Link to='/' className='nav-link'>Go Back</Link>
+              <Link to='/' className='nav-link nav-link--go-back'>Go Back</Link>
             </div>
           }
 

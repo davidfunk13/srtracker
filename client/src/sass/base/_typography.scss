@@ -115,13 +115,19 @@ ul {
     width: 20rem;
     margin: 0 auto;
   }
+  &--open {
+    text-align: center;
+    width: 20rem;
+    margin: 0 auto;
+  }
   &--add-game {
     width: 30rem;
     margin: 0 auto;
   }
   &--go-back {
+    width: 20rem;
     margin-top: .4rem;
-    padding: .2rem 0 .2rem .1rem;
+    padding: .2rem .5rem .2rem .5rem
   }
   &--open-modal {
     &__battletag {
