@@ -16,6 +16,7 @@ export const createBattletag = battletagObj => {
       });
   };
 };
+
 export const createBattletagSuccess = success => {
   return {
     type: actionTypes.CREATE_BATTLETAG_SUCCESS,

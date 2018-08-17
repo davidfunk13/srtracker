@@ -53,7 +53,7 @@ class Account extends Component {
                   <div className='season season--cell'>
                     <p>Starting SR: {season.StartingSR}</p>
                     <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
-                    <Link to='/season' className='nav-link nav-link--open' >Open</Link>
+                    <Link to='/season' key={season._id} onClick={()=> console.log(season._id)} className='nav-link nav-link--open' >Open</Link>
                   </div>
                 </div>
               })}

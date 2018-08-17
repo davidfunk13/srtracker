@@ -8,11 +8,6 @@ const initialState = {
 
 export default function currentBattletagReducer(state = initialState, action) {
     switch (action.type) {
-            case actionTypes.SELECT_BATTLETAG:
-            return {
-                ...state,
-                battletagId: action.data
-            }
             case actionTypes.SELECT_BATTLETAG_SUCCESS: 
             return action.data
             case actionTypes.SAVE_SEASON_SUCCESS: 
