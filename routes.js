@@ -51,7 +51,7 @@ const routes = function (app) {
 
 	// //SEASON GET//
 	// //one
-	app.get('/api/season/id/', seasonGet.getOneSeasonById),
+	app.get('/api/season/:id', seasonGet.getOneSeasonById),
 
 	//multi
 	app.get('/api/seasons/:id', seasonGet.getAllSeasons),

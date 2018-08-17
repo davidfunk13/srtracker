@@ -14,7 +14,7 @@ import * as modalActionCreators from './actions/modalActions';
 import * as currentUserActionCreators from './actions/currentUserActions';
 import * as battletagActionCreators from './actions/battletagActions';
 import * as seasonFormActionCreators from './actions/forms/seasonFormActions';
-import * as currentSeasonActionCreators from './actions/forms/seasonFormActions';
+import * as currentSeasonActionCreators from './actions/currentSeasonActions';
 const auth = new Auth();
 
 class App extends Component {
@@ -46,7 +46,7 @@ class App extends Component {
               )} />
           <Route exact path="/season" render={props =>
             auth.isAuthenticated() ? (
-              <Season profile={auth.getProfile()} auth={auth} {...props} />
+              <Season profile={auth.getProfile()} auth={auth} {...this.props} />
             ) : (
                 <NotFound />
               )} />
@@ -60,7 +60,7 @@ function mapStateToProps(state) {
     showModal: state.showModal,
     currentUser: state.currentUser,
     currentBattletag: state.currentBattletag,
-    // currentSeason: state.currentSeason,
+    currentSeason: state.currentSeason,
     forms:{
       seasonForm: state.seasonForm
     }
@@ -72,7 +72,7 @@ function mapDispatchToProps(dispatch) {
     modalActions: bindActionCreators(modalActionCreators, dispatch),
     currentUserActions: bindActionCreators(currentUserActionCreators, dispatch),
     battletagActions: bindActionCreators(battletagActionCreators, dispatch),
-    // currentSeasonActions: bindActionCreators(currentSeasonActionCreators, dispatch),
+    currentSeasonActions: bindActionCreators(currentSeasonActionCreators, dispatch),
     formActions: {seasonFormActions: bindActionCreators(seasonFormActionCreators, dispatch)}
   };
 }

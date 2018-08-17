@@ -4,8 +4,8 @@ const seasonGet = {
     //one
     getOneSeasonById: (req, res) => {
         //This endpoint serves ONE season by id.
-        console.log(req.query._id)
-        db.Season.findById(req.query._id).populate('Games').then(oneSeason=>{
+        console.log(req.params.id)
+        db.Season.findById(req.params.id).populate('Games').then(oneSeason=>{
             console.log({message: 'Fetched One season and its games by Season id', payload: oneSeason})
             res.json({message: 'Fetched One season and its games by Season id', payload: oneSeason})
         })

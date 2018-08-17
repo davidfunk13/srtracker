@@ -18,6 +18,7 @@ const modalStyles = {
 
 class Season extends Component {
   componentDidMount() {
+console.log(this.props)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
@@ -31,9 +32,19 @@ class Season extends Component {
         <div className='section active-season'>
           <h1>Active Season</h1>
           <div className='section active-season--cell'>
-            <p>Battletag:  </p>
-            <p>Starting SR: </p>
-            <p>Heros Focused:</p>
+            {this.props.currentSeason ?
+              <div>  
+                <p>Battletag: {this.props.currentSeason.Battletag} </p>
+                <p>Starting SR: {this.props.currentSeason.StartingSR} </p>
+                <p>Heros Focused: {this.props.currentSeason.HerosFocused.join(', ')} </p>
+              </div>
+              :
+              <div>
+                <p>Battletag: Loading... </p>
+                <p>Starting SR: Loading... </p>
+                <p>Heros Focused: Loading... </p>
+              </div>
+            }
           </div>
           <div className='nav-link nav-link--add-game'>
             <Link to='/season' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</Link>
