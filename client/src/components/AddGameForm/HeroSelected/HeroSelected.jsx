@@ -18,8 +18,8 @@ class HeroSelected extends Component {
 
       handleHeroSelected = event => {
           event.preventDefault();
-          this.props.addGameFormActions.setHeroSelected(this.state.heroSelected)
-          this.props.addGameFormActions.nextStepGameForm();
+          this.props.formActions.gameFormActions.setHeroSelected(this.state.heroSelected)
+          this.props.formActions.gameFormActions.nextStepGameForm();
       }
 
 

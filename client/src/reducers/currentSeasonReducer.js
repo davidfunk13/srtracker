@@ -3,6 +3,7 @@ import actionTypes from '../actions/actionTypes';
 const initialState = {
 Battletag:"",
 StartingSR: "",
+HerosFocused: "",
 Games: [],
 Err: []
 }

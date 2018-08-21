@@ -17,8 +17,8 @@ class DidYouWin extends Component {
 
       handleDidYouWin = event => {
           event.preventDefault();
-          this.props.addGameFormActions.setDidYouWin(this.state.didYouWin)
-          this.props.addGameFormActions.nextStepGameForm();
+          this.props.formActions.gameFormActions.setDidYouWin(this.state.didYouWin)
+          this.props.formActions.gameFormActions.nextStepGameForm();
 
       }
 

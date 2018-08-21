@@ -14,14 +14,13 @@ import * as modalActionCreators from './actions/modalActions';
 import * as currentUserActionCreators from './actions/currentUserActions';
 import * as battletagActionCreators from './actions/battletagActions';
 import * as seasonFormActionCreators from './actions/forms/seasonFormActions';
+import * as gameFormActionCreators from './actions/forms/gameFormActions';
 import * as currentSeasonActionCreators from './actions/currentSeasonActions';
+
 const auth = new Auth();
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props)
-  }
-  componentDidUpdate(){
     console.log(this.props)
   }
   render() {
@@ -62,7 +61,8 @@ function mapStateToProps(state) {
     currentBattletag: state.currentBattletag,
     currentSeason: state.currentSeason,
     forms:{
-      seasonForm: state.seasonForm
+      seasonForm: state.seasonForm,
+      gameForm: state.gameForm
     }
   };
 }
@@ -73,7 +73,10 @@ function mapDispatchToProps(dispatch) {
     currentUserActions: bindActionCreators(currentUserActionCreators, dispatch),
     battletagActions: bindActionCreators(battletagActionCreators, dispatch),
     currentSeasonActions: bindActionCreators(currentSeasonActionCreators, dispatch),
-    formActions: {seasonFormActions: bindActionCreators(seasonFormActionCreators, dispatch)}
+    formActions: {
+      seasonFormActions: bindActionCreators(seasonFormActionCreators, dispatch),
+      gameFormActions: bindActionCreators(gameFormActionCreators, dispatch)
+    }
   };
 }
 

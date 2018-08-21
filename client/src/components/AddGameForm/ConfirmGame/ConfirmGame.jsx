@@ -7,9 +7,9 @@ class ConfirmGame extends Component {
     }
     handleSubmit = (GameData) => {
         console.log(GameData)
-        this.props.activeAccountActions.saveGame(GameData)
+        this.props.formActions.gameFormActions.saveGame(GameData)
         this.props.modalActions.closeModal()
-        this.props.addGameFormActions.resetGameForm()
+        this.props.formActions.gameFormActions.resetGameForm()
     }
     render() {
         let GameData = {

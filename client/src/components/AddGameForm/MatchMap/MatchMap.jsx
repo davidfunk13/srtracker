@@ -16,8 +16,8 @@ class MatchMap extends Component {
 
       handleMatchMap = event => {
           event.preventDefault();
-          this.props.addGameFormActions.setMatchMap(this.state.matchMap);
-          this.props.addGameFormActions.nextStepGameForm();
+          this.props.formActions.gameFormActions.setMatchMap(this.state.matchMap);
+          this.props.formActions.gameFormActions.nextStepGameForm();
       }
 
     render() {

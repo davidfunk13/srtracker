@@ -1,49 +1,61 @@
 import axios from 'axios';
 import actionTypes from '../actionTypes';
 
-export const setStartingSR = StartingSR => {
+export const setMatchMap = matchMap => {
     return {
-        type: actionTypes.SET_STARTING_SR,
-        data: StartingSR,
+        type: actionTypes.SET_MATCH_MAP,
+        data: matchMap,
     }
 }
-export const setHerosFocused = HerosFocused => {
+export const setHeroSelected = heroSelected => {
     return {
-        type: actionTypes.SET_HEROS_FOCUSED,
-        data: HerosFocused,
+        type: actionTypes.SET_HERO_SELECTED,
+        data: heroSelected,
     }
 }
-export const nextStepSeasonForm = () => {
+export const setDidYouwin = didYouWin => {
     return {
-        type: actionTypes.NEXT_STEP_SEASON_FORM,
+        type: actionTypes.SET_DID_YOU_WIN,
+        data: didYouWin,
     }
 }
-export const saveSeason = (seasonData) => {
+export const setPostMatchSR = postMatchSR => {
+    return {
+        type: actionTypes.SET_POST_MATCH_SR,
+        data: postMatchSR,
+    }
+}
+export const nextStepGameForm = () => {
+    return {
+        type: actionTypes.NEXT_STEP_GAME_FORM,
+    }
+}
+export const saveGame = gameData => {
     return function (dispatch) {
-        console.log(seasonData)
-        axios.post('/api/season/create/', seasonData).then(season => {
-            if (season) {
-                dispatch(saveSeasonSuccess(season.data))
+        console.log(gameData)
+        axios.post('/api/game/create/', gameData).then(game => {
+            if (game) {
+                dispatch(saveGameSuccess(game.data))
             } else {
-                dispatch(saveSeasonFailure(season.data))
+                dispatch(saveGameFailure(game.data))
             }
         })
     }
 }
-export const saveSeasonSuccess = (success) => {
+export const saveGameSuccess = (success) => {
     return {
-        type: actionTypes.SAVE_SEASON_SUCCESS,
+        type: actionTypes.SAVE_GAME_SUCCESS,
         data: success
     }
 }
-export const saveSeasonFailure = (failure) => {
+export const saveGameFailure = (failure) => {
     return {
-        type: actionTypes.SAVE_SEASON_SUCCESS,
+        type: actionTypes.SAVE_GAME_FAILURE,
         data: failure
     }
 }
-export const resetSeasonForm = () => {
+export const resetGameForm = () => {
     return {
-        type: actionTypes.RESET_SEASON_FORM,
+        type: actionTypes.RESET_GAME_FORM,
     }
 }

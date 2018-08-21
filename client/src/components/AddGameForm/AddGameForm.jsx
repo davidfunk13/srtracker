@@ -12,29 +12,30 @@ class AddGameForm extends Component {
 
     render() {
         
-        // let step = this.props.addGameForm.gameFormStep
-        // switch (step) {
-        //     case 1:
-        //         step = <matchMap {...this.props} />
-        //         break;
-        //     case 2:
-        //         step = <HeroSelected {...this.props}/>
-        //         break;
-        //     case 3:
-        //         step = <DidYouWin {...this.props} />
-        //         break;
-        //     case 4:
-        //         step = <PostMatchSR {...this.props} />
-        //         break;
-        //     case 5:
-        //         step = <ConfirmGame {...this.props} />
-        //         break;
-        //     default:
-        //         break;
-        // }
+        let step = this.props.forms.gameForm.step;
+
+        switch (step) {
+            case 1:
+                step = <MatchMap {...this.props} />
+                break;
+            case 2:
+                step = <HeroSelected {...this.props}/>
+                break;
+            case 3:
+                step = <DidYouWin {...this.props} />
+                break;
+            case 4:
+                step = <PostMatchSR {...this.props} />
+                break;
+            case 5:
+                step = <ConfirmGame {...this.props} />
+                break;
+            default:
+                break;
+        }
         return (
             <div>
-                {/* {step} */}
+                {step}
             </div>
         )
     }

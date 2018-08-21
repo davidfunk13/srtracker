@@ -6,7 +6,7 @@ export const selectSeason = seasonId => {
     console.log(seasonId);
     return function(dispatch) {
       axios.get("/api/season/" + seasonId).then(season => {
-        console.log(season.payload);
+        console.log(season.data);
         if (season.data) {
           dispatch(selectSeasonSuccess(season.data.payload));
         } else {

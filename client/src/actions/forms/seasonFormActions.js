@@ -38,7 +38,7 @@ export const saveSeasonSuccess = (success) => {
 }
 export const saveSeasonFailure = (failure) => {
     return {
-        type: actionTypes.SAVE_SEASON_SUCCESS,
+        type: actionTypes.SAVE_SEASON_FAILURE,
         data: failure
     }
 }
