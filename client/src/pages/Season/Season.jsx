@@ -25,8 +25,6 @@ console.log(this.props)
     ReactModal.setAppElement("body");
   }
   render() {
-    let herosFocused = this.props.currentSeason.HerosFocused
-    console.log(herosFocused)
     return (
       <div className="container container--season">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
@@ -40,7 +38,7 @@ console.log(this.props)
               <div>  
                 <p>Battletag: {this.props.currentSeason.Battletag} </p>
                 <p>Starting SR: {this.props.currentSeason.StartingSR} </p>
-                <p>Heros Focused: {herosFocused.join(', ')} </p>
+                <p>Heros Focused: {this.props.currentSeason.HerosFocused.join(', ')} </p>
               </div>
               :
               <div>
