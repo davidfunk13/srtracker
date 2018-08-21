@@ -47,18 +47,15 @@ class Main extends Component {
         </div>
         <div className='section battletags'>
           {this.props.currentUser.Battletags.length ?
-            // this.props.currentUser.Battletags ?
-            <div className=''>
-            <h2>Battletags:</h2>
+            <div>
+              <h2>Battletags:</h2>
               {this.props.currentUser.Battletags.map(Battletag => {
-                return <div className='nav-link nav-link--battletag'>
-                          <Link key={Battletag._id} to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}> <p key={Battletag._id} >{Battletag.Battletag}</p></Link>
-                          <Link to='/'><p>Delete</p></Link>
-                      </div> 
+                return <div key={Battletag._id} className='nav-link nav-link--battletag'>
+                  <Link to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}><p>{Battletag.Battletag}</p></Link>
+                  <Link to='/'><p>Delete</p></Link>
+                </div>
               })}
             </div>
-            // :
-            // <div className='section'>no</div>
             :
             <div className='section'>
               <p>We dont have any Battletags stored for you. Click the button to add one!</p>

@@ -28,7 +28,7 @@ class MatchMap extends Component {
                 {this.state.Errors ? <div><p>{this.state.Errors}</p></div> : <div><p>no errors to show</p></div> } 
                     <input
                         className='account-form__form--starting-sr'
-                        value={this.state.matchMap}
+                        value={this.state.atchMap}
                         name="matchMap"
                         onChange={this.handleInputChange}
                         type="text"
@@ -42,4 +42,4 @@ class MatchMap extends Component {
 }
 
 
-export default MatchMap
+export default MatchMap;

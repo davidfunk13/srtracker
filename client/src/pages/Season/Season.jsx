@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 import { Link } from 'react-router-dom'
+import AddGameForm from '../../components/AddGameForm/AddGameForm'
 
 const modalStyles = {
   content: {
@@ -27,6 +28,7 @@ console.log(this.props)
     return (
       <div className="container container--season">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
+        <AddGameForm {...this.props} />
           <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>close modal</button>
         </ReactModal>
         <div className='section active-season'>
