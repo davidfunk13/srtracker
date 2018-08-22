@@ -18,17 +18,16 @@ const modalStyles = {
 };
 
 class Account extends Component {
-  componentDidMount() {
-
-  }
 
   componentWillMount() {
     ReactModal.setAppElement("body");
   }
+
   closeModalandResetForm = () => {
     this.props.formActions.seasonFormActions.resetSeasonForm()
     this.props.modalActions.closeModal()
   }
+
   render() {
     return (
       <div className="container container--active-account">
@@ -52,7 +51,7 @@ class Account extends Component {
                 <div className='season season--cell'>
                   <p>Starting SR: {season.StartingSR}</p>
                   <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
-                  <Link to='/season'  onClick={() => this.props.currentSeasonActions.selectSeason(season._id)} className='nav-link nav-link--open' >Open</Link>
+                  <Link to='/season' onClick={() => this.props.currentSeasonActions.selectSeason(season._id)} className='nav-link nav-link--open' >Open</Link>
                 </div>
               </div>
             })}

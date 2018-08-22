@@ -66,7 +66,7 @@ const routes = function (app) {
 	// //GAME
 	
 	// // //GAME POST
-	app.post('/api/user/battletag/season/game/create/', gamePost.createGame),
+	app.post('/api/game/create/', gamePost.createGame),
 
 	// // //GAME GET//
 	// // //one

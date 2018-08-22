@@ -13,7 +13,7 @@ export const setHeroSelected = heroSelected => {
         data: heroSelected,
     }
 }
-export const setDidYouwin = didYouWin => {
+export const setDidYouWin = didYouWin => {
     return {
         type: actionTypes.SET_DID_YOU_WIN,
         data: didYouWin,

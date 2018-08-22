@@ -19,23 +19,27 @@ const modalStyles = {
 
 class Season extends Component {
   componentDidMount() {
-console.log(this.props)
+    console.log(this.props)
   }
   componentWillMount() {
     ReactModal.setAppElement("body");
+  }
+  closeModalandResetForm = () => {
+    this.props.formActions.gameFormActions.resetGameForm()
+    this.props.modalActions.closeModal()
   }
   render() {
     return (
       <div className="container container--season">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
-        <AddGameForm {...this.props} />
-          <button className="btn btn--close-modal" onClick={() => this.props.modalActions.closeModal()}>close modal</button>
+          <AddGameForm {...this.props} />
+          <button className="btn btn--close-modal" onClick={() => this.closeModalandResetForm()}>close modal</button>
         </ReactModal>
         <div className='section active-season'>
           <h1>Active Season</h1>
           <div className='section active-season--cell'>
             {this.props.currentSeason ?
-              <div>  
+              <div>
                 <p>Battletag: {this.props.currentSeason.Battletag} </p>
                 <p>Starting SR: {this.props.currentSeason.StartingSR} </p>
                 <p>Heros Focused: {this.props.currentSeason.HerosFocused.join(', ')} </p>
@@ -52,9 +56,25 @@ console.log(this.props)
             <Link to='/season' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</Link>
           </div>
         </div>
-        <div className='section games'>
-          <h1 className='u-margin-bottom-small'>Games</h1>
-        </div>
+        {this.props.currentSeason.Games.length ?
+
+          <div className='section games'>
+            <h1 className='u-margin-bottom-small'>Games</h1>
+            {this.props.currentSeason.Games.map(game => {
+              return <div className='section'>
+                <p>{game.matchMap}</p>
+                <p>{game.heroSelected}</p>
+                <p>{game.winLoss}</p>
+                <p>{game.postMatchSR}</p>
+              </div>
+            })}
+          </div>
+          :
+          <div className='section games'>
+            <h1 className='u-margin-bottom-small'>Games</h1>
+            <p>No Games to Display</p>
+          </div>}
+
         <div className='nav-link nav-link--go-back u-margin-top-small'>
           <Link to='/account'>GO BACK</Link>
         </div>

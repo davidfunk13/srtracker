@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
 
 class ConfirmGame extends Component {
-    
     componentDidMount() {
         console.log(this.props)
     }
-    handleSubmit = (GameData) => {
-        console.log(GameData)
-        this.props.formActions.gameFormActions.saveGame(GameData)
+    handleSubmit = (gameData) => {
+        console.log(gameData)
+        this.props.formActions.gameFormActions.saveGame(gameData)
         this.props.modalActions.closeModal()
         this.props.formActions.gameFormActions.resetGameForm()
     }
     render() {
-        let GameData = {
-            auth0Uid: this.props.profile.sub,
-            seasonOwnership: this.props.activeAccount.seasonIdForLookup,
-            Battletag: this.props.activeAccount.accountData.Battletag,
-            matchMap: this.props.addGameForm.matchMap,
-            heroSelected: this.props.addGameForm.heroSelected,
-            didYouWin: this.props.addGameForm.didYouWin,
-            postMatchSR: this.props.addGameForm.postMatchSR,
+        let gameData = {
+            UserId: this.props.currentUser.userId,
+            BattletagId: this.props.currentSeason.BattletagId,
+            Battletag: this.props.currentSeason.Battletag,
+            SeasonId:  this.props.currentSeason._id,
+            matchMap: this.props.forms.gameForm.matchMap,
+            heroSelected: this.props.forms.gameForm.heroSelected,
+            winLoss: this.props.forms.gameForm.didYouWin,
+            postMatchSR: this.props.forms.gameForm.postMatchSR,
         }
+        console.log(gameData)
         return (
             <div className='account-form'>
                 <h1 className='u-margin-bottom-small'> is this information correct?</h1>
                 <div className='game-info'>
-                    <p>Map: {GameData.matchMap}</p>
-                    <p>Hero: {GameData.heroSelected}</p>
-                    <p>Victory: {GameData.didYouWin}</p>
-                    <p>SR After Match: {GameData.postMatchSR}</p>
-                    <button className='btn btn--save-info' onClick={() => this.handleSubmit(GameData)} >Save Game</button>
+                    <p>Map: {gameData.matchMap}</p>
+                    <p>Hero: {gameData.heroSelected}</p>
+                    <p>Victory: {gameData.didYouWin}</p>
+                    <p>SR After Match: {gameData.postMatchSR}</p>
+                    <button className='btn btn--save-info' onClick={() => this.handleSubmit(gameData)} >Save Game</button>
                 </div>
             </div>
         )

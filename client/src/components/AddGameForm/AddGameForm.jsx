@@ -7,13 +7,8 @@ import ConfirmGame from './ConfirmGame/ConfirmGame';
 
 class AddGameForm extends Component {
 
-    componentDidMount(){
-    }
-
-    render() {
-        
+    render() {        
         let step = this.props.forms.gameForm.step;
-
         switch (step) {
             case 1:
                 step = <MatchMap {...this.props} />
@@ -33,11 +28,7 @@ class AddGameForm extends Component {
             default:
                 break;
         }
-        return (
-            <div>
-                {step}
-            </div>
-        )
+        return step
     }
 }
 export default AddGameForm

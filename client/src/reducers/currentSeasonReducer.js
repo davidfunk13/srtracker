@@ -17,6 +17,11 @@ export default function currentSeasonReducer(state = initialState, action) {
                 ...state,
                 Err: [action.data]
             }
+            case actionTypes.SAVE_GAME_SUCCESS:
+            return {
+                ...state,
+                Games: action.data.payload.Games
+            }
             case actionTypes.PURGE_CURRENT_SEASON:
             return initialState
         default:

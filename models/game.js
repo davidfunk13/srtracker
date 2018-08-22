@@ -20,7 +20,7 @@ const GameSchema = new Schema({
     {
         type: String, required: true
     },
-    Map:
+    matchMap:
     {
         type: String,
         required: true,
