@@ -76,7 +76,7 @@ const routes = function (app) {
 	// // //GAME DELETE
 	app.get('/api/games/remove/all/', gameDelete.deleteAllGames),
 
-	app.get('/api/user/battletag/season/game/remove/id', gameDelete.deleteOneGameById),
+	app.get('/api/games/remove/', gameDelete.deleteOneGameById),
 	app.get('/api/user/battletag/season/games/remove/seasonid/', gameDelete.deleteGamesbySeasonId)
 }
 

@@ -27,3 +27,13 @@ export const selectSeason = seasonId => {
       data: failure
     };
   };
+  export const deleteGame = (gameId) => {
+    console.log(gameId)
+    return function(dispatch){
+      axios.get('/api/games/remove/' , {params: gameId}).then(result =>{
+        console.log('Returned after removal')
+        console.log(result)
+      })
+    }
+
+  }

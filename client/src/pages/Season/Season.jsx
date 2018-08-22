@@ -61,18 +61,21 @@ class Season extends Component {
           <div className='section games'>
             <h1 className='u-margin-bottom-small'>Games</h1>
             {this.props.currentSeason.Games.map(game => {
-              return <div className='section'>
-                <p>{game.matchMap}</p>
-                <p>{game.heroSelected}</p>
-                <p>{game.winLoss}</p>
-                <p>{game.postMatchSR}</p>
+              return <div key={game._id} className='section'>
+                <p>Map Played: {game.matchMap}</p>
+                <p>Hero Selected: {game.heroSelected}</p>
+                <p>Outcome: {game.winLoss}</p>
+                <p>SR After Match: {game.postMatchSR}</p>
+                <p className='nav-link' onClick={() => this.props.currentSeasonActions.deleteGame({gameId: game._id, seasonId: this.props.currentSeason._id})}>Delete</p>
               </div>
             })}
           </div>
           :
           <div className='section games'>
             <h1 className='u-margin-bottom-small'>Games</h1>
-            <p>No Games to Display</p>
+            <div className='section'>
+              <p>No Games to Display</p>
+            </div>
           </div>}
 
         <div className='nav-link nav-link--go-back u-margin-top-small'>
