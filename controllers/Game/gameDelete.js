@@ -2,19 +2,43 @@ const db = require("../../models/index");
 
 const gameDelete = {
   deleteOneGameById: (req, res) => {
-    console.log(req.query)
-    // db.Game.findByIdAndRemove(req.params.id).then(oneGame => {
-    //   console.log({message: 'Succesfully removed Battletag by ID', payload: oneGame})
-    //   db.Season.
-    // }).catch(err=>{
-    //   throw err;
-    // })
+    console.log('gameId')
+    console.log(req.query.gameId)
+    console.log('seasonId')
+    console.log(req.query.seasonId)
+    let gameId = req.query.gameId;
+    let seasonId = req.query.seasonId;
+
+    db.Game.findByIdAndRemove(gameId).then(oneGame => {
+      console.log({
+        message: 'Succesfully removed Game from season by ID',
+        payload: oneGame
+      })
+      return db.Season.findById(seasonId).populate('Games').then(season => {
+        console.log({
+          message: 'Successfully returned Season with game deleted',
+          payload: season
+        })
+        res.json({
+          message: 'Successfully returned Season with game deleted',
+          payload: season
+        })
+      })
+    }).catch(err => {
+      throw err;
+    })
   },
   deleteAllGames: (req, res) => {
     db.Battletag.remove({}).then(allBattletags => {
-      console.log({message: 'Successfully deleted all battletags for all users', payload:allBattletags})
-      res.json({message: 'Successfully deleted all battletags for all users', payload:allBattletags})
-    }).catch(err=>{
+      console.log({
+        message: 'Successfully deleted all battletags for all users',
+        payload: allBattletags
+      })
+      res.json({
+        message: 'Successfully deleted all battletags for all users',
+        payload: allBattletags
+      })
+    }).catch(err => {
       throw err;
     })
   },
