@@ -22,17 +22,24 @@ const seasonDelete = {
       seasonGames.forEach(game => {
         gameIds.push(game._id)
       })
-      console.log('gameIds')
+      console.log('Games belonging to season found, gameIds pushed to array')
       console.log(gameIds)
       db.Season.findByIdAndUpdate(req.query.seasonId, { $pullAll: { Games: gameIds } }, { new: true }).then(result => {
+        console.log('Season found, gameIds pulled from Games array');
         console.log(result)
         db.Game.deleteMany({ SeasonId: req.query.seasonId }).then(response => {
+          console.log('Deleted all games from db belonging to season')
           console.log(response)
         })
        db.Battletag.findByIdAndUpdate(req.query.battletag, {$pullAll: { Seasons: [req.query.seasonId] } }, {new:true}).then(result=>{
+         console.log('Battletag obj found that contains season, season ID ref pulled from array')
       console.log(result)
+        db.Season.findByIdAndRemove(req.query.seasonId).then(deletedSeason=>{
+          console.log('season found by id and removed from database')
+          console.log(deletedSeason)
+        })
       res.json({
-        message: 'Removed Season',
+        message: 'Removed Season and all of its games. Appropriate Id refs pulled from all collections',
         payload: result
       })
     })
