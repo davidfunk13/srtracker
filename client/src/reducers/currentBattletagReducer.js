@@ -22,9 +22,9 @@ export default function currentBattletagReducer(state = initialState, action) {
             }
         case actionTypes.DELETE_SEASON_SUCCESS:
             return {
-                    ...state,
-                    Seasons: action.data.payload
-                }
+                ...state,
+                Seasons: action.data
+            }
         case actionTypes.PURGE_CURRENT_USER:
             return initialState
         default:

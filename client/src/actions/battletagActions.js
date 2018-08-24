@@ -61,12 +61,7 @@ export const selectBattletagFailure = failure => {
 };
 
 export const deleteSeason = (seasonId, battletag) => {
-  console.log(seasonId)
-  console.log(battletag)
-  let deleteSeasonInfo = {
-    seasonId: seasonId,
-    battletag: battletag
-  }
+
   return function (dispatch) {
     axios.get('/api/removeseason/', {
       params: {
@@ -75,11 +70,11 @@ export const deleteSeason = (seasonId, battletag) => {
       }
     }).then(result => {
       console.log(result)
-      // if (result) {
-      //   dispatch(deleteSeasonSuccess(result.data.payload))
-      // } else {
-      //   dispatch(deleteSeasonFailure(result.data))
-      // }
+      if (result) {
+        dispatch(deleteSeasonSuccess(result.data.payload))
+      } else {
+        dispatch(deleteSeasonFailure(result.data))
+      }
     }).catch(err => {
       console.log(err)
     })
@@ -87,6 +82,7 @@ export const deleteSeason = (seasonId, battletag) => {
 }
 
 export const deleteSeasonSuccess = success => {
+  console.log(success)
   return {
     type: actionTypes.DELETE_SEASON_SUCCESS,
     data: success

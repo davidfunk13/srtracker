@@ -16,33 +16,16 @@ const seasonDelete = {
     })
   },
   deleteOneSeasonById: (req, res) => {
-    console.log(req.query)
-    db.Game.deleteMany({
-      seasonId: req.query.seasonId
-    }).then(oneSeasonGames => {
-      console.log({
-        message: 'Succesfully pulled games of SeasonId',
-        payload: oneSeasonGames
+    db.Battletag.findByIdAndUpdate(req.query.battletag, {$pullAll: { Seasons: [req.query.seasonId] } }, {new:true}).then(result=>{
+      console.log(result)
+      res.json({
+        message: 'Removed Season',
+        payload: result
       })
-      return db.Season.findByIdAndRemove(req.query.seasonId).then(season => {
-        console.log({
-          message: 'Successfully removed single season by ID',
-          payload: season,
-        })
-        return db.Battletag.findById(req.query.battletag).then(battletagObj => {
-          console.log({
-            message: 'Returned Battletag obj after deletion of games and single season',
-            payload: battletagObj
-          })
-          res.json({
-            message: 'Returned Battletag obj after deletion of games and single season',
-            payload: battletagObj
-          })
-        })
-      })
-    }).catch(err => {
-      throw err;
     })
+    // db.Battletag.findById(req.query.battletag).then(shit=>{
+      // console.log(shit)
+    // })
   },
   deleteSeasonsByBattletagId: (req, res) => {
     console.log(req.query._id)
