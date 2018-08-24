@@ -4,7 +4,7 @@ import actionTypes from "./actionTypes";
 //Create Battletag
 export const createBattletag = battletagObj => {
   console.log(battletagObj);
-  return function(dispatch) {
+  return function (dispatch) {
     axios
       .post("/api/battletag/create/", battletagObj)
       .then(data => {
@@ -23,6 +23,7 @@ export const createBattletagSuccess = success => {
     data: success
   };
 };
+
 export const createBattletagFailure = failure => {
   return {
     type: actionTypes.CREATE_BATTLETAG_FAILURE,
@@ -33,7 +34,7 @@ export const createBattletagFailure = failure => {
 //Select Battletag
 export const selectBattletag = battletagId => {
   console.log(battletagId);
-  return function(dispatch) {
+  return function (dispatch) {
     axios.get("/api/battletag/" + battletagId).then(battletag => {
       console.log(battletag.data);
       if (battletag.data) {
@@ -44,12 +45,14 @@ export const selectBattletag = battletagId => {
     });
   };
 };
+
 export const selectBattletagSuccess = success => {
   return {
     type: actionTypes.SELECT_BATTLETAG_SUCCESS,
     data: success
   };
 };
+
 export const selectBattletagFailure = failure => {
   return {
     type: actionTypes.SELECT_BATTLETAG_FAILURE,
@@ -57,6 +60,45 @@ export const selectBattletagFailure = failure => {
   };
 };
 
+export const deleteSeason = (seasonId, battletag) => {
+  console.log(seasonId)
+  console.log(battletag)
+  let deleteSeasonInfo = {
+    seasonId: seasonId,
+    battletag: battletag
+  }
+  return function (dispatch) {
+    axios.get('/api/removeseason/', {
+      params: {
+        seasonId: seasonId,
+        battletag: battletag
+      }
+    }).then(result => {
+      console.log(result)
+      // if (result) {
+      //   dispatch(deleteSeasonSuccess(result.data.payload))
+      // } else {
+      //   dispatch(deleteSeasonFailure(result.data))
+      // }
+    }).catch(err => {
+      console.log(err)
+    })
+  };
+}
+
+export const deleteSeasonSuccess = success => {
+  return {
+    type: actionTypes.DELETE_SEASON_SUCCESS,
+    data: success
+  }
+};
+
+export const deleteSeasonFailure = failure => {
+  return {
+    type: actionTypes.DELETE_SEASON_FAILURE,
+    data: failure
+  }
+};
 //DELETE BATTLETAG
 // export const deleteBattletag = info => {
 // return function (dispatch) {

@@ -59,7 +59,7 @@ const routes = function (app) {
 
 	// //SEASON DELETE
 	// //one
-	app.get('/api/user/battletag/season/remove/id/', seasonDelete.deleteOneSeasonById),
+	app.get('/api/removeseason/', seasonDelete.deleteOneSeasonById),
 	// //multi
 	app.get('/api/seasons/remove/all/', seasonDelete.deleteAllSeasons),
 	app.get('/api/user/battletag/seasons/remove/all/', seasonDelete.deleteSeasonsByBattletagId),

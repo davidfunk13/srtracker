@@ -52,6 +52,7 @@ class Account extends Component {
                   <p>Starting SR: {season.StartingSR}</p>
                   <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
                   <Link to='/season' onClick={() => this.props.currentSeasonActions.selectSeason(season._id)} className='nav-link nav-link--open' >Open</Link>
+                  <p className='nav-link' onClick={() => this.props.battletagActions.deleteSeason(season._id, this.props.currentSeason.BattletagId) }>Delete Season</p>
                 </div>
               </div>
             })}
