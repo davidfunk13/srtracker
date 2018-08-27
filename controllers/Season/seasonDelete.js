@@ -31,8 +31,8 @@ const seasonDelete = {
           console.log('Deleted all games from db belonging to season')
           console.log(response)
         })
-       db.Battletag.findByIdAndUpdate(req.query.battletag, {$pullAll: { Seasons: [req.query.seasonId] } }, {new:true}).populate('Seasons').then(result=>{
-         console.log('Battletag obj found that contains season, season ID ref pulled from array')
+       db.Battletag.findByIdAndUpdate(req.query.battletag, {$pullAll: { Seasons: [req.query.seasonId] } }, {new:true}).then(result=>{
+         console.log('Battlettghjag obj found that contains season, season ID ref pulled from array')
       console.log(result)
         db.Season.findByIdAndRemove(req.query.seasonId).then(deletedSeason=>{
           console.log('season found by id and removed from database')

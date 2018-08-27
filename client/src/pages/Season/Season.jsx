@@ -60,22 +60,39 @@ class Season extends Component {
 
           <div className='section games'>
             <h1 className='u-margin-bottom-small'>Games</h1>
-            {this.props.currentSeason.Games.map(game => {
-              return <div key={game._id} className='section'>
-                <p>Map Played: {game.matchMap}</p>
-                <p>Hero Selected: {game.heroSelected}</p>
-                <p>Outcome: {game.winLoss}</p>
-                <p>SR After Match: {game.postMatchSR}</p>
-                <p className='nav-link' onClick={() => this.props.currentSeasonActions.deleteGame({gameId: game._id, seasonId: this.props.currentSeason._id})}>Delete</p>
-              </div>
-            })}
+            <table className='game-table'>
+              <tbody>
+                <tr>
+                  <th>Map Played</th>
+                  <th>Hero Selected</th>
+                  <th>Outcome</th>
+                  <th>SR After Match</th>
+                </tr>
+                {this.props.currentSeason.Games.map(game => {
+                  return <tr key={game._id} className='section'>
+                    <td>{game.matchMap}</td>
+                    <td>{game.heroSelected}</td>
+                    <td>{game.winLoss}</td>
+                    <td>{game.postMatchSR}</td>
+                    <td className='nav-link' onClick={() => this.props.currentSeasonActions.deleteGame({ gameId: game._id, seasonId: this.props.currentSeason._id })}>Delete</td>
+                  </tr>
+                })}
+              </tbody>
+            </table>
           </div>
           :
           <div className='section games'>
             <h1 className='u-margin-bottom-small'>Games</h1>
-            <div className='section'>
-              <p>No Games to Display</p>
-            </div>
+            <table className='game-table'>
+              <tbody>
+                <tr>
+                  <th>Map Played</th>
+                  <th>Hero Selected</th>
+                  <th>Outcome</th>
+                  <th>SR After Match</th>
+                </tr>
+              </tbody>
+            </table>
           </div>}
 
         <div className='nav-link nav-link--go-back u-margin-top-small'>
