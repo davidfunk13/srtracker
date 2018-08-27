@@ -52,7 +52,7 @@ class Main extends Component {
               {this.props.currentUser.Battletags.map(Battletag => {
                 return <div key={Battletag._id} className='nav-link nav-link--battletag'>
                   <Link to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}><p>{Battletag.Battletag}</p></Link>
-                  <Link to='/'><p>Delete</p></Link>
+                  <Link to='/' onClick={()=>{this.props.currentUserActions.deleteBattletag(Battletag._id, this.props.currentUser.userId)}}><p>Delete</p></Link>
                 </div>
               })}
             </div>

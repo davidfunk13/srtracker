@@ -45,18 +45,6 @@ const seasonDelete = {
     })
       })
     })
-
-
-    // db.Battletag.findByIdAndUpdate(req.query.battletag, {$pullAll: { Seasons: [req.query.seasonId] } }, {new:true}).then(result=>{
-    //   console.log(result)
-    //   res.json({
-    //     message: 'Removed Season',
-    //     payload: result
-    //   })
-    // })
-    // db.Battletag.findById(req.query.battletag).then(shit=>{
-    // console.log(shit)
-    // })
   },
   deleteSeasonsByBattletagId: (req, res) => {
     console.log(req.query._id)

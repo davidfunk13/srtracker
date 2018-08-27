@@ -19,6 +19,11 @@ export default function currentUserReducer(state = initialState, action) {
                 ...state,
                 Battletags: [...action.data.payload.Battletags]
             }
+            case actionTypes.DELETE_BATTLETAG_SUCCESS:
+            return {
+                ...state,
+                Battletags: action.data.payload.Battletags
+            }
             case actionTypes.PURGE_CURRENT_USER:
             return initialState
         default:
