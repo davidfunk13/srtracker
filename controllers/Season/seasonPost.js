@@ -19,6 +19,14 @@ const seasonPost = {
         })
 
     })
+  },
+  adjustSR: (req, res) => {
+    console.log(req.query)
+    db.Season.findByIdAndUpdate(req.query.SeasonId, {$set: {CurrentSR: req.query.postMatchSR}}, {new:true}).then(data=>{
+      console.log('SR adjusted')
+      console.log(data.CurrentSR)
+      res.json(data.CurrentSR)
+    })
   }
 }
 module.exports = seasonPost;

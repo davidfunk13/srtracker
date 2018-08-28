@@ -39,6 +39,12 @@ const GameSchema = new Schema({
     {
         type: Number,
         required: true
+    },
+    gainedSR: {
+        type: Array,
+    },
+    lostSR: {
+        type: Array,
     }
 }, { timestamps: Date });
 

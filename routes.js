@@ -63,6 +63,8 @@ const routes = function (app) {
 	// //multi
 	app.get('/api/seasons/remove/all/', seasonDelete.deleteAllSeasons),
 	app.get('/api/user/battletag/seasons/remove/all/', seasonDelete.deleteSeasonsByBattletagId),
+	//SR ADJUST
+	app.get('/api/sr/', seasonPost.adjustSR),
 	// //GAME
 	
 	// // //GAME POST

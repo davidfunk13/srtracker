@@ -5,8 +5,11 @@ class ConfirmGame extends Component {
         console.log(this.props)
     }
     handleSubmit = (gameData) => {
+        console.log(`CurrentSR: ${this.props.currentSeason.CurrentSR}`)
+        console.log(`postMatchSR: ${gameData.postMatchSR}`)
         console.log(gameData)
         this.props.formActions.gameFormActions.saveGame(gameData)
+        this.props.currentSeasonActions.adjustCurrentSR(gameData.postMatchSR, this.props.currentSeason.CurrentSR, gameData.SeasonId)
         this.props.modalActions.closeModal()
         this.props.formActions.gameFormActions.resetGameForm()
     }

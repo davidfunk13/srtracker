@@ -19,6 +19,10 @@ const SeasonSchema = new Schema({
         type: Number,
         required: true,
     },
+    CurrentSR: {
+        type: Number,
+        required: true,
+    },  
     HerosFocused: {
         type: Array,
         required: true

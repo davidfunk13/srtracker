@@ -16,6 +16,7 @@ class ConfirmSeason extends Component {
             BattletagId: this.props.currentBattletag._id,
             Battletag: this.props.currentBattletag.Battletag,
             StartingSR: this.props.forms.seasonForm.StartingSR,
+            CurrentSR: this.props.forms.seasonForm.StartingSR,
             HerosFocused: this.props.forms.seasonForm.HerosFocused,
         }
         return (

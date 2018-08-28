@@ -42,6 +42,7 @@ class Season extends Component {
               <div>
                 <p>Battletag: {this.props.currentSeason.Battletag} </p>
                 <p>Starting SR: {this.props.currentSeason.StartingSR} </p>
+                <p>Current SR: {this.props.currentSeason.CurrentSR}</p>
                 <p>Heros Focused: {this.props.currentSeason.HerosFocused.join(', ')} </p>
               </div>
               :

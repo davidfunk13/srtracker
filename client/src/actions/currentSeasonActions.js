@@ -15,6 +15,51 @@ export const selectSeason = seasonId => {
     });
   };
 };
+export const srGained = gain => {
+  return {
+    type: actionTypes.SR_LOST,
+    data: gain
+  }
+}
+export const srLost = lost => {
+  return {
+    type: actionTypes.SR_LOST,
+    data: lost
+  }
+}
+export const adjustCurrentSR = (postMatchSR, CurrentSR, seasonId) => {
+  console.log(postMatchSR)
+  console.log(CurrentSR)
+  console.log(seasonId)
+  return function (dispatch) {
+    axios.get('/api/sr/', {
+      params: {
+        postMatchSR: postMatchSR,
+        CurrentSR: CurrentSR,
+        SeasonId: seasonId
+      }
+    }).then(data => {
+      console.log(data)
+      if (data.data) {
+        dispatch(adjustCurrentSRSuccess(data.data))
+      } else {
+        dispatch(adjustCurrentSRFailure(data.data))
+      }
+    })
+  }
+}
+export const adjustCurrentSRSuccess = success => {
+  return {
+    type: actionTypes.ADJUST_CURRENT_SR_SUCCESS,
+    data: success
+  };
+};
+export const adjustCurrentSRFailure = failure => {
+  return {
+    type: actionTypes.ADJUST_CURRENT_SR_FAILURE,
+    data: failure
+  };
+};
 export const selectSeasonSuccess = success => {
   return {
     type: actionTypes.SELECT_SEASON_SUCCESS,
