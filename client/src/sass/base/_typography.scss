@@ -110,6 +110,10 @@ ul {
   &--login {
     width: 15rem;
     align-self: center;
+    position: absolute;
+    bottom: 0;
+    left: 4vw;
+    z-index: 2;
   }
   &--add-season {
     width: 20rem;

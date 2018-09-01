@@ -78,7 +78,11 @@ ul {
     text-align: center; }
   .nav-link--login {
     width: 15rem;
-    align-self: center; }
+    align-self: center;
+    position: absolute;
+    bottom: 0;
+    left: 4vw;
+    z-index: 2; }
   .nav-link--add-season {
     width: 20rem;
     margin: 0 auto; }
@@ -133,6 +137,11 @@ body {
   background-attachment: fixed;
   line-height: 3rem; }
 
+.banner {
+  height: 100%;
+  width: 100%;
+  position: relative; }
+
 .u-margin-bottom-small {
   margin-bottom: 1rem; }
 
@@ -144,6 +153,29 @@ body {
 
 .smallcaps {
   font-variant: small-caps; }
+
+@media only screen and (min-width: 575px) {
+  .banner-mobile {
+    z-index: 1;
+    display: none; } }
+
+@media only screen and (max-width: 425px) {
+  .nav-link {
+    font-size: 2rem;
+    color: black;
+    border: .1rem solid black;
+    background: #2379cf;
+    text-decoration: none; }
+    .nav-link--login {
+      width: 15rem;
+      position: absolute;
+      transform: translate(-50%, 0%);
+      bottom: 0;
+      left: 50%;
+      z-index: 2; }
+  h2 {
+    text-align: center;
+    padding-left: 0; } }
 
 .container {
   margin: 2rem 1rem 2rem 1rem;
@@ -173,6 +205,8 @@ body {
   margin-bottom: 1rem; }
 
 .header {
+  position: relative;
+  z-index: 0;
   background: #405275;
   height: 20vh;
   display: flex;
@@ -181,6 +215,20 @@ body {
   text-align: center;
   border-bottom: 1px solid black;
   overflow: auto; }
+
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; }
+
+.banner-mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; }
 
 .account-form {
   display: flex;

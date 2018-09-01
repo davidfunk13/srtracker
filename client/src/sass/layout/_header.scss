@@ -1,4 +1,6 @@
 .header {
+    position: relative;
+    z-index: 0;
     background: $color-ow-dark-blue;
     height: 20vh;
     display: flex;
@@ -7,4 +9,18 @@
     text-align: center;
     border-bottom: 1px solid black;
     overflow: auto;
+}
+.banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.banner-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }

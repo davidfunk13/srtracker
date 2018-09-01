@@ -12,20 +12,23 @@ class Header extends Component {
     this.props.auth.isAuthenticated()
   }
 
-  logout(){
+  logout() {
     this.props.auth.logout()
     // this.persistor.purge()
     this.props.currentUserActions.purgeCurrentUser()
   }
-  
+
   render() {
     return (
       <header className="header">
-        <p className='banner-text u-margin-bottom-small'>SR TRACKER</p>
-        {this.props.auth.isAuthenticated() ?
-          <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.logout()}>Logout</Link>
-          :
-          <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.props.auth.login()}>Login</Link>}
+        <div>
+          <img className='banner' src="./banner.jpg" alt="" />
+          <img className='banner-mobile' src="./banner-mobile.jpg" alt="" />
+          {this.props.auth.isAuthenticated() ?
+            <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.logout()}>Logout</Link>
+            :
+            <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.props.auth.login()}>Login</Link>}
+        </div>
       </header>
     );
   }

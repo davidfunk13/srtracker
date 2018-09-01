@@ -1,0 +1,29 @@
+@media only screen and (min-width: 575px) {
+    .banner-mobile {
+        z-index: 1;
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .nav-link {
+        font-size: $default-h2-size;
+        color: black;
+        border: .1rem solid black;
+        background: $color-ow-light-blue;
+        text-decoration: none;
+
+        &--login {
+            width: 15rem;
+            position: absolute;
+            transform: translate(-50%, 0%);
+            bottom: 0;
+            left: 50%;
+            z-index: 2;
+        }
+    }
+    h2{
+        text-align: center;
+        padding-left:0;
+    }
+}
