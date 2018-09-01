@@ -21,13 +21,13 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <div>
-          <img className='banner' src="./banner.jpg" alt="" />
-          <img className='banner-mobile' src="./banner-mobile.jpg" alt="" />
+        <div className='row justify-content-center'>
+          {/* <img className='img-fluid banner' src="./banner.jpg" alt="" /> */}
+          <img className='img-fluid banner-mobile' src="./banner-mobile.jpg" alt="" />
           {this.props.auth.isAuthenticated() ?
-            <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.logout()}>Logout</Link>
+            <Link to='/' className='logout btn btn-primary btn-sm' onClick={() => this.logout()}>Logout</Link>
             :
-            <Link to='/' className='nav-link nav-link--login u-margin-bottom-small' onClick={() => this.props.auth.login()}>Login</Link>}
+            <Link to='/' className='login btn btn-primary btn-sm' onClick={() => this.props.auth.login()}>Login</Link>}
         </div>
       </header>
     );
