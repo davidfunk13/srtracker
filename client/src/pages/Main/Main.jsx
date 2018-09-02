@@ -32,18 +32,21 @@ class Main extends Component {
 
   render() {
     return (
-      <div className="container container--main">
+      <div className="container">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
           <BattleTag {...this.props} />
-          <div className='nav-link nav-link--close-modal__battletag'>
-            <Link to='/' onClick={() => this.props.modalActions.closeModal()}>Close modal</Link>
+          <div className='btn btn-primary'>
+            <Link to='/' onClick={() => this.props.modalActions.closeModal()}>close modal</Link>
           </div>
         </ReactModal>
-        <div className='section main-info'>
-          <h2>thank you for logging in, {this.props.profile.name}</h2>
-          <div className='nav-link nav-link--open-modal__battletag'>
-            <Link to='/' onClick={() => { this.props.modalActions.openModal() }}>Track a New BattleTag</Link>
+        <div className='row'>
+        <div className='col-12'>
+        <h2>thank you for logging in, {this.props.profile.name}</h2>
+          <div className='btn btn-primary'>
+            <Link to='/' onClick={() => { this.props.modalActions.openModal() }}>track a new battletag</Link>
           </div>
+        </div>
+          
         </div>
         <div className='section battletags'>
           {this.props.currentUser.Battletags.length ?

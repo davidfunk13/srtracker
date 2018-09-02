@@ -25,9 +25,9 @@ class Header extends Component {
           {/* <img className='img-fluid banner' src="./banner.jpg" alt="" /> */}
           <img className='img-fluid banner-mobile' src="./banner-mobile.jpg" alt="" />
           {this.props.auth.isAuthenticated() ?
-            <Link to='/' className='logout btn btn-primary btn-sm' onClick={() => this.logout()}>Logout</Link>
+            <Link to='/' className='logout btn btn-primary btn-sm' onClick={() => this.logout()}>logout</Link>
             :
-            <Link to='/' className='login btn btn-primary btn-sm' onClick={() => this.props.auth.login()}>Login</Link>}
+            <Link to='/' className='login btn btn-primary btn-sm' onClick={() => this.props.auth.login()}>login</Link>}
         </div>
       </header>
     );

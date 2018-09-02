@@ -1,9 +1,69 @@
-.header{
+/* //fonts */
+@font-face {
+    font-family: 'Trirong', serif;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+    src: url(https://fonts.googleapis.com/css?family=Rubik|Trirong|Work+Sans);
+}
+
+/* //utils */
+
+.margin-bottom-small{
+    margin-bottom: .3rem;
+}
+
+.center-text{
+    text-align: center;
+}
+
+body{
+    background-color: rgb(64,82,117)
+}
+
+h1,h2,h3{
+    text-align: center;
+    background-color: rgb(249,158,26);
+    color: white;
+    font-variant: small-caps;
+    padding-bottom: .3rem;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+a, a:active, a:hover{
+    font-family: 'Work Sans', sans-serif;
+    font-variant: small-caps;
+    color: white;
+}
+p{
+    line-height: 1rem;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 1rem;
+} 
+
+ol li{
+    list-style: upper-roman;
+    list-style-position: inside;
+    line-height: 1rem;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 1rem;
+    /* padding-left: .5rem; */
+}
+
+.header {
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .login,
-.logout{
-position: absolute;
-bottom: 0;
+.logout {
+    font-family: 'Work Sans', sans-serif;
+    font-variant: small-caps;
+    position: absolute;
+    bottom: .5rem;
+    width: 5rem;
+}
+.section{
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.623);
 }
