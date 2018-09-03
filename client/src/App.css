@@ -9,7 +9,7 @@
 /* //utils */
 
 .margin-bottom-small{
-    margin-bottom: .3rem;
+    margin-bottom: .5rem;
 }
 
 .center-text{
@@ -20,7 +20,7 @@ body{
     background-color: rgb(64,82,117)
 }
 
-h1,h2,h3{
+h1{
     text-align: center;
     background-color: rgb(249,158,26);
     color: white;
@@ -28,7 +28,21 @@ h1,h2,h3{
     padding-bottom: .3rem;
     font-family: 'Work Sans', sans-serif;
     font-size: 2rem;
-    margin-bottom: 1rem;
+}
+h2{
+    text-align: center;
+    padding-bottom: .3rem;
+    background-color: rgb(249,158,26);
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.5rem;
+}
+h3{
+    padding: .4rem;
+    background-color: rgb(249,158,26);
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
 }
 a, a:active, a:hover{
     font-family: 'Work Sans', sans-serif;

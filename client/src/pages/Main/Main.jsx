@@ -40,28 +40,27 @@ class Main extends Component {
           </div>
         </ReactModal>
         <div className='row'>
-        <div className='col-12'>
-        <h2>thank you for logging in, {this.props.profile.name}</h2>
-          <div className='btn btn-primary'>
-            <Link to='/' onClick={() => { this.props.modalActions.openModal() }}>track a new battletag</Link>
+          <div className='col-12 text-center'>
+            <h3 className='margin-bottom-small'>{this.props.profile.name}</h3>
+            <div className='btn btn-primary btn-block margin-bottom-small'>
+              <Link to='/' onClick={() => { this.props.modalActions.openModal() }}>track a new battletag</Link>
+            </div>
           </div>
         </div>
-          
-        </div>
-        <div className='section battletags'>
+        <div className='row'>
           {this.props.currentUser.Battletags.length ?
-            <div>
+            <div className='col-12'>
               <h2>Battletags:</h2>
               {this.props.currentUser.Battletags.map(Battletag => {
                 return <div key={Battletag._id} className='nav-link nav-link--battletag'>
                   <Link to='/account' onClick={() => this.props.battletagActions.selectBattletag(Battletag._id)}><p>{Battletag.Battletag}</p></Link>
-                  <Link to='/' onClick={()=>{this.props.currentUserActions.deleteBattletag(Battletag._id, this.props.currentUser.userId)}}><p>Delete</p></Link>
+                  <Link to='/' onClick={() => { this.props.currentUserActions.deleteBattletag(Battletag._id, this.props.currentUser.userId) }}><p>Delete</p></Link>
                 </div>
               })}
             </div>
             :
-            <div className='section'>
-              <p>We dont have any Battletags stored for you. Click the button to add one!</p>
+            <div className='col-12'>
+              <p className='section'>We dont have any Battletags stored for you. Click the button to add one!</p>
             </div>}
         </div>
       </div>

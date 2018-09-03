@@ -15,7 +15,7 @@ export default class NotFound extends Component {
         </div>
         <div className='row'>
           <div className='col-12'>
-            <h2>features</h2>
+            <h1>features</h1>
             <ol className='section'>
               <li>Track Multiple Accounts</li>
               <li>Add a New Season to your account to start tracking</li>
