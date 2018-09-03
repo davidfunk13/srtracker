@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 const modalStyles = {
   content: {
     top: "50%",
-    left: "50%",
+    left: "48%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "60%",
-    height: "60%",
+    width: "90vw",
+    height: "auto",
     border: "1px solid black"
   }
 };
@@ -33,11 +33,11 @@ class Account extends Component {
       <div className="container">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
           <AddSeasonForm {...this.props} />
-          <button className="btn btn--close-modal" onClick={() => this.closeModalandResetForm()}>Close modal</button>
+          <Link to='/account' className="btn btn-primary btn-sm btn-block" onClick={() => this.closeModalandResetForm()}>close modal</Link>
         </ReactModal>
         <div className='row'>
           <div className='col-12'>
-              <Link className='btn btn-primary btn-block margin-bottom-small' role='button' to='/account' onClick={() => this.props.modalActions.openModal()}>create a season</Link>
+            <Link className='btn btn-primary btn-block margin-bottom-small' role='button' to='/account' onClick={() => this.props.modalActions.openModal()}>create a season</Link>
           </div>
           <div className='col-12'>
             {this.props.currentBattletag ?
@@ -49,14 +49,16 @@ class Account extends Component {
         {/* checks props for seasons maps to page end line 65 */}
         {this.props.currentBattletag.Seasons.length ?
           <div className='section'>
-            <h2 className='u-margin-bottom-small'>Saved Seasons:</h2>
             {this.props.currentBattletag.Seasons.map(season => {
               return <div key={season._id} className='subsection'>
-                <div className='season season--cell'>
-                  <p>Starting SR: {season.StartingSR}</p>
-                  <p>Heros Focused this Season: {season.HerosFocused.join(', ')}</p>
-                  <Link to='/season' onClick={() => this.props.currentSeasonActions.selectSeason(season._id)} className='nav-link nav-link--open' >Open</Link>
-                  <p className='nav-link' onClick={() => this.props.battletagActions.deleteSeason(season._id, this.props.currentBattletag._id)}>Delete Season</p>
+                <div className='section text-center'>
+                  <p className='margin-bottom-small'>Starting SR: {season.StartingSR}</p>
+                  <p>Heros Focused:</p>
+                  <p className='margin-bottom-small'>{season.HerosFocused.join(', ')}</p>
+                  <div>
+                    <Link className='btn btn-primary btn-sm btn-block' to='/season' onClick={() => this.props.currentSeasonActions.selectSeason(season._id)}>open</Link>
+                    <Link to='/account' className='btn btn-danger btn-sm btn-block' onClick={() => this.props.battletagActions.deleteSeason(season._id, this.props.currentBattletag._id)}>delete season</Link>
+                  </div>
                 </div>
               </div>
             })}
@@ -70,9 +72,9 @@ class Account extends Component {
             <div className='text-center'>
               <p className='margin-bottom-small'>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p>
             </div>
-             
+
           </div>}
-          <Link className='btn btn-primary btn-block' role='button' to='/'>go back</Link>
+        <Link className='btn btn-primary btn-block' role='button' to='/'>go back</Link>
       </div>
     );
   }
