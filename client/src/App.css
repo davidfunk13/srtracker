@@ -11,6 +11,9 @@
 .margin-bottom-small{
     margin-bottom: .5rem;
 }
+.margin-right-small{
+margin-right: .4rem;
+}
 
 .center-text{
     text-align: center;
@@ -44,6 +47,13 @@ h3{
     font-family: 'Work Sans', sans-serif;
     font-size: 1rem;
 }
+.input-form{
+    border: .01rem solid black;
+}
+.battletag-section{
+    padding: .5rem;
+    background-color: rgba(255, 255, 255, 0.623);
+}
 a, a:active, a:hover{
     font-family: 'Work Sans', sans-serif;
     font-variant: small-caps;
@@ -52,7 +62,7 @@ a, a:active, a:hover{
 p{
     line-height: 1rem;
     font-family: 'Rubik', sans-serif;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 } 
 
 ol li{

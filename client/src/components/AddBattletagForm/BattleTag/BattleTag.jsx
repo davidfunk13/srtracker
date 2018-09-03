@@ -36,21 +36,25 @@ class BattleTag extends Component {
 
     render() {
         return (
-            <div className='account-form'>
-                <h1 className='u-margin-bottom-small'>Please tell us your Battletag!</h1>
-                <h2>No trailing numbers are required, this is simply to put at the top of your spreadsheet in case you want to track another account.</h2>
-                <form className="account-form__form">
-                    {this.state.Errors ? <div><p className='form-errors'>{this.state.Errors}</p></div> : ""}
-                    <input
-                        className='account-form__form--BattleTag'
-                        value={this.state.Battletag}
-                        name="Battletag"
-                        onChange={this.handleInputChange}
-                        type="text"
-                        placeholder="Battletag"
-                    />
-                    <button className='btn btn--submit-form' onClick={this.handleFormSubmit}>Submit</button>
-                </form>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-12 text-center'>
+                        <h3 className='margin-bottom-small'>Enter a Battletag</h3>
+                        <p className='margin-bottom-small'>No trailing numbers are required, this is simply to put at the top of your spreadsheet in case you want to track another account.</p>
+                        <form>
+                            {this.state.Errors ? <div><p className='form-errors'>{this.state.Errors}</p></div> : ""}
+                            <input
+                                className='input-form text-center margin-bottom-small'
+                                value={this.state.Battletag}
+                                name="Battletag"
+                                onChange={this.handleInputChange}
+                                type="text"
+                                placeholder="Battletag"
+                            />
+                            <button className='btn btn-sm margin-bottom-small' onClick={this.handleFormSubmit}>Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

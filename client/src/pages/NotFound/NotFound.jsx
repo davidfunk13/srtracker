@@ -10,7 +10,7 @@ export default class NotFound extends Component {
         <div className='row'>
           <div className='col-12'>
             <h1>welcome</h1>
-            <p className='section'>Please click Login above to create a username or login and begin using the app!</p>
+            <p className='section text-center'>Please click Login above to create a username or login and begin using the app!</p>
           </div>
         </div>
         <div className='row'>
