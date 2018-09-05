@@ -21,12 +21,12 @@ class ConfirmSeason extends Component {
         }
         return (
             <div className='account-form'>
-                <h1 className='u-margin-bottom-small'> is this information correct?</h1>
-                <div className='account-info'>
-                    <h2>Battletag: {SeasonData.Battletag}</h2>
-                    <h2>Starting SR: {SeasonData.StartingSR} </h2>
-                    <h2>Heros Focused this Season: {SeasonData.HerosFocused.toString()} </h2>
-                <button className='btn btn--save-info' onClick={() => this.handleSubmit(SeasonData)} >Save Info</button> 
+                <h1 className='margin-bottom-small'> is this information correct?</h1>
+                <div className='account-info text-center'>
+                    <p className='margin-bottom-small'>Battletag: {SeasonData.Battletag}</p>
+                    <p className='margin-bottom-small'>Starting SR: {SeasonData.StartingSR} </p>
+                    <p className='margin-bottom-small'>Heros Focused this Season: {SeasonData.HerosFocused.toString()} </p>
+                <button className='btn btn--save-info margin-bottom-small' onClick={() => this.handleSubmit(SeasonData)} >Save Info</button> 
                 </div>
             </div>
         )

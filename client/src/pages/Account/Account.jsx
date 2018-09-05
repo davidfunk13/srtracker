@@ -51,7 +51,7 @@ class Account extends Component {
           <div className='section'>
             {this.props.currentBattletag.Seasons.map(season => {
               return <div key={season._id} className='subsection'>
-                <div className='section text-center'>
+                <div className='section text-center margin-bottom-small'>
                   <p className='margin-bottom-small'>Starting SR: {season.StartingSR}</p>
                   <p>Heros Focused:</p>
                   <p className='margin-bottom-small'>{season.HerosFocused.join(', ')}</p>
