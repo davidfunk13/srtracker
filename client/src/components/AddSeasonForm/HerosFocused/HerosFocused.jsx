@@ -26,7 +26,7 @@ class HerosFocused extends Component {
     render() {
         let heros = ['ana', 'bastion', 'brigitte', 'doomfist', 'genji', 'hammond', 'hanzo', 'junkrat', 'lucio', 'mcree', 'mei', 'mercy', 'moira', 'orisa', 'phara', 'reaper', 'rein', 'roadhog', 'soldier', 'sombra', 'symm', 'torb', 'tracer', 'widow', 'winston'];
         let icons = heros.map(icon => {
-            return <img key={icon} onClick={() => this.handleHerosFocused(icon)} src={require(`./icons/${icon}.png`)} alt={icon + '_icon'}/>
+            return <img className='hero-img' key={icon} onClick={() => this.handleHerosFocused(icon)} src={require(`./icons/${icon}.png`)} alt={icon + '_icon'}/>
         })
         return (
             <div className='heros-focused'>

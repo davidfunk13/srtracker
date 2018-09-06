@@ -1,71 +1,77 @@
 /* //fonts */
 @font-face {
-    font-family: 'Trirong', serif;
-    font-family: 'Rubik', sans-serif;
-    font-family: 'Work Sans', sans-serif;
-    src: url(https://fonts.googleapis.com/css?family=Rubik|Trirong|Work+Sans);
+    font-family: 'Michroma', sans-serif;
+    font-family: 'Metrophobic', sans-serif;
+    font-family: 'Spinnaker', sans-serif;
+    src: url(https://fonts.googleapis.com/css?family=Metrophobic|Michroma|Spinnaker);
 }
 
 /* //utils */
-
-.margin-bottom-small{
+.margin-bottom-small {
     margin-bottom: .5rem;
 }
-.margin-right-small{
-margin-right: .4rem;
+
+.margin-right-small {
+    margin-right: .4rem;
 }
 
-.center-text{
+.center-text {
     text-align: center;
 }
 
-body{
-    background-color: rgb(64,82,117)
+body {
+    background-color: rgb(64, 82, 117)
 }
 
-h1{
+h1 {
     text-align: center;
-    background-color: rgb(249,158,26);
+    background-color: rgb(249, 158, 26);
     color: white;
-    font-variant: small-caps;
-    padding-bottom: .3rem;
-    font-family: 'Work Sans', sans-serif;
+    /* font-variant: small-caps; */
+    /* padding-bottom: .3rem; */
+    font-family: 'Michroma', sans-serif;
     font-size: 2rem;
 }
-h2{
+
+h2 {
     text-align: center;
     padding-bottom: .3rem;
-    background-color: rgb(249,158,26);
+    background-color: rgb(249, 158, 26);
     color: white;
     font-family: 'Work Sans', sans-serif;
     font-size: 1.5rem;
 }
-h3{
+
+h3 {
     padding: .4rem;
-    background-color: rgb(249,158,26);
+    background-color: rgb(249, 158, 26);
     color: white;
     font-family: 'Work Sans', sans-serif;
     font-size: 1rem;
 }
-.input-form{
+
+.input-form {
     border: .01rem solid black;
 }
-.battletag-section{
+
+.battletag-section {
     padding: .5rem;
     background-color: rgba(255, 255, 255, 0.623);
 }
-a, a:active, a:hover{
+
+a, a:active, a:hover {
     font-family: 'Work Sans', sans-serif;
     font-variant: small-caps;
     color: white;
 }
-p{
+
+p {
     line-height: 1rem;
     font-family: 'Rubik', sans-serif;
     /* margin-bottom: 1rem; */
-} 
+}
 
-ol li{
+ol li {
     list-style: upper-roman;
     list-style-position: inside;
     line-height: 1rem;
@@ -87,7 +93,24 @@ ol li{
     bottom: .5rem;
     width: 5rem;
 }
-.section{
+
+.section {
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.623);
+}
+.heros-focused{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.hero-img{
+    margin-bottom: .3rem;
+    width: 4rem;
+    border: .1rem solid black;
+}
+.hero-img:last-child{
+    
+margin-right: 51vw
+    
 }

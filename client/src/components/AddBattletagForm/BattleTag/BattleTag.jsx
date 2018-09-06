@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 class BattleTag extends Component {
     state = {
         Battletag: "",
@@ -40,7 +41,8 @@ class BattleTag extends Component {
                 <div className='row'>
                     <div className='col-12 text-center'>
                         <h3 className='margin-bottom-small'>Enter a Battletag</h3>
-                        <p className='margin-bottom-small'>No trailing numbers are required, this is simply to put at the top of your spreadsheet in case you want to track another account.</p>
+                        <p className='margin-bottom-small'>No #id numbers are required.</p>
+                        <p className='margin-bottom-small'>This is simply for display purposes.</p>
                         <form>
                             {this.state.Errors ? <div><p className='form-errors'>{this.state.Errors}</p></div> : ""}
                             <input
@@ -49,9 +51,9 @@ class BattleTag extends Component {
                                 name="Battletag"
                                 onChange={this.handleInputChange}
                                 type="text"
-                                placeholder="Battletag"
+                                placeholder="Enter your Battletag"
                             />
-                            <button className='btn btn-sm margin-bottom-small' onClick={this.handleFormSubmit}>Submit</button>
+                            <Link to='/' role='button' className='btn btn-primary btn-block margin-bottom-small' onClick={this.handleFormSubmit}>submit</Link>
                         </form>
                     </div>
                 </div>

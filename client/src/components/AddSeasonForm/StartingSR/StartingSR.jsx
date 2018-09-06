@@ -66,9 +66,7 @@ class StartingSR extends Component {
                                 type="number"
                                 placeholder="StartingSR"
                             />
-                            <div className='btn btn-sm margin-bottom-small'>
-                                <button onClick={this.handleStartingSR}><p>submit</p></button>
-                            </div>
+                            <Link className='btn btn-primary btn-block margin-bottom-small' to='/' role='button' onClick={this.handleStartingSR}>submit</Link>
                         </form>
                     </div>
                 </div>

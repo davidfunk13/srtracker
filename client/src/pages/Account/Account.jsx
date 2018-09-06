@@ -33,7 +33,9 @@ class Account extends Component {
       <div className="container">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
           <AddSeasonForm {...this.props} />
-          <Link to='/account' className="btn btn-primary btn-sm btn-block" onClick={() => this.closeModalandResetForm()}>close modal</Link>
+          <div className='text-center'>
+          <Link to='/account' className="btn btn-primary btn-sm" onClick={() => this.closeModalandResetForm()}>close modal</Link>
+          </div>
         </ReactModal>
         <div className='row'>
           <div className='col-12'>
@@ -41,21 +43,22 @@ class Account extends Component {
           </div>
           <div className='col-12'>
             {this.props.currentBattletag ?
-              <h1>seasons</h1>
+              <h1>Information</h1>
               : <h2>Battletag: 'Error'</h2>}
           </div>
         </div>
 
         {/* checks props for seasons maps to page end line 65 */}
+        <div className='section margin-bottom-small'>
+          <p className='margin-bottom-small'>Battletag: {this.props.currentBattletag.Battletag}</p>
+          <p>Seasons: {this.props.currentBattletag.Seasons.length}</p>
+        </div>
         {this.props.currentBattletag.Seasons.length ?
-          <div className='section'>
+          <div className='section margin-bottom-small'>
             {this.props.currentBattletag.Seasons.map(season => {
-              return <div key={season._id} className='subsection'>
-                <div className='section margin-bottom-small'>
-                  <p className='margin-bottom-small'>Battletag: {this.props.currentBattletag.Battletag}</p>
-                  <p>Seasons: {this.props.currentBattletag.Seasons.length}</p>
-                </div>
-                <div className='section text-center margin-bottom-small'>
+              return <div key={season._id}>
+
+                <div className='text-center margin-bottom-small'>
                   <p className='margin-bottom-small'>Starting SR: {season.StartingSR}</p>
                   <p>Heros Focused:</p>
                   <p className='margin-bottom-small'>{season.HerosFocused.join(', ')}</p>
@@ -66,18 +69,11 @@ class Account extends Component {
                 </div>
               </div>
             })}
-            {/* <Link className='btn btn-primary' role='button' to='/'>Go Back</Link> */}
           </div> :
-          <div className='section'>
-            <div className='section margin-bottom-small'>
-              <p className='margin-bottom-small'>Battletag: {this.props.currentBattletag.Battletag}</p>
-              <p>Seasons: {this.props.currentBattletag.Seasons.length}</p>
-            </div>
-            <div className='text-center'>
-              <p className='margin-bottom-small'>We don't have any Seasons for this Battletag. Add one to Start tracking a Season!</p>
-            </div>
-
-          </div>}
+          <div className='section margin-bottom-small'>
+              <p className='margin-bottom-small'>We don't have anything for this Battletag.</p>
+              <p className='margin-bottom-small'>Please add a season to record your progress.</p>
+            </div>}
         <Link className='btn btn-primary btn-block' role='button' to='/'>go back</Link>
       </div>
     );

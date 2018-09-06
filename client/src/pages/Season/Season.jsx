@@ -56,7 +56,7 @@ class Season extends Component {
             </div>
           </div>
         </div>
-        <Link className='btn btn-primary btn-block margin-bottom-small' role='button' to='/season' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</Link>
+        <Link className='btn btn-primary btn-block margin-bottom-small' role='button' to='/season' onClick={() => { this.props.modalActions.openModal() }}>add a game</Link>
         {this.props.currentSeason.Games.length ?
           <div className='row'>
             <div className='col-12'>
@@ -68,7 +68,7 @@ class Season extends Component {
                     <th scope="col">Map</th>
                     <th scope="col">Hero</th>
                     <th scope="col">Outcome</th>
-                    <th scope="col">SR After</th>
+                    <th scope="col">SR</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -103,7 +103,7 @@ class Season extends Component {
           </div>
         }
 
-        <Link className='btn btn-primary btn-block' to='/account'>GO BACK</Link>
+        <Link className='btn btn-primary btn-block' to='/account'>go back</Link>
       </div>
     );
   }

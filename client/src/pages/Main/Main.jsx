@@ -35,7 +35,9 @@ class Main extends Component {
       <div className="container">
         <ReactModal isOpen={this.props.showModal} style={modalStyles}>
           <BattleTag {...this.props} />
-          <Link className='btn btn-primary btn-sm btn-block' role='button' to='/' onClick={() => this.props.modalActions.closeModal()}>close modal</Link>
+          <div className='text-center'>
+            <Link className='btn btn-primary btn-sm' role='button' to='/' onClick={() => this.props.modalActions.closeModal()}>close modal</Link>
+          </div>
         </ReactModal>
         <div className='row'>
           <div className='col-12 text-center'>
