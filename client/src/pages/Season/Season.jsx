@@ -56,46 +56,52 @@ class Season extends Component {
             </div>
           </div>
         </div>
-        <div className='row'>
-          {this.props.currentSeason.Games.length ?
+        <Link className='btn btn-primary btn-block margin-bottom-small' role='button' to='/season' onClick={() => { this.props.modalActions.openModal() }}>Add a game to this Season!</Link>
+        {this.props.currentSeason.Games.length ?
+          <div className='row'>
             <div className='col-12'>
               <h1>Games</h1>
-              <table className='section game-table'>
-                <tbody>
+              <table className='table section'>
+                <thead>
                   <tr>
-                    <th>Map Played</th>
-                    <th>Hero Selected</th>
-                    <th>Outcome</th>
-                    <th>SR After Match</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Map</th>
+                    <th scope="col">Hero</th>
+                    <th scope="col">Outcome</th>
+                    <th scope="col">SR After</th>
                   </tr>
-                  {this.props.currentSeason.Games.map(game => {
-                    return <tr key={game._id} className=''>
+                </thead>
+                <tbody>
+                  {this.props.currentSeason.Games.map((game, i) => {
+                    return <tr key={game._id}>
+                      <td>{i+1}</td>
                       <td>{game.matchMap}</td>
                       <td>{game.heroSelected}</td>
                       <td>{game.winLoss}</td>
                       <td>{game.postMatchSR}</td>
-                      <td className='nav-link' onClick={() => this.props.currentSeasonActions.deleteGame({ gameId: game._id, seasonId: this.props.currentSeason._id })}>Delete</td>
                     </tr>
                   })}
                 </tbody>
               </table>
             </div>
-            :
+          </div>
+          :
+          <div className='row'>
             <div className='col-12'>
-              <h1 className='u-margin-bottom-small'>Games</h1>
-              <table className='section game-table'>
+              <h1>Games</h1>
+              <table className='table section'>
+                <thead>
+                  <th>Map</th>
+                  <th>Heros</th>
+                  <th>Outcome</th>
+                  <th>SR</th>
+                </thead>
                 <tbody>
-                  <tr>
-                    <th>Map Played</th>
-                    <th>Hero Selected</th>
-                    <th>Outcome</th>
-                    <th>SR After Match</th>
-                  </tr>
                 </tbody>
               </table>
             </div>
-          }
-        </div>
+          </div>
+        }
 
         <Link className='btn btn-primary btn-block' to='/account'>GO BACK</Link>
       </div>
